@@ -31,21 +31,27 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="https://novyx-ram-api.fly.dev" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">API Docs</a></li>
+              <li><Link to="/docs" className="hover:text-white transition-colors">API Docs</Link></li>
               <li><Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-medium mb-4">Install</h4>
-            <code className="text-sm text-accent-ram bg-gray-800 px-2 py-1 rounded">
+            <h4 className="font-medium mb-4">Get Started</h4>
+            <code className="text-sm text-accent-ram bg-gray-800 px-2 py-1 rounded block mb-3">
               pip install novyx-langchain
             </code>
+            <Link
+              to="/pricing"
+              className="text-sm text-primary hover:text-primary-hover transition-colors"
+            >
+              Start free →
+            </Link>
           </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-border text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} Novyx Labs. All rights reserved.
+          © {new Date().getFullYear()} Novyx Labs. All rights reserved.
         </div>
       </div>
     </footer>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const features = [
   {
     title: 'Max 3 Builds',
-    description: 'Focus on what matters. Forge limits you to 3 active builds at a time, ensuring deep work over shallow progress.',
+    description: 'You can\'t do everything. Forge forces you to pick 3 things and actually finish them. No more 47 half-started projects.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -13,7 +13,7 @@ const features = [
   },
   {
     title: 'Consumption Debt Tracking',
-    description: 'Track your consumption vs. creation ratio. See exactly where your time goes and rebalance intentionally.',
+    description: 'You saved 47 articles this month. You acted on 2. Forge shows you the gap between what you consume and what you create.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -21,8 +21,8 @@ const features = [
     ),
   },
   {
-    title: 'Progress Streaks',
-    description: 'Build momentum with daily streaks. Small consistent actions compound into massive transformation.',
+    title: 'Streak Pressure',
+    description: 'Daily check-ins that compound. Miss a day, lose your streak. Simple, brutal, effective.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -30,8 +30,8 @@ const features = [
     ),
   },
   {
-    title: 'Reflection Prompts',
-    description: 'Weekly prompts help you understand your patterns and adjust your builds for sustainable growth.',
+    title: 'Weekly Autopsy',
+    description: 'Every Sunday, Forge asks hard questions. What did you actually ship? What distracted you? No BS allowed.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -46,7 +46,6 @@ export default function Forge() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, this would submit to an API
     setSubmitted(true)
   }
 
@@ -63,20 +62,23 @@ export default function Forge() {
               </svg>
             </div>
             <span className="text-xs font-medium px-2 py-1 rounded-full bg-pink-500/20 text-pink-400">
-              Waitlist
+              Waitlist Open
             </span>
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Forge</h1>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl">
-            Personal transformation through intentional building. Track your habits, limit your focus, measure what matters.
+          <p className="text-xl text-gray-400 mb-4 max-w-2xl">
+            Stop saving. Start building.
+          </p>
+          <p className="text-gray-400 mb-8 max-w-2xl">
+            You saved 47 articles this month. You acted on 2. Forge limits you to 3 active projects and calls out your consumption debt. Brutally honest productivity.
           </p>
 
           {/* Waitlist Form */}
           <div className="max-w-md">
             {submitted ? (
               <div className="p-4 rounded-lg bg-accent-forge/20 border border-accent-forge text-accent-forge">
-                You're on the list! We'll reach out when Forge is ready.
+                You're on the list. We'll reach out when Forge is ready.
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex gap-2">
@@ -86,7 +88,7 @@ export default function Forge() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   required
-                  className="flex-1 px-4 py-3 rounded-lg bg-gray-900 border border-border focus:border-accent-forge focus:outline-none transition-colors"
+                  className="flex-1 px-4 py-3 rounded-lg bg-[#0D1117] border border-[#30363D] focus:border-accent-forge focus:outline-none transition-colors"
                 />
                 <button
                   type="submit"
@@ -123,14 +125,15 @@ export default function Forge() {
       {/* Philosophy */}
       <section className="py-16 border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-semibold mb-6">The Philosophy</h2>
-          <blockquote className="text-xl text-gray-300 italic mb-4">
-            "You can't build everything. But you can build the right things, deeply."
-          </blockquote>
-          <p className="text-gray-400">
-            Forge is built on the principle that constraints enable creativity.
-            By limiting active builds to 3, you're forced to prioritize ruthlessly.
-            By tracking consumption debt, you understand where your energy actually goes.
+          <h2 className="text-2xl font-semibold mb-6">The Problem</h2>
+          <p className="text-gray-400 mb-6">
+            You have 127 bookmarks, 43 saved articles, 18 "I'll get to this" tabs, and 7 half-finished side projects.
+          </p>
+          <p className="text-gray-400 mb-6">
+            The internet optimizes for consumption. Forge optimizes for completion.
+          </p>
+          <p className="text-white font-medium">
+            Three builds. That's it. Pick wisely. Finish them.
           </p>
         </div>
       </section>
@@ -148,7 +151,7 @@ export default function Forge() {
             <div className="p-6 rounded-lg border border-accent-forge border-2">
               <h3 className="font-semibold mb-2">Pro</h3>
               <p className="text-3xl font-bold mb-2">$9<span className="text-lg text-gray-400">/mo</span></p>
-              <p className="text-sm text-gray-400">10 builds, advanced analytics</p>
+              <p className="text-sm text-gray-400">10 builds, full analytics</p>
             </div>
           </div>
           <div className="mt-6 text-center">

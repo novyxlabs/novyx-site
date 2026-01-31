@@ -5,6 +5,7 @@ const navLinks = [
   { name: 'RAM', path: '/ram' },
   { name: 'Sentinel', path: '/sentinel' },
   { name: 'Forge', path: '/forge' },
+  { name: 'Docs', path: '/docs' },
   { name: 'Pricing', path: '/pricing' },
 ]
 
@@ -40,14 +41,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="https://novyx-ram-api.fly.dev"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/pricing"
               className="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
-              Get API Key
-            </a>
+              Start Free
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -83,14 +82,13 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <a
-              href="https://novyx-ram-api.fly.dev"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/pricing"
               className="block mt-4 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors text-center"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              Get API Key
-            </a>
+              Start Free
+            </Link>
           </div>
         )}
       </div>

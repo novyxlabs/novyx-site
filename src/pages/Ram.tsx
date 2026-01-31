@@ -69,27 +69,28 @@ export default function Ram() {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold mb-4">RAM</h1>
-          <p className="text-xl text-gray-400 mb-8 max-w-2xl">
-            Memory-as-a-Service for AI agents. Store observations, search semantically, build persistent context.
+          <p className="text-xl text-gray-400 mb-4 max-w-2xl">
+            Memory-as-a-Service for AI agents.
+          </p>
+          <p className="text-gray-400 mb-8 max-w-2xl">
+            Your AI remembers every conversation, preference, and context. Search by meaning, not keywords. Never lose context again.
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <a
-              href="https://novyx-ram-api.fly.dev"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/pricing"
               className="inline-flex items-center gap-2 bg-accent-ram hover:bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium transition-colors"
             >
-              Get API Key
+              Start Free
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
+            </Link>
             <Link
-              to="/pricing"
+              to="/docs"
               className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
             >
-              View Pricing
+              View Docs
             </Link>
           </div>
         </div>
@@ -123,17 +124,23 @@ export default function Ram() {
             {endpoints.map((endpoint) => (
               <div
                 key={endpoint.path}
-                className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 rounded-lg bg-gray-900 border border-border"
+                className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 rounded-lg bg-[#0D1117] border border-[#30363D]"
               >
                 <span className={`inline-flex items-center justify-center w-16 px-2 py-1 rounded text-xs font-medium ${
                   endpoint.method === 'POST' ? 'bg-blue-500/20 text-blue-400' : 'bg-green-500/20 text-green-400'
                 }`}>
                   {endpoint.method}
                 </span>
-                <code className="text-sm font-mono">{endpoint.path}</code>
+                <code className="text-sm font-mono text-gray-300">{endpoint.path}</code>
                 <span className="text-gray-400 text-sm sm:ml-auto">{endpoint.description}</span>
               </div>
             ))}
+          </div>
+
+          <div className="mt-6">
+            <Link to="/docs" className="text-primary hover:text-primary-hover font-medium">
+              Full API documentation →
+            </Link>
           </div>
         </div>
       </section>
