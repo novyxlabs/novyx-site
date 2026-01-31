@@ -44,10 +44,31 @@ const features = [
 export default function Sentinel() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('https://formspree.io/f/xbdyeprl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'sentinel-waitlist' })
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        setError('Something went wrong. Please try again.')
+      }
+    } catch {
+      setError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -81,22 +102,29 @@ export default function Sentinel() {
                 You're on the list. We'll email you when Sentinel launches.
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 px-4 py-3 rounded-lg bg-[#0D1117] border border-[#30363D] focus:border-accent-sentinel focus:outline-none transition-colors"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-3 rounded-lg bg-accent-sentinel hover:bg-amber-600 text-white font-medium transition-colors"
-                >
-                  Notify Me
-                </button>
-              </form>
+              <>
+                <form onSubmit={handleSubmit} className="flex gap-2">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    required
+                    disabled={loading}
+                    className="flex-1 px-4 py-3 rounded-lg bg-[#0D1117] border border-[#30363D] focus:border-accent-sentinel focus:outline-none transition-colors disabled:opacity-50"
+                  />
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="px-6 py-3 rounded-lg bg-accent-sentinel hover:bg-amber-600 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {loading ? 'Sending...' : 'Notify Me'}
+                  </button>
+                </form>
+                {error && (
+                  <p className="mt-2 text-sm text-red-400">{error}</p>
+                )}
+              </>
             )}
           </div>
         </div>
