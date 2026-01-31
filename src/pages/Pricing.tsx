@@ -20,7 +20,7 @@ const pricingData = {
           'Community support',
         ],
         cta: 'Get Started',
-        ctaLink: 'https://novyx-ram-api.fly.dev',
+        ctaLink: '/docs',
       },
       {
         tier: 'Pro',
@@ -35,7 +35,7 @@ const pricingData = {
           'Analytics dashboard',
         ],
         cta: 'Start Pro',
-        ctaLink: 'https://novyx-ram-api.fly.dev',
+        ctaLink: 'mailto:blake@novyxlabs.com',
         highlighted: true,
       },
       {
@@ -72,7 +72,7 @@ const pricingData = {
           'Basic reports',
         ],
         cta: 'Start Trial',
-        ctaLink: '#',
+        ctaLink: '/sentinel',
       },
       {
         tier: 'Pro',
@@ -88,7 +88,7 @@ const pricingData = {
           'Priority support',
         ],
         cta: 'Coming Soon',
-        ctaLink: '#',
+        ctaLink: '/sentinel',
         highlighted: true,
       },
       {
@@ -125,7 +125,7 @@ const pricingData = {
           'Community access',
         ],
         cta: 'Join Waitlist',
-        ctaLink: '#',
+        ctaLink: '/forge',
       },
       {
         tier: 'Pro',
@@ -140,7 +140,7 @@ const pricingData = {
           'Priority support',
         ],
         cta: 'Join Waitlist',
-        ctaLink: '#',
+        ctaLink: '/forge',
         highlighted: true,
       },
     ],

@@ -9,6 +9,15 @@ export default function Docs() {
           Everything you need to integrate Novyx RAM into your AI agents.
         </p>
 
+        {/* API Key Notice */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Get a Free API Key</h2>
+          <p className="text-gray-400">
+            To get your free API key, email <span className="text-white">blake@novyxlabs.com</span>{' '}
+            with subject <span className="text-white">RAM API Key Request</span>.
+          </p>
+        </section>
+
         {/* Authentication */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Authentication</h2>
