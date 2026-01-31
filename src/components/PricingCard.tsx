@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 interface PricingCardProps {
   tier: string
   price: string
@@ -35,6 +37,8 @@ export default function PricingCard({
     forge: 'border-accent-forge',
   }
 
+  const isInternalLink = ctaLink.startsWith('/')
+
   return (
     <div
       className={`rounded-xl p-6 border transition-all ${
@@ -66,16 +70,29 @@ export default function PricingCard({
         ))}
       </ul>
 
-      <a
-        href={ctaLink}
-        className={`block w-full py-3 px-4 rounded-lg text-center font-medium transition-colors ${
-          highlighted
-            ? `${colorClasses[accentColor]} text-white`
-            : 'bg-gray-800 hover:bg-gray-700 text-white'
-        }`}
-      >
-        {cta}
-      </a>
+      {isInternalLink ? (
+        <Link
+          to={ctaLink}
+          className={`block w-full py-3 px-4 rounded-lg text-center font-medium transition-colors ${
+            highlighted
+              ? `${colorClasses[accentColor]} text-white`
+              : 'bg-gray-800 hover:bg-gray-700 text-white'
+          }`}
+        >
+          {cta}
+        </Link>
+      ) : (
+        <a
+          href={ctaLink}
+          className={`block w-full py-3 px-4 rounded-lg text-center font-medium transition-colors ${
+            highlighted
+              ? `${colorClasses[accentColor]} text-white`
+              : 'bg-gray-800 hover:bg-gray-700 text-white'
+          }`}
+        >
+          {cta}
+        </a>
+      )}
     </div>
   )
 }
