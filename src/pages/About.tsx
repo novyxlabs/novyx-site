@@ -32,12 +32,7 @@ export default function About() {
           >
             GitHub
           </a>
-          <a
-            href="#"
-            className="text-gray-400 hover:text-white transition-colors"
-          >
-            LinkedIn
-          </a>
+          <span className="text-gray-500">LinkedIn (coming soon)</span>
         </div>
       </div>
     </div>

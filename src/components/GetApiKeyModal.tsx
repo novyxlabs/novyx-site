@@ -17,6 +17,8 @@ export default function GetApiKeyModal({ label, className }: GetApiKeyModalProps
     setOpen(false)
     setError('')
     setCopied(false)
+    setApiKey('')
+    setEmail('')
   }
 
   const handleSubmit = async (event: React.FormEvent) => {
