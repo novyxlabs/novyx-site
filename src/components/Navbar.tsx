@@ -2,11 +2,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 
 const navLinks = [
-  { name: 'RAM', path: '/ram' },
-  { name: 'Sentinel', path: '/sentinel' },
-  { name: 'Forge', path: '/forge' },
   { name: 'Docs', path: '/docs' },
   { name: 'Pricing', path: '/pricing' },
+  { name: 'About', path: '/about' },
 ]
 
 export default function Navbar() {
@@ -42,10 +40,10 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              to="/pricing"
+              to="/docs"
               className="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
             >
-              Start Free
+              Get Free API Key
             </Link>
           </div>
 
@@ -83,11 +81,11 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              to="/pricing"
+              to="/docs"
               className="block mt-4 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors text-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Start Free
+              Get Free API Key
             </Link>
           </div>
         )}

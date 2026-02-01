@@ -100,7 +100,7 @@ export default function Ram() {
       <section className="py-12 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold mb-6">Installation</h2>
-          <CodeBlock code="pip install novyx-langchain" language="bash" />
+          <CodeBlock code="pip3 install novyx-langchain" language="bash" />
         </div>
       </section>
 

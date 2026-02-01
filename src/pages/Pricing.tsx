@@ -1,263 +1,159 @@
-import { useState } from 'react'
-import PricingCard from '../components/PricingCard'
+import { Link } from 'react-router-dom'
 
-type ProductTab = 'ram' | 'sentinel' | 'forge'
+const tiers = [
+  {
+    name: 'Free',
+    price: '$0/mo',
+    cta: { label: 'Get Started', href: '/docs', internal: true },
+  },
+  {
+    name: 'Starter',
+    price: '$19/mo',
+    cta: { label: 'Start Starter', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Starter' },
+  },
+  {
+    name: 'Pro',
+    price: '$99/mo',
+    cta: { label: 'Start Pro', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Pro' },
+    highlighted: true,
+  },
+  {
+    name: 'Enterprise',
+    price: '$499/mo',
+    cta: { label: 'Contact Sales', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise' },
+  },
+]
 
-const pricingData = {
-  ram: {
-    name: 'RAM',
-    tagline: 'Memory-as-a-Service',
-    tiers: [
-      {
-        tier: 'Free',
-        price: '$0',
-        period: '',
-        description: 'For hobby projects and experimentation',
-        features: [
-          '1,000 memories',
-          'Semantic search',
-          'REST API access',
-          'Community support',
-        ],
-        cta: 'Get Started',
-        ctaLink: '/docs',
-      },
-      {
-        tier: 'Pro',
-        price: '$29',
-        period: '/mo',
-        description: 'For production applications',
-        features: [
-          '25,000 memories',
-          'Semantic search',
-          'REST API + Python SDK',
-          'Priority support',
-          'Analytics dashboard',
-        ],
-        cta: 'Start Pro',
-        ctaLink: 'mailto:blake@novyxlabs.com',
-        highlighted: true,
-      },
-      {
-        tier: 'Enterprise',
-        price: 'Custom',
-        period: '',
-        description: 'For large-scale deployments',
-        features: [
-          'Unlimited memories',
-          'Dedicated infrastructure',
-          'Custom SLA',
-          'SSO / SAML',
-          'Dedicated support',
-          'On-premise option',
-        ],
-        cta: 'Contact Sales',
-        ctaLink: 'mailto:sales@novyx.dev',
-      },
-    ],
+const rows = [
+  { label: 'Memories', values: ['10,000', '50,000', 'Unlimited', 'Unlimited'] },
+  { label: 'API calls', values: ['1,000/mo', '25,000/mo', '100,000/mo', 'Unlimited'] },
+  { label: 'Semantic search', values: ['✅', '✅', '✅', '✅'] },
+  { label: 'Sentinel alerts', values: ['❌', '✅', '✅', '✅'] },
+  { label: 'Sentinel full', values: ['❌', '❌', '✅', '✅'] },
+  { label: 'Magic Rollback™', values: ['❌', '❌', '✅', '✅'] },
+  { label: 'Circuit breaker', values: ['❌', '❌', '❌', '✅'] },
+  { label: 'Audit retention', values: ['7 days', '30 days', '1 year', '7 years'] },
+  { label: 'Support', values: ['Community', 'Email', 'Priority', 'Dedicated'] },
+  { label: 'SLA', values: ['—', '—', '99.5%', '99.9%'] },
+]
+
+const faqs = [
+  {
+    q: "What's the difference between Novyx and Mem0?",
+    a: 'Mem0 is memory-only. Novyx is memory + security. We add tamper detection, threat alerts, Magic Rollback™, and cryptographic audit trails. Same price, more protection.',
   },
-  sentinel: {
-    name: 'Sentinel',
-    tagline: 'AI Security',
-    tiers: [
-      {
-        tier: 'Free Trial',
-        price: '$0',
-        period: '',
-        description: '7 days full access',
-        features: [
-          'Full feature access',
-          'Up to 100K events',
-          'Email support',
-          'Basic reports',
-        ],
-        cta: 'Start Trial',
-        ctaLink: '/sentinel',
-      },
-      {
-        tier: 'Pro',
-        price: '$499',
-        period: '/mo',
-        description: 'For production AI systems',
-        features: [
-          'Unlimited events',
-          'Real-time threat detection',
-          'Magic Rollback™',
-          'Behavioral analysis',
-          'Compliance reports',
-          'Priority support',
-        ],
-        cta: 'Coming Soon',
-        ctaLink: '/sentinel',
-        highlighted: true,
-      },
-      {
-        tier: 'Enterprise',
-        price: '$2,500',
-        period: '/mo',
-        description: 'For mission-critical systems',
-        features: [
-          'Everything in Pro',
-          'Dedicated infrastructure',
-          '99.99% SLA',
-          'Custom integrations',
-          'Dedicated CSM',
-          'On-premise option',
-        ],
-        cta: 'Contact Sales',
-        ctaLink: 'mailto:sales@novyx.dev',
-      },
-    ],
+  {
+    q: 'Do I need Sentinel if I just want memory?',
+    a: 'No. Free and Starter tiers give you persistent memory without Sentinel. Upgrade to Pro when you need rollback and full security.',
   },
-  forge: {
-    name: 'Forge',
-    tagline: 'Personal Transformation',
-    tiers: [
-      {
-        tier: 'Free',
-        price: '$0',
-        period: '',
-        description: 'Start your transformation',
-        features: [
-          '3 active builds',
-          'Basic consumption tracking',
-          'Daily check-ins',
-          'Community access',
-        ],
-        cta: 'Join Waitlist',
-        ctaLink: '/forge',
-      },
-      {
-        tier: 'Pro',
-        price: '$9',
-        period: '/mo',
-        description: 'For serious builders',
-        features: [
-          '10 active builds',
-          'Advanced analytics',
-          'Weekly reflection prompts',
-          'Export data',
-          'Priority support',
-        ],
-        cta: 'Join Waitlist',
-        ctaLink: '/forge',
-        highlighted: true,
-      },
-    ],
+  {
+    q: 'What happens if I hit my API limit?',
+    a: "We'll send you a warning at 80%. If you go over, requests will be queued, not dropped. Upgrade anytime.",
   },
-}
+  {
+    q: 'Do you support self-hosting?',
+    a: 'Enterprise tier includes on-prem deployment options.',
+  },
+  {
+    q: 'Is my data secure?',
+    a: 'Every memory is SHA-256 hashed. Tamper detection is automatic. Pro adds Magic Rollback™. Enterprise adds compliance certifications.',
+  },
+  {
+    q: 'Can I try Pro features before paying?',
+    a: 'Email us for a 14-day Pro trial.',
+  },
+]
 
 export default function Pricing() {
-  const [activeTab, setActiveTab] = useState<ProductTab>('ram')
-
-  const tabs: { id: ProductTab; label: string; color: string }[] = [
-    { id: 'ram', label: 'RAM', color: 'accent-ram' },
-    { id: 'sentinel', label: 'Sentinel', color: 'accent-sentinel' },
-    { id: 'forge', label: 'Forge', color: 'accent-forge' },
-  ]
-
-  const currentProduct = pricingData[activeTab]
-
   return (
     <div className="animate-fade-in py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Pricing</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Simple, transparent pricing</h1>
           <p className="text-xl text-gray-400">
-            Simple, transparent pricing for every stage of growth
+            Start free. Scale as you grow. Only pay for security when you need it.
           </p>
         </div>
 
-        {/* Product Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex rounded-lg bg-gray-900 p-1 border border-border">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2 rounded-md text-sm font-medium transition-all ${
-                  activeTab === tab.id
-                    ? `bg-${tab.color} text-white`
-                    : 'text-gray-400 hover:text-white'
-                }`}
-                style={
-                  activeTab === tab.id
-                    ? {
-                        backgroundColor:
-                          tab.id === 'ram'
-                            ? '#10b981'
-                            : tab.id === 'sentinel'
-                            ? '#f59e0b'
-                            : '#ec4899',
-                      }
-                    : undefined
-                }
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+        <div className="overflow-x-auto border border-border rounded-xl">
+          <table className="w-full text-sm">
+            <thead className="bg-[#18181B]">
+              <tr>
+                <th className="text-left px-4 py-4 text-gray-400 font-medium">Plan</th>
+                {tiers.map((tier) => (
+                  <th
+                    key={tier.name}
+                    className={`text-left px-4 py-4 font-medium ${
+                      tier.highlighted ? 'text-white' : 'text-gray-300'
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      {tier.name}
+                      {tier.highlighted && (
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
+                          Most Popular
+                        </span>
+                      )}
+                    </div>
+                    <div className="mt-1 text-lg font-semibold">{tier.price}</div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={row.label} className="border-t border-border">
+                  <td className="px-4 py-4 text-gray-400">{row.label}</td>
+                  {row.values.map((value, index) => (
+                    <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+              <tr className="border-t border-border bg-[#111827]">
+                <td className="px-4 py-5 text-gray-400">Get started</td>
+                {tiers.map((tier) => (
+                  <td key={`${tier.name}-cta`} className="px-4 py-5">
+                    {tier.cta.internal ? (
+                      <Link
+                        to={tier.cta.href}
+                        className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
+                          tier.highlighted
+                            ? 'bg-primary hover:bg-primary-hover text-white'
+                            : 'bg-gray-800 hover:bg-gray-700 text-white'
+                        }`}
+                      >
+                        {tier.cta.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={tier.cta.href}
+                        className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
+                          tier.highlighted
+                            ? 'bg-primary hover:bg-primary-hover text-white'
+                            : 'bg-gray-800 hover:bg-gray-700 text-white'
+                        }`}
+                      >
+                        {tier.cta.label}
+                      </a>
+                    )}
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        {/* Product Info */}
-        <div className="text-center mb-8">
-          <h2 className="text-2xl font-semibold">{currentProduct.name}</h2>
-          <p className="text-gray-400">{currentProduct.tagline}</p>
-        </div>
-
-        {/* Pricing Cards */}
-        <div
-          className={`grid gap-6 ${
-            currentProduct.tiers.length === 2
-              ? 'md:grid-cols-2 max-w-3xl mx-auto'
-              : 'md:grid-cols-3'
-          }`}
-        >
-          {currentProduct.tiers.map((tier) => (
-            <PricingCard
-              key={tier.tier}
-              {...tier}
-              accentColor={activeTab}
-            />
-          ))}
-        </div>
-
-        {/* FAQ */}
-        <div className="mt-20">
-          <h2 className="text-2xl font-semibold text-center mb-8">
-            Frequently Asked Questions
-          </h2>
+        <div className="mt-16">
+          <h2 className="text-2xl font-semibold text-center mb-8">Frequently Asked Questions</h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="p-6 rounded-lg border border-border">
-              <h3 className="font-semibold mb-2">Can I switch plans anytime?</h3>
-              <p className="text-sm text-gray-400">
-                Yes, you can upgrade or downgrade your plan at any time. Changes
-                take effect immediately, and we'll prorate the difference.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg border border-border">
-              <h3 className="font-semibold mb-2">What happens if I exceed my limit?</h3>
-              <p className="text-sm text-gray-400">
-                We'll notify you when you're approaching your limit. You can
-                upgrade your plan or we'll pause new writes until the next
-                billing cycle.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg border border-border">
-              <h3 className="font-semibold mb-2">Do you offer discounts?</h3>
-              <p className="text-sm text-gray-400">
-                We offer 20% off annual billing for all products. Startups and
-                non-profits may qualify for additional discounts.
-              </p>
-            </div>
-            <div className="p-6 rounded-lg border border-border">
-              <h3 className="font-semibold mb-2">How do I get Enterprise pricing?</h3>
-              <p className="text-sm text-gray-400">
-                Contact our sales team at sales@novyx.dev to discuss your needs.
-                We'll create a custom plan that fits your requirements.
-              </p>
-            </div>
+            {faqs.map((faq) => (
+              <div key={faq.q} className="p-6 rounded-lg border border-border bg-[#18181B]">
+                <h3 className="font-semibold mb-2">{faq.q}</h3>
+                <p className="text-sm text-gray-400">{faq.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

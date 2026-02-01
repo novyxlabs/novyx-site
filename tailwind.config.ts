@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config: Config = {
   content: [
@@ -11,7 +12,9 @@ const config: Config = {
       colors: {
         border: 'hsl(var(--border))',
         background: 'hsl(var(--background))',
+        surface: 'hsl(var(--surface))',
         foreground: 'hsl(var(--foreground))',
+        muted: 'hsl(var(--muted))',
         primary: {
           DEFAULT: '#6366f1',
           hover: '#4f46e5',
@@ -21,6 +24,10 @@ const config: Config = {
           sentinel: '#f59e0b',
           forge: '#ec4899',
         },
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
