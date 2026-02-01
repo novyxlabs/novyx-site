@@ -1,21 +1,22 @@
-import { Link } from 'react-router-dom'
+import GetApiKeyModal from '../components/GetApiKeyModal'
 
 const tiers = [
   {
     name: 'Free',
     price: '$0/mo',
-    cta: { label: 'Get Started', href: '/docs', internal: true },
+    cta: { label: 'Get Free API Key', modal: true },
   },
   {
     name: 'Starter',
     price: '$19/mo',
-    cta: { label: 'Start Starter', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Starter' },
+    cta: { label: 'Start Starter', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan' },
   },
   {
     name: 'Pro',
     price: '$99/mo',
-    cta: { label: 'Start Pro', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Pro' },
+    cta: { label: 'Start Pro', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan' },
     highlighted: true,
+    callout: 'Most popular for production agents',
   },
   {
     name: 'Enterprise',
@@ -26,13 +27,17 @@ const tiers = [
 
 const rows = [
   { label: 'Memories', values: ['10,000', '50,000', 'Unlimited', 'Unlimited'] },
-  { label: 'API calls', values: ['1,000/mo', '25,000/mo', '100,000/mo', 'Unlimited'] },
+  { label: 'API calls', values: ['5,000/mo', '25,000/mo', '100,000/mo', 'Unlimited'] },
+  {
+    label: 'Rollbacks',
+    values: ['3 lifetime', '5/month', 'Unlimited', 'Unlimited'],
+    highlight: [false, false, true, true],
+  },
   { label: 'Semantic search', values: ['✅', '✅', '✅', '✅'] },
-  { label: 'Sentinel alerts', values: ['❌', '✅', '✅', '✅'] },
-  { label: 'Sentinel full', values: ['❌', '❌', '✅', '✅'] },
-  { label: 'Magic Rollback™', values: ['❌', '❌', '✅', '✅'] },
+  { label: 'Sentinel alerts', values: ['❌', 'Alerts only', 'Full', 'Full'] },
+  { label: 'Magic Rollback™', values: ['Limited', 'Limited', '✅', '✅'] },
   { label: 'Circuit breaker', values: ['❌', '❌', '❌', '✅'] },
-  { label: 'Audit retention', values: ['7 days', '30 days', '1 year', '7 years'] },
+  { label: 'Audit retention', values: ['7 days', '30 days', '1 year', '7 years + compliance'] },
   { label: 'Support', values: ['Community', 'Email', 'Priority', 'Dedicated'] },
   { label: 'SLA', values: ['—', '—', '99.5%', '99.9%'] },
 ]
@@ -43,8 +48,20 @@ const faqs = [
     a: 'Mem0 is memory-only. Novyx is memory + security. We add tamper detection, threat alerts, Magic Rollback™, and cryptographic audit trails. Same price, more protection.',
   },
   {
+    q: 'What happens when I use all my free rollbacks?',
+    a: "You'll be prompted to upgrade. Your memories and data are safe - you just can't roll back until you upgrade.",
+  },
+  {
+    q: 'Do rollback limits reset?',
+    a: 'Free tier rollbacks are lifetime (3 total). Starter rollbacks reset monthly (5/month). Pro and Enterprise are unlimited.',
+  },
+  {
+    q: 'Can I upgrade mid-month?',
+    a: 'Yes, upgrades are immediate. Your new limits apply right away.',
+  },
+  {
     q: 'Do I need Sentinel if I just want memory?',
-    a: 'No. Free and Starter tiers give you persistent memory without Sentinel. Upgrade to Pro when you need rollback and full security.',
+    a: 'No. Free and Starter tiers give you persistent memory without full Sentinel. Upgrade to Pro when you need unlimited rollbacks and full security.',
   },
   {
     q: 'What happens if I hit my API limit?',
@@ -56,11 +73,7 @@ const faqs = [
   },
   {
     q: 'Is my data secure?',
-    a: 'Every memory is SHA-256 hashed. Tamper detection is automatic. Pro adds Magic Rollback™. Enterprise adds compliance certifications.',
-  },
-  {
-    q: 'Can I try Pro features before paying?',
-    a: 'Email us for a 14-day Pro trial.',
+    a: 'Every memory is SHA-256 hashed. Tamper detection is automatic. Pro adds unlimited Magic Rollback™. Enterprise adds compliance certifications.',
   },
 ]
 
@@ -96,6 +109,9 @@ export default function Pricing() {
                       )}
                     </div>
                     <div className="mt-1 text-lg font-semibold">{tier.price}</div>
+                    {tier.callout && (
+                      <div className="mt-1 text-xs text-primary font-normal">{tier.callout}</div>
+                    )}
                   </th>
                 ))}
               </tr>
@@ -106,7 +122,14 @@ export default function Pricing() {
                   <td className="px-4 py-4 text-gray-400">{row.label}</td>
                   {row.values.map((value, index) => (
                     <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
-                      {value}
+                      <span className="flex items-center gap-2">
+                        {value}
+                        {row.highlight?.[index] && value === 'Unlimited' && (
+                          <span className="text-xs px-1.5 py-0.5 rounded bg-green-500/20 text-green-400">
+                            Pro
+                          </span>
+                        )}
+                      </span>
                     </td>
                   ))}
                 </tr>
@@ -115,17 +138,15 @@ export default function Pricing() {
                 <td className="px-4 py-5 text-gray-400">Get started</td>
                 {tiers.map((tier) => (
                   <td key={`${tier.name}-cta`} className="px-4 py-5">
-                    {tier.cta.internal ? (
-                      <Link
-                        to={tier.cta.href}
+                    {tier.cta.modal ? (
+                      <GetApiKeyModal
+                        label={tier.cta.label}
                         className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
                           tier.highlighted
                             ? 'bg-primary hover:bg-primary-hover text-white'
                             : 'bg-gray-800 hover:bg-gray-700 text-white'
                         }`}
-                      >
-                        {tier.cta.label}
-                      </Link>
+                      />
                     ) : (
                       <a
                         href={tier.cta.href}
@@ -143,6 +164,14 @@ export default function Pricing() {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* Magic Rollback callout */}
+        <div className="mt-8 p-4 rounded-lg border border-primary/30 bg-primary/5 text-center">
+          <p className="text-gray-200">
+            <span className="font-semibold text-primary">Magic Rollback™</span> — Undo agent mistakes instantly.{' '}
+            <span className="text-gray-400">Pro tier includes unlimited rollbacks.</span>
+          </p>
         </div>
 
         <div className="mt-16">
