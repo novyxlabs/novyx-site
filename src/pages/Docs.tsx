@@ -10,8 +10,8 @@ export default function Docs() {
         </p>
 
         <div className="mb-12 rounded-lg border border-border bg-[#18181B] p-4 text-sm text-gray-300">
-          To get your free API key, email <span className="text-white">blake@novyxlabs.com</span>{' '}
-          with subject <span className="text-white">Novyx API Key Request</span>. Keys are issued within 24 hours.
+          Use the <span className="text-white">Get Free API Key</span> button to generate a key.
+          Save it immediately — you won&apos;t see it again.
         </div>
 
         <section className="mb-12">

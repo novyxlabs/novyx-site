@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
+import GetApiKeyModal from './GetApiKeyModal'
 
 const navLinks = [
   { name: 'Docs', path: '/docs' },
@@ -39,12 +40,10 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/docs"
+            <GetApiKeyModal
+              label="Get Free API Key"
               className="bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-            >
-              Get Free API Key
-            </Link>
+            />
           </div>
 
           {/* Mobile menu button */}
@@ -80,13 +79,12 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/docs"
-              className="block mt-4 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors text-center"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Get Free API Key
-            </Link>
+            <div onClick={() => setMobileMenuOpen(false)}>
+              <GetApiKeyModal
+                label="Get Free API Key"
+                className="block mt-4 bg-primary hover:bg-primary-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors text-center w-full"
+              />
+            </div>
           </div>
         )}
       </div>

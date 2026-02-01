@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
 import ComparisonTable from '../components/ComparisonTable'
+import GetApiKeyModal from '../components/GetApiKeyModal'
 
 const heroCode = `from novyx import Novyx
 
@@ -36,12 +37,10 @@ export default function Home() {
               roll back damage. Four lines of code.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                to="/docs"
+              <GetApiKeyModal
+                label="Get Free API Key"
                 className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
-              >
-                Get Free API Key
-              </Link>
+              />
               <Link
                 to="/docs"
                 className="inline-flex items-center gap-2 border border-border text-white px-6 py-3 rounded-lg font-medium transition-colors hover:border-white/40"
@@ -215,12 +214,10 @@ export default function Home() {
           <p className="text-gray-400 mb-6">
             Free tier. No credit card. Start in 30 seconds.
           </p>
-          <Link
-            to="/docs"
+          <GetApiKeyModal
+            label="Get Free API Key"
             className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
-          >
-            Get Free API Key
-          </Link>
+          />
           <p className="mt-3 text-sm text-gray-500">10,000 memories free. Forever.</p>
         </div>
       </section>
