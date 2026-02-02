@@ -104,7 +104,7 @@ export default function Home() {
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <p className="font-mono text-sm text-primary mb-2">nx.rollback(target)</p>
-              <p className="text-gray-400">Magic Rollback™ to any verified state. Surgical precision—fix only what&apos;s broken.</p>
+              <p className="text-gray-400">Magic Rollback to any verified state. Surgical precision—fix only what&apos;s broken.</p>
             </div>
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function Home() {
               },
               {
                 title: 'Finance',
-                description: 'SOX/FINRA ready. Magic Rollback™ for when compliance asks “what happened?”',
+                description: 'SOX/FINRA ready. Magic Rollback for when compliance asks “what happened?”',
               },
             ].map((item) => (
               <div key={item.title} className="rounded-xl border border-border bg-[#18181B] p-6">
@@ -179,29 +179,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof */}
+      {/* Built For */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
-            Trusted by developers building production AI
+            Built for developers shipping production AI
           </h2>
           <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="text-2xl font-semibold">10K+</p>
-              <p className="text-gray-400">memories stored</p>
-            </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <p className="text-2xl font-semibold">Sub-100ms</p>
               <p className="text-gray-400">semantic search</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="text-2xl font-semibold">99.9%</p>
-              <p className="text-gray-400">uptime</p>
+              <p className="text-2xl font-semibold">SHA-256</p>
+              <p className="text-gray-400">tamper-proof hashing</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <p className="text-2xl font-semibold">4 lines</p>
+              <p className="text-gray-400">to get started</p>
             </div>
           </div>
-          <p className="mt-8 text-gray-300">
-            “Finally, memory that doesn&apos;t disappear and security that actually works.”
-          </p>
         </div>
       </section>
 

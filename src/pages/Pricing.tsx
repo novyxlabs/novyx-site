@@ -35,7 +35,7 @@ const rows = [
   },
   { label: 'Semantic search', values: ['✅', '✅', '✅', '✅'] },
   { label: 'Sentinel alerts', values: ['❌', 'Alerts only', 'Full', 'Full'] },
-  { label: 'Magic Rollback™', values: ['Limited', 'Limited', '✅', '✅'] },
+  { label: 'Magic Rollback', values: ['Limited', 'Limited', '✅', '✅'] },
   { label: 'Circuit breaker', values: ['❌', '❌', '❌', '✅'] },
   { label: 'Audit retention', values: ['7 days', '30 days', '1 year', '7 years + compliance'] },
   { label: 'Support', values: ['Community', 'Email', 'Priority', 'Dedicated'] },
@@ -45,7 +45,7 @@ const rows = [
 const faqs = [
   {
     q: "What's the difference between Novyx and Mem0?",
-    a: 'Mem0 is memory-only. Novyx is memory + security. We add tamper detection, threat alerts, Magic Rollback™, and cryptographic audit trails. Same price, more protection.',
+    a: 'Mem0 is memory-only. Novyx is memory + security. We add tamper detection, threat alerts, Magic Rollback, and cryptographic audit trails. Same price, more protection.',
   },
   {
     q: 'What happens when I use all my free rollbacks?',
@@ -73,7 +73,7 @@ const faqs = [
   },
   {
     q: 'Is my data secure?',
-    a: 'Every memory is SHA-256 hashed. Tamper detection is automatic. Pro adds unlimited Magic Rollback™. Enterprise adds compliance certifications.',
+    a: 'Every memory is SHA-256 hashed. Tamper detection is automatic. Pro adds unlimited Magic Rollback. Enterprise adds compliance certifications.',
   },
 ]
 
@@ -169,7 +169,7 @@ export default function Pricing() {
         {/* Magic Rollback callout */}
         <div className="mt-8 p-4 rounded-lg border border-primary/30 bg-primary/5 text-center">
           <p className="text-gray-200">
-            <span className="font-semibold text-primary">Magic Rollback™</span> — Undo agent mistakes instantly.{' '}
+            <span className="font-semibold text-primary">Magic Rollback</span> — Undo agent mistakes instantly.{' '}
             <span className="text-gray-400">Pro tier includes unlimited rollbacks.</span>
           </p>
         </div>

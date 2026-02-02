@@ -40,7 +40,7 @@ except NovyxSecurityError as e:
     print(f"Blocked: {e}")
 
 # Rollback (Pro tier)
-nx.rollback(to="2025-01-30T14:00:00Z")`}
+nx.rollback(target="2025-01-30T14:00:00Z")`}
             />
           </div>
         </section>
@@ -124,7 +124,7 @@ nx.rollback(to="2025-01-30T14:00:00Z")`}
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.rollback(target)</td>
-                  <td className="py-2 text-gray-400">Magic Rollback™</td>
+                  <td className="py-2 text-gray-400">Magic Rollback</td>
                   <td className="py-2 text-gray-400">Pro+</td>
                 </tr>
               </tbody>

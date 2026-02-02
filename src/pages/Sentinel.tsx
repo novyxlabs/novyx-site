@@ -13,7 +13,7 @@ const features = [
     ),
   },
   {
-    title: 'Magic Rollback™',
+    title: 'Magic Rollback',
     description: 'Someone poisoned your AI\'s memory? Surgically revert only the corrupted data. Your AI recovers in seconds, not hours.',
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +92,7 @@ export default function Sentinel() {
             AI Security that actually works.
           </p>
           <p className="text-gray-400 mb-8 max-w-2xl">
-            Someone poisoned your AI's memory? Sentinel detects the attack and surgically rolls back only the damage. Patent-pending Magic Rollback™ technology.
+            Someone poisoned your AI's memory? Sentinel detects the attack and surgically rolls back only the damage. Patent-pending Magic Rollback technology.
           </p>
 
           {/* Notify Form */}
