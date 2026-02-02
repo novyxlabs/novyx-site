@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import ContactModal from './ContactModal'
 
 export default function Footer() {
   return (
@@ -50,13 +51,11 @@ export default function Footer() {
             <h4 className="font-medium mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
-                <a
-                  href="mailto:blake@novyxlabs.com?subject=Contact%20Novyx"
-                  rel="noopener"
-                  className="hover:text-white transition-colors"
-                >
-                  Contact
-                </a>
+                <ContactModal
+                  label="Contact"
+                  plan="General Inquiry"
+                  className="hover:text-white transition-colors cursor-pointer"
+                />
               </li>
             </ul>
           </div>

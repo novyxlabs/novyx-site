@@ -1,4 +1,5 @@
 import GetApiKeyModal from '../components/GetApiKeyModal'
+import ContactModal from '../components/ContactModal'
 
 const tiers = [
   { name: 'Free', price: '$0/mo' },
@@ -125,31 +126,25 @@ export default function Pricing() {
                   />
                 </td>
                 <td className="px-4 py-5">
-                  <a
-                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan&body=I%27m%20interested%20in%20the%20Starter%20plan."
-                    rel="noopener"
-                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors no-underline"
-                  >
-                    Start Starter
-                  </a>
+                  <ContactModal
+                    label="Start Starter"
+                    plan="Starter"
+                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer"
+                  />
                 </td>
                 <td className="px-4 py-5">
-                  <a
-                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan&body=I%27m%20interested%20in%20the%20Pro%20plan."
-                    rel="noopener"
-                    className="block w-full text-center py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors no-underline"
-                  >
-                    Start Pro
-                  </a>
+                  <ContactModal
+                    label="Start Pro"
+                    plan="Pro"
+                    className="block w-full text-center py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors cursor-pointer"
+                  />
                 </td>
                 <td className="px-4 py-5">
-                  <a
-                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise&body=I%27d%20like%20to%20discuss%20Enterprise%20pricing."
-                    rel="noopener"
-                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors no-underline"
-                  >
-                    Contact Sales
-                  </a>
+                  <ContactModal
+                    label="Contact Sales"
+                    plan="Enterprise"
+                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer"
+                  />
                 </td>
               </tr>
             </tbody>
