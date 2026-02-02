@@ -1,27 +1,28 @@
 import GetApiKeyModal from '../components/GetApiKeyModal'
+import PlanInquiryModal from '../components/PlanInquiryModal'
 
 const tiers = [
   {
     name: 'Free',
     price: '$0/mo',
-    cta: { label: 'Get Free API Key', modal: true },
+    cta: { label: 'Get Free API Key', type: 'apikey' as const },
   },
   {
     name: 'Starter',
     price: '$19/mo',
-    cta: { label: 'Start Starter', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan' },
+    cta: { label: 'Start Starter', type: 'inquiry' as const, plan: 'Starter' },
   },
   {
     name: 'Pro',
     price: '$99/mo',
-    cta: { label: 'Start Pro', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan' },
+    cta: { label: 'Start Pro', type: 'inquiry' as const, plan: 'Pro' },
     highlighted: true,
     callout: 'Most popular for production agents',
   },
   {
     name: 'Enterprise',
     price: '$499/mo',
-    cta: { label: 'Contact Sales', href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise' },
+    cta: { label: 'Contact Sales', type: 'inquiry' as const, plan: 'Enterprise' },
   },
 ]
 
@@ -138,7 +139,7 @@ export default function Pricing() {
                 <td className="px-4 py-5 text-gray-400">Get started</td>
                 {tiers.map((tier) => (
                   <td key={`${tier.name}-cta`} className="px-4 py-5">
-                    {tier.cta.modal ? (
+                    {tier.cta.type === 'apikey' ? (
                       <GetApiKeyModal
                         label={tier.cta.label}
                         className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
@@ -148,16 +149,15 @@ export default function Pricing() {
                         }`}
                       />
                     ) : (
-                      <a
-                        href={tier.cta.href}
+                      <PlanInquiryModal
+                        label={tier.cta.label}
+                        plan={tier.cta.plan}
                         className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
                           tier.highlighted
                             ? 'bg-primary hover:bg-primary-hover text-white'
                             : 'bg-gray-800 hover:bg-gray-700 text-white'
                         }`}
-                      >
-                        {tier.cta.label}
-                      </a>
+                      />
                     )}
                   </td>
                 ))}
