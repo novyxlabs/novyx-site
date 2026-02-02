@@ -121,29 +121,29 @@ export default function Pricing() {
                 <td className="px-4 py-5">
                   <GetApiKeyModal
                     label="Get Free API Key"
-                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-gray-800 hover:bg-gray-700 text-white"
+                    className="cursor-pointer inline-block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors"
                   />
                 </td>
                 <td className="px-4 py-5">
                   <a
-                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan"
-                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-gray-800 hover:bg-gray-700 text-white"
+                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan&body=I%27m%20interested%20in%20the%20Starter%20plan."
+                    className="inline-block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors"
                   >
                     Start Starter
                   </a>
                 </td>
                 <td className="px-4 py-5">
                   <a
-                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan"
-                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-primary hover:bg-primary-hover text-white"
+                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan&body=I%27m%20interested%20in%20the%20Pro%20plan."
+                    className="inline-block w-full text-center py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors"
                   >
                     Start Pro
                   </a>
                 </td>
                 <td className="px-4 py-5">
                   <a
-                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise"
-                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-gray-800 hover:bg-gray-700 text-white"
+                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise&body=I%27d%20like%20to%20discuss%20Enterprise%20pricing."
+                    className="inline-block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors"
                   >
                     Contact Sales
                   </a>
