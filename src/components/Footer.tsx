@@ -31,16 +31,18 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><span className="text-gray-500">API Status (coming soon)</span></li>
+              <li><Link to="/status" className="hover:text-white transition-colors">API Status</Link></li>
               <li>
                 <a
                   href="https://github.com/novyxlabs"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
                 >
                   GitHub
                 </a>
               </li>
-              <li><span className="text-gray-500">Blog (coming soon)</span></li>
+              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 
@@ -61,12 +63,14 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-4">Legal</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><span className="text-gray-500">Privacy Policy (coming soon)</span></li>
-              <li><span className="text-gray-500">Terms of Service (coming soon)</span></li>
+              <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
             </ul>
             <div className="mt-4 flex items-center gap-3 text-gray-400">
               <a
                 href="https://x.com/NovyxLabs"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
                 aria-label="Novyx Labs on X"
               >
@@ -76,6 +80,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://github.com/novyxlabs"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
                 aria-label="Novyx Labs on GitHub"
               >
@@ -83,11 +89,6 @@ export default function Footer() {
                   <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.12 0-1.13.39-2.05 1.02-2.77-.1-.26-.44-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.2 9.2 0 0 1 2.5-.35c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.54 1.4.2 2.44.1 2.7.64.72 1.02 1.64 1.02 2.77 0 3.98-2.35 4.86-4.58 5.11.36.32.68.94.68 1.9 0 1.38-.01 2.5-.01 2.84 0 .28.18.6.69.5A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z" />
                 </svg>
               </a>
-              <span className="text-gray-500" aria-label="LinkedIn coming soon">
-                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                  <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.08 1 2.5 1 5 2.12 5 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2.1-2.2 4.4-2.2C21 8 24 10.1 24 15.1V24h-5v-7.7c0-1.8 0-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.8h-5V8z" />
-                </svg>
-              </span>
             </div>
           </div>
         </div>
