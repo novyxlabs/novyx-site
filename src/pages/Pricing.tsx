@@ -1,28 +1,10 @@
 import GetApiKeyModal from '../components/GetApiKeyModal'
 
 const tiers = [
-  {
-    name: 'Free',
-    price: '$0/mo',
-    cta: { label: 'Get Free API Key', type: 'modal' as const },
-  },
-  {
-    name: 'Starter',
-    price: '$19/mo',
-    cta: { label: 'Start Starter', type: 'mailto' as const, href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan' },
-  },
-  {
-    name: 'Pro',
-    price: '$99/mo',
-    cta: { label: 'Start Pro', type: 'mailto' as const, href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan' },
-    highlighted: true,
-    callout: 'Most popular for production agents',
-  },
-  {
-    name: 'Enterprise',
-    price: '$499/mo',
-    cta: { label: 'Contact Sales', type: 'mailto' as const, href: 'mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise' },
-  },
+  { name: 'Free', price: '$0/mo' },
+  { name: 'Starter', price: '$19/mo' },
+  { name: 'Pro', price: '$99/mo', highlighted: true, callout: 'Most popular for production agents' },
+  { name: 'Enterprise', price: '$499/mo' },
 ]
 
 const rows = [
@@ -136,31 +118,36 @@ export default function Pricing() {
               ))}
               <tr className="border-t border-border bg-[#111827]">
                 <td className="px-4 py-5 text-gray-400">Get started</td>
-                {tiers.map((tier) => (
-                  <td key={`${tier.name}-cta`} className="px-4 py-5">
-                    {tier.cta.type === 'modal' ? (
-                      <GetApiKeyModal
-                        label={tier.cta.label}
-                        className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
-                          tier.highlighted
-                            ? 'bg-primary hover:bg-primary-hover text-white'
-                            : 'bg-gray-800 hover:bg-gray-700 text-white'
-                        }`}
-                      />
-                    ) : (
-                      <a
-                        href={tier.cta.href}
-                        className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors ${
-                          tier.highlighted
-                            ? 'bg-primary hover:bg-primary-hover text-white'
-                            : 'bg-gray-800 hover:bg-gray-700 text-white'
-                        }`}
-                      >
-                        {tier.cta.label}
-                      </a>
-                    )}
-                  </td>
-                ))}
+                <td className="px-4 py-5">
+                  <GetApiKeyModal
+                    label="Get Free API Key"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-gray-800 hover:bg-gray-700 text-white"
+                  />
+                </td>
+                <td className="px-4 py-5">
+                  <a
+                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Starter%20Plan"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-gray-800 hover:bg-gray-700 text-white"
+                  >
+                    Start Starter
+                  </a>
+                </td>
+                <td className="px-4 py-5">
+                  <a
+                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Pro%20Plan"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-primary hover:bg-primary-hover text-white"
+                  >
+                    Start Pro
+                  </a>
+                </td>
+                <td className="px-4 py-5">
+                  <a
+                    href="mailto:blake@novyxlabs.com?subject=Novyx%20Enterprise"
+                    className="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-medium transition-colors bg-gray-800 hover:bg-gray-700 text-white"
+                  >
+                    Contact Sales
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>
