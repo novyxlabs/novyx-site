@@ -47,7 +47,6 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link to="/about" className="hover:text-white transition-colors">About</Link></li>
               <li>
                 <a
                   href="mailto:blake@novyxlabs.com"

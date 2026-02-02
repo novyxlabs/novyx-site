@@ -5,7 +5,6 @@ import GetApiKeyModal from './GetApiKeyModal'
 const navLinks = [
   { name: 'Docs', path: '/docs' },
   { name: 'Pricing', path: '/pricing' },
-  { name: 'About', path: '/about' },
 ]
 
 export default function Navbar() {
