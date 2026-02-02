@@ -218,6 +218,34 @@ export default function Home() {
           <p className="mt-3 text-sm text-gray-500">10,000 memories free. Forever.</p>
         </div>
       </section>
+
+      {/* Email Signup */}
+      <section className="py-16 border-t border-zinc-800">
+        <div className="max-w-md mx-auto text-center px-4">
+          <h3 className="text-xl font-semibold mb-2">Stay Updated</h3>
+          <p className="text-zinc-400 mb-4">Get notified about new features and updates.</p>
+          <form
+            action="https://buttondown.email/api/emails/embed-subscribe/novyxlabs"
+            method="post"
+            target="popupwindow"
+            className="flex gap-2"
+          >
+            <input
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+              className="flex-1 px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-indigo-500"
+            />
+            <button
+              type="submit"
+              className="px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   )
 }
