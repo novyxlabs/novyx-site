@@ -112,8 +112,8 @@ export default function Terms() {
             <h2 className="text-2xl font-semibold mb-4">12. Contact</h2>
             <p className="text-gray-300">
               For questions about these terms, contact us at{' '}
-              <a href="mailto:blake@novyxlabs.com" className="text-primary hover:text-primary-hover">
-                blake@novyxlabs.com
+              <a href="mailto:support@novyxlabs.com" className="text-primary hover:text-primary-hover">
+                support@novyxlabs.com
               </a>
             </p>
           </section>

@@ -10,7 +10,7 @@ export default function ContactModal({ label, plan, className }: ContactModalPro
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const email = 'blake@novyxlabs.com'
+  const email = 'sales@novyxlabs.com'
   const subject = plan === 'Enterprise' ? 'Novyx Enterprise' : `Novyx ${plan} Plan`
 
   const closeModal = () => {

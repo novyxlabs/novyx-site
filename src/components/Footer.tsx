@@ -52,10 +52,18 @@ export default function Footer() {
             <ul className="space-y-2 text-sm text-gray-400">
               <li>
                 <ContactModal
-                  label="Contact"
+                  label="Sales"
                   plan="General Inquiry"
                   className="hover:text-white transition-colors cursor-pointer"
                 />
+              </li>
+              <li>
+                <a
+                  href="mailto:support@novyxlabs.com"
+                  className="hover:text-white transition-colors"
+                >
+                  Support
+                </a>
               </li>
             </ul>
           </div>

@@ -81,8 +81,8 @@ export default function Privacy() {
             </ul>
             <p className="text-gray-300 mt-4">
               To exercise these rights, contact us at{' '}
-              <a href="mailto:blake@novyxlabs.com" className="text-primary hover:text-primary-hover">
-                blake@novyxlabs.com
+              <a href="mailto:support@novyxlabs.com" className="text-primary hover:text-primary-hover">
+                support@novyxlabs.com
               </a>
             </p>
           </section>
@@ -98,8 +98,8 @@ export default function Privacy() {
             <h2 className="text-2xl font-semibold mb-4">8. Contact Us</h2>
             <p className="text-gray-300">
               If you have questions about this privacy policy, contact us at{' '}
-              <a href="mailto:blake@novyxlabs.com" className="text-primary hover:text-primary-hover">
-                blake@novyxlabs.com
+              <a href="mailto:support@novyxlabs.com" className="text-primary hover:text-primary-hover">
+                support@novyxlabs.com
               </a>
             </p>
           </section>

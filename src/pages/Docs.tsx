@@ -163,6 +163,16 @@ nx.rollback(target="2025-01-30T14:00:00Z")`}
             </table>
           </div>
         </section>
+
+        <section className="mb-12 p-6 rounded-lg border border-border bg-[#18181B]">
+          <h2 className="text-lg font-semibold mb-2">Need Help?</h2>
+          <p className="text-gray-400">
+            Having trouble with the API? Reach out to{' '}
+            <a href="mailto:support@novyxlabs.com" className="text-primary hover:text-primary-hover">
+              support@novyxlabs.com
+            </a>
+          </p>
+        </section>
       </div>
     </div>
   )
