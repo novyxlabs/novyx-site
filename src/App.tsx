@@ -10,6 +10,7 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Errors from './pages/Errors'
 import Changelog from './pages/Changelog'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/docs" element={<Docs />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/status" element={<Status />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy" element={<Privacy />} />

@@ -32,6 +32,7 @@ export default function Footer() {
           <div>
             <h4 className="font-medium mb-4">Resources</h4>
             <ul className="space-y-2 text-sm text-gray-400">
+              <li><Link to="/dashboard" className="hover:text-white transition-colors">Dashboard</Link></li>
               <li><Link to="/status" className="hover:text-white transition-colors">API Status</Link></li>
               <li><Link to="/errors" className="hover:text-white transition-colors">Error Reference</Link></li>
               <li><Link to="/changelog" className="hover:text-white transition-colors">Changelog</Link></li>
