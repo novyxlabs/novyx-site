@@ -8,6 +8,8 @@ import Status from './pages/Status'
 import Blog from './pages/Blog'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import Errors from './pages/Errors'
+import Changelog from './pages/Changelog'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/errors" element={<Errors />} />
+        <Route path="/changelog" element={<Changelog />} />
         <Route path="/about" element={<Navigate to="/docs" replace />} />
         <Route path="/ram" element={<Navigate to="/" replace />} />
         <Route path="/sentinel" element={<Navigate to="/" replace />} />
