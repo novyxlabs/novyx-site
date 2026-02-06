@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface GetApiKeyModalProps {
-  label: string
+  label?: string
   className?: string
+  isOpen?: boolean
+  onClose?: () => void
+  onKeyGenerated?: (key: string) => void
 }
 
-export default function GetApiKeyModal({ label, className }: GetApiKeyModalProps) {
+export default function GetApiKeyModal({ label, className, isOpen, onClose, onKeyGenerated }: GetApiKeyModalProps) {
   const [open, setOpen] = useState(false)
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
@@ -13,8 +16,21 @@ export default function GetApiKeyModal({ label, className }: GetApiKeyModalProps
   const [apiKey, setApiKey] = useState('')
   const [copied, setCopied] = useState(false)
 
+  // Use controlled or uncontrolled state
+  const isModalOpen = isOpen !== undefined ? isOpen : open
+
+  useEffect(() => {
+    if (isOpen !== undefined) {
+      setOpen(isOpen)
+    }
+  }, [isOpen])
+
   const closeModal = () => {
-    setOpen(false)
+    if (onClose) {
+      onClose()
+    } else {
+      setOpen(false)
+    }
     setError('')
     setCopied(false)
     setApiKey('')
@@ -46,7 +62,16 @@ export default function GetApiKeyModal({ label, className }: GetApiKeyModalProps
         return
       }
 
-      setApiKey(String(key))
+      const keyString = String(key)
+      setApiKey(keyString)
+
+      // Store in localStorage
+      localStorage.setItem('novyx_api_key', keyString)
+
+      // Call callback if provided
+      if (onKeyGenerated) {
+        onKeyGenerated(keyString)
+      }
     } catch {
       setError('Something went wrong. Please try again.')
     } finally {
@@ -66,15 +91,17 @@ export default function GetApiKeyModal({ label, className }: GetApiKeyModalProps
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        className={className}
-      >
-        {label}
-      </button>
+      {label && (
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className={className}
+        >
+          {label}
+        </button>
+      )}
 
-      {open && (
+      {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
           onClick={closeModal}

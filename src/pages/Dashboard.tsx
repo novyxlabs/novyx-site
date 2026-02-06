@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 
 interface UsageData {
   tier: 'Free' | 'Starter' | 'Pro' | 'Enterprise'
@@ -74,10 +74,26 @@ function UsageCard({ title, used, limit, isLifetime }: UsageCardProps) {
 }
 
 export default function Dashboard() {
+  const [searchParams, setSearchParams] = useSearchParams()
   const [apiKey, setApiKey] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [usage, setUsage] = useState<UsageData | null>(null)
+  const [billingLoading, setBillingLoading] = useState(false)
+  const [showUpgradeSuccess, setShowUpgradeSuccess] = useState(false)
+
+  // Check for upgraded=true query param
+  useEffect(() => {
+    if (searchParams.get('upgraded') === 'true') {
+      setShowUpgradeSuccess(true)
+      // Remove the query param from URL
+      searchParams.delete('upgraded')
+      setSearchParams(searchParams, { replace: true })
+
+      // Auto-hide after 10 seconds
+      setTimeout(() => setShowUpgradeSuccess(false), 10000)
+    }
+  }, [searchParams, setSearchParams])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -113,6 +129,35 @@ export default function Dashboard() {
     }
   }
 
+  const handleManageBilling = async () => {
+    if (!apiKey) return
+
+    setBillingLoading(true)
+    try {
+      const response = await fetch('https://novyx-ram-api.fly.dev/v1/billing', {
+        headers: {
+          'Authorization': `Bearer ${apiKey.trim()}`,
+        },
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to get billing portal URL')
+      }
+
+      const data = await response.json()
+
+      if (data.portal_url) {
+        window.location.href = data.portal_url
+      } else {
+        throw new Error('No portal URL returned')
+      }
+    } catch {
+      alert('Failed to open billing portal. Please try again or contact support.')
+    } finally {
+      setBillingLoading(false)
+    }
+  }
+
   const hasWarning = usage && (
     getPercentage(usage.memories.used, usage.memories.limit) >= 80 ||
     getPercentage(usage.api_calls.used, usage.api_calls.limit) >= 80 ||
@@ -132,6 +177,36 @@ export default function Dashboard() {
         <p className="text-gray-400 mb-10">
           View your API usage and limits.
         </p>
+
+        {/* Upgrade Success Message */}
+        {showUpgradeSuccess && (
+          <div className="mb-8 p-4 rounded-lg border border-green-500/30 bg-green-500/10 animate-fade-in">
+            <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <div>
+                  <p className="text-green-400 font-medium">
+                    Upgrade successful!
+                  </p>
+                  <p className="text-sm text-green-300/80 mt-1">
+                    Your subscription has been activated. New limits are now in effect.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowUpgradeSuccess(false)}
+                className="text-green-400 hover:text-green-300 transition-colors"
+                aria-label="Dismiss"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* API Key Entry */}
         {!usage && (
@@ -176,6 +251,15 @@ export default function Dashboard() {
                 <span className={`px-3 py-1 rounded-full text-sm font-medium text-white ${getTierColor(usage.tier)}`}>
                   {usage.tier}
                 </span>
+                {usage.tier !== 'Free' && (
+                  <button
+                    onClick={handleManageBilling}
+                    disabled={billingLoading}
+                    className="px-3 py-1 text-sm bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-600/50 text-white rounded-lg transition-colors disabled:cursor-not-allowed"
+                  >
+                    {billingLoading ? 'Loading...' : 'Manage Billing'}
+                  </button>
+                )}
                 <button
                   onClick={() => {
                     setUsage(null)
