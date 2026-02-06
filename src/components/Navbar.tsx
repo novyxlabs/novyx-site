@@ -16,13 +16,12 @@ export default function Navbar() {
     <nav className="border-b border-border sticky top-0 bg-background/80 backdrop-blur-sm z-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <Link to="/" className="flex items-center gap-2">
-            <svg viewBox="0 0 32 32" className="w-8 h-8" fill="none">
-              <rect width="32" height="32" rx="6" fill="#6366f1"/>
-              <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="white" strokeWidth="2" fill="none"/>
-              <circle cx="16" cy="16" r="3" fill="white"/>
-            </svg>
-            <span className="font-semibold text-lg">Novyx</span>
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="/logo.png"
+              alt="Novyx Labs"
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
