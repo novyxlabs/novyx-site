@@ -5,7 +5,7 @@ interface GetApiKeyModalProps {
   className?: string
   isOpen?: boolean
   onClose?: () => void
-  onKeyGenerated?: (key: string) => void
+  onKeyGenerated?: (key: string, email: string) => void
 }
 
 export default function GetApiKeyModal({ label, className, isOpen, onClose, onKeyGenerated }: GetApiKeyModalProps) {
@@ -67,10 +67,11 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
 
       // Store in localStorage
       localStorage.setItem('novyx_api_key', keyString)
+      localStorage.setItem('novyx_email', email)
 
       // Call callback if provided
       if (onKeyGenerated) {
-        onKeyGenerated(keyString)
+        onKeyGenerated(keyString, email)
       }
     } catch {
       setError('Something went wrong. Please try again.')

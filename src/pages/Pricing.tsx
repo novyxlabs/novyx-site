@@ -128,7 +128,6 @@ export default function Pricing() {
                 <td className="px-4 py-5">
                   <UpgradeButton
                     tier="Starter"
-                    priceId="price_1SxgeOGa7YRiya2cBUmHffi0"
                     label="Start Starter"
                     className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
                   />
@@ -136,7 +135,6 @@ export default function Pricing() {
                 <td className="px-4 py-5">
                   <UpgradeButton
                     tier="Pro"
-                    priceId="price_1SxgfnGa7YRiya2cBuSU14dB"
                     label="Start Pro"
                     className="block w-full text-center py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
                   />
@@ -144,7 +142,6 @@ export default function Pricing() {
                 <td className="px-4 py-5">
                   <UpgradeButton
                     tier="Enterprise"
-                    priceId="price_1SxggiGa7YRiya2cBPlafDRy"
                     label="Start Enterprise"
                     className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
                   />
