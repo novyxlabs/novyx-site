@@ -42,11 +42,13 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
     setLoading(true)
     setError('')
 
+    const trimmedEmail = email.trim()
+
     try {
       const response = await fetch('https://novyx-ram-api.fly.dev/v1/keys', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: trimmedEmail }),
       })
 
       const data = await response.json().catch(() => ({}))
@@ -67,11 +69,11 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
 
       // Store in localStorage
       localStorage.setItem('novyx_api_key', keyString)
-      localStorage.setItem('novyx_email', email)
+      localStorage.setItem('novyx_email', trimmedEmail)
 
       // Call callback if provided
       if (onKeyGenerated) {
-        onKeyGenerated(keyString, email)
+        onKeyGenerated(keyString, trimmedEmail)
       }
     } catch {
       setError('Something went wrong. Please try again.')
