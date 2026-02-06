@@ -11,7 +11,8 @@ export default function Footer() {
               <img
                 src="/logo.png"
                 alt="Novyx Labs"
-                className="h-8 w-auto"
+                className="h-8 w-auto opacity-95"
+                style={{ mixBlendMode: 'lighten' }}
               />
             </div>
             <p className="text-sm text-gray-400">

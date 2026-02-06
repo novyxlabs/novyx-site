@@ -20,7 +20,8 @@ export default function Navbar() {
             <img
               src="/logo.png"
               alt="Novyx Labs"
-              className="h-10 w-auto"
+              className="h-10 w-auto opacity-95 hover:opacity-100 transition-opacity"
+              style={{ mixBlendMode: 'lighten' }}
             />
           </Link>
 
