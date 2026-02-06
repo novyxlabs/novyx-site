@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import GetApiKeyModal from './GetApiKeyModal'
+import EmailCollectModal from './EmailCollectModal'
 
 interface UpgradeButtonProps {
   tier: string
@@ -10,37 +10,27 @@ interface UpgradeButtonProps {
 export default function UpgradeButton({ tier, label, className }: UpgradeButtonProps) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false)
+  const [showEmailModal, setShowEmailModal] = useState(false)
 
-  const handleUpgrade = async () => {
+  const handleUpgrade = () => {
     setError('')
-
-    // Check if user has API key and email in localStorage
-    const apiKey = localStorage.getItem('novyx_api_key')
-    const email = localStorage.getItem('novyx_email')
-
-    console.log('[UpgradeButton] API Key exists:', !!apiKey)
-    console.log('[UpgradeButton] Email exists:', !!email)
-
-    if (!apiKey || !email) {
-      // Prompt user to get API key first
-      console.log('[UpgradeButton] Showing API key modal')
-      setShowApiKeyModal(true)
-      return
-    }
-
-    // Proceed with checkout
-    await initiateCheckout(apiKey, email)
+    console.log('[UpgradeButton] Starting upgrade flow for tier:', tier)
+    setShowEmailModal(true)
   }
 
-  const initiateCheckout = async (apiKey: string, email: string) => {
+  const handleEmailSubmit = async (email: string) => {
+    console.log('[UpgradeButton] Email submitted:', email)
+    setShowEmailModal(false)
+    await initiateCheckout(email)
+  }
+
+  const initiateCheckout = async (email: string) => {
     setLoading(true)
     setError('')
 
     const payload = {
       tier: tier.toLowerCase(),
       email: email,
-      api_key: apiKey,
       success_url: `${window.location.origin}/dashboard?upgraded=true`,
       cancel_url: `${window.location.origin}/pricing`,
     }
@@ -52,7 +42,6 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`,
         },
         body: JSON.stringify(payload),
       })
@@ -82,18 +71,6 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
     }
   }
 
-  const handleApiKeyObtained = (key: string, email: string) => {
-    console.log('[UpgradeButton] API key obtained, email:', email)
-
-    // Store API key and email in localStorage
-    localStorage.setItem('novyx_api_key', key)
-    localStorage.setItem('novyx_email', email)
-    setShowApiKeyModal(false)
-
-    // Now initiate checkout
-    initiateCheckout(key, email)
-  }
-
   return (
     <>
       <button
@@ -111,13 +88,12 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
         </div>
       )}
 
-      {showApiKeyModal && (
-        <GetApiKeyModal
-          isOpen={showApiKeyModal}
-          onClose={() => setShowApiKeyModal(false)}
-          onKeyGenerated={handleApiKeyObtained}
-        />
-      )}
+      <EmailCollectModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        onEmailSubmit={handleEmailSubmit}
+        tier={tier}
+      />
     </>
   )
 }
