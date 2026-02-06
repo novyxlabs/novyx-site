@@ -6,17 +6,19 @@ interface ServiceStatus {
   status: 'operational' | 'degraded' | 'down' | 'checking'
 }
 
+const INITIAL_SERVICES: ServiceStatus[] = [
+  { name: 'RAM API', url: 'https://novyx-ram-api.fly.dev/health', status: 'checking' },
+  { name: 'Sentinel API', url: 'https://novyx-sentinel.fly.dev/health', status: 'checking' },
+]
+
 export default function Status() {
-  const [services, setServices] = useState<ServiceStatus[]>([
-    { name: 'RAM API', url: 'https://novyx-ram-api.fly.dev/health', status: 'checking' },
-    { name: 'Sentinel API', url: 'https://novyx-sentinel.fly.dev/health', status: 'checking' },
-  ])
+  const [services, setServices] = useState<ServiceStatus[]>(INITIAL_SERVICES)
   const [lastChecked, setLastChecked] = useState<Date | null>(null)
 
   useEffect(() => {
     const checkServices = async () => {
       const results = await Promise.all(
-        services.map(async (service) => {
+        INITIAL_SERVICES.map(async (service) => {
           try {
             const response = await fetch(service.url, { method: 'GET' })
             return {
