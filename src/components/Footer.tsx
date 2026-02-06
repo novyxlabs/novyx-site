@@ -7,13 +7,12 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
-                <rect width="32" height="32" rx="6" fill="#6366f1"/>
-                <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="white" strokeWidth="2" fill="none"/>
-                <circle cx="16" cy="16" r="3" fill="white"/>
-              </svg>
-              <span className="font-semibold">Novyx</span>
+            <div className="mb-4">
+              <img
+                src="/logo.png"
+                alt="Novyx Labs"
+                className="h-8 w-auto"
+              />
             </div>
             <p className="text-sm text-gray-400">
               Constitutional infrastructure for AI agents.
