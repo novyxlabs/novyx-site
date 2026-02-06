@@ -110,6 +110,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How Rollback Works */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8">How Rollback Works</h2>
+          <div className="rounded-xl border border-border bg-[#18181B] p-8">
+            <ol className="space-y-4 text-gray-300">
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-semibold">1</span>
+                <span>Every memory operation is cryptographically hashed (SHA-256)</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-semibold">2</span>
+                <span>Operations are chained — each references the previous hash</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-semibold">3</span>
+                <span>When you rollback, we restore state to any point in that chain</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-semibold">4</span>
+                <span>Corrupted or unwanted memories after that point are archived</span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-semibold">5</span>
+                <span>Your agent continues from the clean state</span>
+              </li>
+            </ol>
+            <p className="mt-6 text-gray-400 italic border-t border-border pt-6">
+              This is like git for your agent&apos;s memory — but automatic.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Comparison */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
