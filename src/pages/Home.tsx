@@ -156,32 +156,48 @@ export default function Home() {
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
-            Built for production AI
+            What developers are building
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                title: 'Customer Support',
-                description: 'Remember every conversation, forever. Pull context from 6 months ago in milliseconds.',
-              },
-              {
-                title: 'Sales AI',
-                description: 'Never lose lead context. Your AI remembers what they said in March.',
-              },
-              {
-                title: 'Healthcare',
-                description: 'HIPAA-compliant memory with cryptographic audit trails. 7-year retention.',
-              },
-              {
-                title: 'Finance',
-                description: 'SOX/FINRA ready. Magic Rollback for when compliance asks “what happened?”',
-              },
-            ].map((item) => (
-              <div key={item.title} className="rounded-xl border border-border bg-[#18181B] p-6">
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-400">{item.description}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-3">AI Assistants That Remember</h3>
+              <p className="text-gray-400 mb-4">
+                Your assistant remembers user preferences, past conversations, and context — across sessions, forever.
+              </p>
+              <blockquote className="border-l-2 border-primary pl-4 text-sm text-gray-400 italic">
+                "My Clawdbot assistant uses Novyx to remember everything about my projects, goals, and preferences. It gives me a daily brief with full context." — Blake, Novyx Labs
+              </blockquote>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-3">Agents That Can Undo Mistakes</h3>
+              <p className="text-gray-400">
+                Agent hallucinated? Wrote bad data? Rollback to before it happened. No data loss, no panic.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-3">Auditable AI for Production</h3>
+              <p className="text-gray-400">
+                Every agent action is logged with cryptographic proof. Know exactly what your agent did and when.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-3">Multi-Agent Memory Sharing</h3>
+              <p className="text-gray-400">
+                Multiple agents sharing the same memory layer. One learns, all benefit.
+              </p>
+            </div>
+          </div>
+
+          {/* Clawdbot Callout */}
+          <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
+            <div className="flex items-start gap-3">
+              <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <p className="text-gray-200">
+                <span className="font-semibold text-white">Clawdbot</span>, our internal AI assistant, runs on Novyx Core. It remembers context across 100+ conversations and rolls back when needed.
+              </p>
+            </div>
           </div>
         </div>
       </section>
