@@ -11,24 +11,31 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [showEmailModal, setShowEmailModal] = useState(false)
+  const [prefilledApiKey, setPrefilledApiKey] = useState<string | undefined>()
 
   const handleUpgrade = () => {
     setError('')
+    // Check if user has existing Free tier API key
+    const existingKey = localStorage.getItem('novyx_api_key')
+    if (existingKey) {
+      setPrefilledApiKey(existingKey)
+    }
     setShowEmailModal(true)
   }
 
-  const handleEmailSubmit = async (email: string) => {
+  const handleEmailSubmit = async (email: string, apiKey?: string) => {
     setShowEmailModal(false)
-    await initiateCheckout(email)
+    await initiateCheckout(email, apiKey)
   }
 
-  const initiateCheckout = async (email: string) => {
+  const initiateCheckout = async (email: string, apiKey?: string) => {
     setLoading(true)
     setError('')
 
     const payload = {
       tier: tier.toLowerCase(),
       email: email,
+      ...(apiKey && { api_key: apiKey }),
       success_url: `${window.location.origin}/dashboard?upgraded=true`,
       cancel_url: `${window.location.origin}/pricing`,
     }
@@ -83,6 +90,7 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
         onClose={() => setShowEmailModal(false)}
         onEmailSubmit={handleEmailSubmit}
         tier={tier}
+        prefilledApiKey={prefilledApiKey}
       />
     </>
   )

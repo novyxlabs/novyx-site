@@ -3,22 +3,27 @@ import { useState } from 'react'
 interface EmailCollectModalProps {
   isOpen: boolean
   onClose: () => void
-  onEmailSubmit: (email: string) => void
+  onEmailSubmit: (email: string, apiKey?: string) => void
   tier: string
+  prefilledApiKey?: string
 }
 
-export default function EmailCollectModal({ isOpen, onClose, onEmailSubmit, tier }: EmailCollectModalProps) {
+export default function EmailCollectModal({ isOpen, onClose, onEmailSubmit, tier, prefilledApiKey }: EmailCollectModalProps) {
   const [email, setEmail] = useState('')
+  const [showApiKeyField, setShowApiKeyField] = useState(!!prefilledApiKey)
+  const [apiKey, setApiKey] = useState(prefilledApiKey || '')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (email.trim()) {
-      onEmailSubmit(email.trim())
+      onEmailSubmit(email.trim(), apiKey.trim() || undefined)
     }
   }
 
   const handleClose = () => {
     setEmail('')
+    setApiKey(prefilledApiKey || '')
+    setShowApiKeyField(!!prefilledApiKey)
     onClose()
   }
 
@@ -62,6 +67,49 @@ export default function EmailCollectModal({ isOpen, onClose, onEmailSubmit, tier
             required
             className="w-full px-4 py-3 rounded-lg bg-[#0D1117] border border-[#30363D] focus:border-primary focus:outline-none transition-colors"
           />
+
+          {!showApiKeyField && !prefilledApiKey && (
+            <button
+              type="button"
+              onClick={() => setShowApiKeyField(true)}
+              className="text-sm text-primary hover:text-primary-hover transition-colors"
+            >
+              Already have an API key?
+            </button>
+          )}
+
+          {showApiKeyField && (
+            <div className="space-y-2">
+              <input
+                type="password"
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                placeholder="nram_..."
+                className="w-full px-4 py-3 rounded-lg bg-[#0D1117] border border-[#30363D] focus:border-primary focus:outline-none transition-colors"
+              />
+              {apiKey && (
+                <p className="text-xs text-green-400 flex items-center gap-1">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Your existing memories will be preserved when you upgrade.
+                </p>
+              )}
+              {!prefilledApiKey && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowApiKeyField(false)
+                    setApiKey('')
+                  }}
+                  className="text-xs text-gray-400 hover:text-white transition-colors"
+                >
+                  Remove API key
+                </button>
+              )}
+            </div>
+          )}
+
           <div className="flex gap-3">
             <button
               type="button"

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import UpgradeButton from '../components/UpgradeButton'
 
 interface UsageData {
   tier: 'Free' | 'Starter' | 'Pro' | 'Enterprise'
@@ -251,6 +252,13 @@ export default function Dashboard() {
                 <span className={`px-3 py-1 rounded-full text-sm font-medium text-white ${getTierColor(usage.tier)}`}>
                   {usage.tier}
                 </span>
+                {usage.tier === 'Free' && (
+                  <UpgradeButton
+                    tier="Pro"
+                    label="Upgrade to Pro"
+                    className="px-3 py-1 text-sm bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors"
+                  />
+                )}
                 {usage.tier !== 'Free' && (
                   <button
                     onClick={handleManageBilling}
