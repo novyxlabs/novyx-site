@@ -407,7 +407,7 @@ export default function Home() {
             label="Get Free API Key"
             className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
           />
-          <p className="mt-3 text-sm text-gray-500">10,000 memories free. Forever.</p>
+          <p className="mt-3 text-sm text-gray-500">5,000 memories free. Forever.</p>
         </div>
       </section>
 

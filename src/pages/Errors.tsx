@@ -60,9 +60,9 @@ export default function Errors() {
       description: "You've hit the memory storage limit for your current tier.",
       response: `{
   "error": "memory_limit_reached",
-  "message": "Memory limit of 10000 reached for Free tier.",
-  "current": 10000,
-  "limit": 10000
+  "message": "Memory limit of 5000 reached for Free tier.",
+  "current": 5000,
+  "limit": 5000
 }`,
       steps: [
         'Delete old or unused memories via the API',

@@ -8,7 +8,7 @@ const tiers = [
 ]
 
 const rows = [
-  { label: 'Memories', values: ['10,000', 'Unlimited', 'Unlimited'] },
+  { label: 'Memories', values: ['5,000', 'Unlimited', 'Unlimited'] },
   { label: 'API calls', values: ['5,000/mo', '100,000/mo', 'Unlimited'] },
   {
     label: 'Rollbacks',
