@@ -1,6 +1,18 @@
 export default function Changelog() {
   const releases = [
     {
+      version: 'v1.2.0',
+      date: 'Feb 8, 2026',
+      title: 'Pricing Simplification & Novyx Core Launch',
+      changes: [
+        'Simplified pricing: Free, Pro ($49/mo), Enterprise ($299/mo)',
+        'Removed Starter tier - existing customers grandfathered',
+        'Pro tier pricing reduced from $99 to $49',
+        'Updated positioning: "Persistent memory + rollback for AI agents"',
+        'Added Production Trust metrics and Integrations showcase',
+      ],
+    },
+    {
       version: 'v1.1.0',
       date: 'Feb 2, 2026',
       title: 'Launch',

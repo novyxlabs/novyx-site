@@ -3,26 +3,26 @@ import UpgradeButton from '../components/UpgradeButton'
 
 const tiers = [
   { name: 'Free', price: '$0/mo' },
-  { name: 'Starter', price: '$19/mo' },
-  { name: 'Pro', price: '$99/mo', highlighted: true, callout: 'Most popular for production agents' },
-  { name: 'Enterprise', price: '$499/mo' },
+  { name: 'Pro', price: '$49/mo', highlighted: true, callout: 'Most popular for production agents' },
+  { name: 'Enterprise', price: '$299/mo' },
 ]
 
 const rows = [
-  { label: 'Memories', values: ['10,000', '50,000', 'Unlimited', 'Unlimited'] },
-  { label: 'API calls', values: ['5,000/mo', '25,000/mo', '100,000/mo', 'Unlimited'] },
+  { label: 'Memories', values: ['10,000', 'Unlimited', 'Unlimited'] },
+  { label: 'API calls', values: ['5,000/mo', '100,000/mo', 'Unlimited'] },
   {
     label: 'Rollbacks',
-    values: ['3 lifetime', '5/month', 'Unlimited', 'Unlimited'],
-    highlight: [false, false, true, true],
+    values: ['3/month', 'Unlimited', 'Unlimited'],
+    highlight: [false, true, true],
   },
-  { label: 'Semantic search', values: ['✅', '✅', '✅', '✅'] },
-  { label: 'Sentinel alerts', values: ['❌', 'Alerts only', 'Full', 'Full'] },
-  { label: 'Magic Rollback', values: ['Limited', 'Limited', '✅', '✅'] },
-  { label: 'Circuit breaker', values: ['❌', '❌', '❌', '✅'] },
-  { label: 'Audit retention', values: ['7 days', '30 days', '1 year', '7 years + compliance'] },
-  { label: 'Support', values: ['Community', 'Email', 'Priority', 'Dedicated'] },
-  { label: 'SLA', values: ['—', '—', '99.5%', '99.9%'] },
+  { label: 'Semantic search', values: ['✅', '✅', '✅'] },
+  { label: 'Anomaly alerts', values: ['❌', '✅', '✅'] },
+  { label: 'Trace audit', values: ['❌', '✅', '✅'] },
+  { label: 'Magic Rollback', values: ['Limited', '✅', '✅'] },
+  { label: 'Circuit breaker', values: ['❌', '❌', '✅'] },
+  { label: 'Audit retention', values: ['7 days', '30 days', '90 days'] },
+  { label: 'Support', values: ['Community', 'Email', 'Priority'] },
+  { label: 'SLA', values: ['—', '99.5%', '99.9%'] },
 ]
 
 const faqs = [
@@ -36,15 +36,15 @@ const faqs = [
   },
   {
     q: 'Do rollback limits reset?',
-    a: 'Free tier rollbacks are lifetime (3 total). Starter rollbacks reset monthly (5/month). Pro and Enterprise are unlimited.',
+    a: 'Free tier rollbacks are 3 per month. Pro and Enterprise get unlimited rollbacks.',
   },
   {
     q: 'Can I upgrade mid-month?',
     a: 'Yes, upgrades are immediate. Your new limits apply right away.',
   },
   {
-    q: 'Do I need Sentinel if I just want memory?',
-    a: 'No. Free and Starter tiers give you persistent memory without full Sentinel. Upgrade to Pro when you need unlimited rollbacks and full security.',
+    q: 'Do I need security features for basic memory?',
+    a: 'No. Free tier gives you persistent memory and basic features. Upgrade to Pro when you need unlimited rollbacks, anomaly alerts, and full security auditing.',
   },
   {
     q: 'What happens if I hit my API limit?',
@@ -123,13 +123,6 @@ export default function Pricing() {
                   <GetApiKeyModal
                     label="Get Free API Key"
                     className="cursor-pointer inline-block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors"
-                  />
-                </td>
-                <td className="px-4 py-5">
-                  <UpgradeButton
-                    tier="Starter"
-                    label="Start Starter"
-                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
                   />
                 </td>
                 <td className="px-4 py-5">

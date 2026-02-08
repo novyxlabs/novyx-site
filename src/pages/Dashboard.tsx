@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import UpgradeButton from '../components/UpgradeButton'
 
 interface UsageData {
-  tier: 'Free' | 'Starter' | 'Pro' | 'Enterprise'
+  tier: 'Free' | 'Pro' | 'Enterprise'
   memories: { used: number; limit: number }
   api_calls: { used: number; limit: number }
   rollbacks: { used: number; limit: number }
@@ -29,7 +29,6 @@ function getPercentage(used: number, limit: number): number {
 function getTierColor(tier: string): string {
   switch (tier) {
     case 'Free': return 'bg-gray-500'
-    case 'Starter': return 'bg-blue-500'
     case 'Pro': return 'bg-indigo-500'
     case 'Enterprise': return 'bg-purple-500'
     default: return 'bg-gray-500'

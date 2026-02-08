@@ -66,7 +66,7 @@ export default function Errors() {
 }`,
       steps: [
         'Delete old or unused memories via the API',
-        'Upgrade to Starter (50k) or Pro (unlimited) at /pricing',
+        'Upgrade to Pro (unlimited memories) at /pricing',
         'Use tags to organize and bulk-delete old memories',
       ],
     },
@@ -81,8 +81,7 @@ export default function Errors() {
   "limit": 3
 }`,
       steps: [
-        'Free tier: 3 lifetime rollbacks',
-        'Starter tier: 5 rollbacks per month (resets monthly)',
+        'Free tier: 3 rollbacks per month (resets monthly)',
         'Pro/Enterprise: Unlimited rollbacks',
         'Upgrade at /pricing to restore rollback access',
       ],

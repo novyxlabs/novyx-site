@@ -33,7 +33,7 @@ results = nx.recall("communication preferences")
 print(results)
 # [{"content": "User prefers dark mode and hates email follow-ups", "score": 0.89}]
 
-# Protected action (Pro tier - requires Sentinel)
+# Protected action (Pro tier - includes security checks)
 try:
     nx.act("send_email", {"to": "user@example.com"})
 except NovyxSecurityError as e:

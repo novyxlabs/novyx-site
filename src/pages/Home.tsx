@@ -6,8 +6,9 @@ import GetApiKeyModal from '../components/GetApiKeyModal'
 const heroCode = `from novyx import Novyx
 
 nx = Novyx(api_key="...")
-nx.remember("User prefers dark mode")
-context = nx.recall("preferences")`
+nx.remember("user prefers dark mode")
+nx.recall("user preferences")
+nx.rollback("2 hours ago")`
 
 const installCode = `pip3 install novyx`
 
@@ -30,11 +31,10 @@ export default function Home() {
               Now in Public Beta
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Your AI finally remembers. And stays safe.
+              Persistent memory + rollback for AI agents
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-xl">
-              The memory + security layer for AI agents. Store context, detect threats,
-              roll back damage. Four lines of code.
+              Your agent remembers. You stay in control. Three lines of code.
             </p>
             <div className="flex flex-wrap gap-4">
               <GetApiKeyModal
@@ -83,28 +83,77 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Four Verbs */}
+      {/* Three Pillars */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
-            Four verbs. Infinite memory.
+            Built on three pillars
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
+            {/* Pillar 1: Persistent Memory */}
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="font-mono text-sm text-primary mb-2">nx.remember(content)</p>
-              <p className="text-gray-400">Store memories with cryptographic hashing. Every fact timestamped and tamper-proof.</p>
+              <h3 className="text-xl font-semibold mb-3">Persistent Memory</h3>
+              <p className="text-gray-400 mb-4">
+                Semantic search across all memories. Works across sessions, restarts, crashes.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Sub-100ms recall</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Semantic search across context</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Survives restarts & crashes</span>
+                </li>
+              </ul>
             </div>
+
+            {/* Pillar 2: Magic Rollback */}
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="font-mono text-sm text-primary mb-2">nx.recall(query)</p>
-              <p className="text-gray-400">Semantic search across all context. Find by meaning, not keywords.</p>
+              <h3 className="text-xl font-semibold mb-3">Magic Rollback</h3>
+              <p className="text-gray-400 mb-4">
+                Point-in-time restore. Preview before executing. Like git for agent state.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Restore to any point in time</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Preview before executing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Surgical precision</span>
+                </li>
+              </ul>
             </div>
+
+            {/* Pillar 3: Audit Trail */}
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="font-mono text-sm text-primary mb-2">nx.act(action, params)</p>
-              <p className="text-gray-400">Protected actions with Sentinel checks. Block unauthorized operations in &lt;30ms.</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="font-mono text-sm text-primary mb-2">nx.rollback(target)</p>
-              <p className="text-gray-400">Magic Rollback to any verified state. Surgical precision—fix only what&apos;s broken.</p>
+              <h3 className="text-xl font-semibold mb-3">Audit Trail</h3>
+              <p className="text-gray-400 mb-4">
+                Cryptographic verification. Tamper-proof logs. Export for compliance.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>SHA-256 cryptographic hashing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Tamper-proof logs</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Export for compliance</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -140,6 +189,59 @@ export default function Home() {
             <p className="mt-6 text-gray-400 italic border-t border-border pt-6">
               This is like git for your agent&apos;s memory — but automatic.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Production Trust */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
+            Production-ready from day one
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
+              <p className="text-3xl font-bold text-primary mb-2">p50: &lt;100ms</p>
+              <p className="text-gray-400">Median recall latency</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
+              <p className="text-3xl font-bold text-primary mb-2">p95: &lt;200ms</p>
+              <p className="text-gray-400">95th percentile recall</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
+              <p className="text-3xl font-bold text-primary mb-2">99.9% uptime</p>
+              <p className="text-gray-400">Target SLA</p>
+            </div>
+          </div>
+          <p className="text-center text-gray-400">
+            Your data is yours — export anytime, no lock-in.
+          </p>
+        </div>
+      </section>
+
+      {/* Integrations */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
+            Works with your stack
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">Python SDK</h3>
+              <p className="text-sm text-gray-400">pip install novyx</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">LangChain</h3>
+              <p className="text-sm text-gray-400">Native memory + checkpointer</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">OpenClaw</h3>
+              <p className="text-sm text-gray-400">Skills available</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">REST API</h3>
+              <p className="text-sm text-gray-400">Works with any HTTP client</p>
+            </div>
           </div>
         </div>
       </section>
@@ -197,6 +299,33 @@ export default function Home() {
               <p className="text-gray-200">
                 <span className="font-semibold text-white">Clawdbot</span>, our internal AI assistant, runs on Novyx Core. It remembers context across 100+ conversations and rolls back when needed.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Coming Soon */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
+            Coming soon
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">CrewAI plugin</h3>
+              <p className="text-gray-400 text-sm">Native CrewAI integration for multi-agent coordination</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">AutoGen integration</h3>
+              <p className="text-gray-400 text-sm">Seamless memory persistence for AutoGen agents</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Self-hosted option</h3>
+              <p className="text-gray-400 text-sm">Run Novyx Core on your own infrastructure</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Memory namespaces (multi-agent)</h3>
+              <p className="text-gray-400 text-sm">Isolated memory spaces for different agents and teams</p>
             </div>
           </div>
         </div>
