@@ -33,11 +33,8 @@ results = nx.recall("communication preferences")
 print(results)
 # [{"content": "User prefers dark mode and hates email follow-ups", "score": 0.89}]
 
-# Protected action (Pro tier - includes security checks)
-try:
-    nx.act("send_email", {"to": "user@example.com"})
-except NovyxSecurityError as e:
-    print(f"Blocked: {e}")
+# Start trace session (Pro tier)
+nx.trace_create("agent-1", metadata={"task": "send_email"})
 
 # Rollback (Pro tier)
 nx.rollback(target="2025-01-30T14:00:00Z")`}
@@ -118,8 +115,13 @@ nx.rollback(target="2025-01-30T14:00:00Z")`}
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.act(action, params)</td>
-                  <td className="py-2 text-gray-400">Protected action</td>
+                  <td className="py-2 font-mono">nx.audit(limit, since)</td>
+                  <td className="py-2 text-gray-400">Audit trail</td>
+                  <td className="py-2 text-gray-400">All</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.trace_create(agent_id)</td>
+                  <td className="py-2 text-gray-400">Start trace session</td>
                   <td className="py-2 text-gray-400">Pro+</td>
                 </tr>
                 <tr className="border-b border-border">
