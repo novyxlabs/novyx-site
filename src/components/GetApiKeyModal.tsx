@@ -13,6 +13,7 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [apiKey, setApiKey] = useState('')
   const [copied, setCopied] = useState(false)
 
@@ -32,6 +33,7 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
       setOpen(false)
     }
     setError('')
+    setSuccess('')
     setCopied(false)
     setApiKey('')
     setEmail('')
@@ -41,6 +43,7 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
     event.preventDefault()
     setLoading(true)
     setError('')
+    setSuccess('')
 
     const trimmedEmail = email.trim()
 
@@ -60,7 +63,7 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
 
       const key = data?.api_key || data?.key || data?.apiKey
       if (!key) {
-        setError('Request succeeded but no API key was returned.')
+        setSuccess('Check your email to verify and activate your API key')
         return
       }
 
@@ -173,6 +176,7 @@ export default function GetApiKeyModal({ label, className, isOpen, onClose, onKe
                   className="w-full px-4 py-3 rounded-lg bg-[#0D1117] border border-[#30363D] focus:border-primary focus:outline-none transition-colors disabled:opacity-50"
                 />
                 {error && <p className="text-sm text-red-400">{error}</p>}
+                {success && <p className="text-sm text-green-400">{success}</p>}
                 <div className="flex gap-3">
                   <button
                     type="button"
