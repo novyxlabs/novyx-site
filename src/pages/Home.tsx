@@ -267,7 +267,7 @@ export default function Home() {
                 Your assistant remembers user preferences, past conversations, and context — across sessions, forever.
               </p>
               <blockquote className="border-l-2 border-primary pl-4 text-sm text-gray-400 italic">
-                "My Clawdbot assistant uses Novyx to remember everything about my projects, goals, and preferences. It gives me a daily brief with full context." — Blake, Novyx Labs
+                "I use Novyx to remember everything about my projects, goals, and preferences. It gives me a daily brief with full context." — Blake, Novyx Labs
               </blockquote>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
@@ -290,14 +290,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Clawdbot Callout */}
+          {/* OpenClaw Callout */}
           <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
             <div className="flex items-start gap-3">
               <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               <p className="text-gray-200">
-                <span className="font-semibold text-white">Clawdbot</span>, our internal AI assistant, runs on Novyx Core. It remembers context across 100+ conversations and rolls back when needed.
+                Our <span className="font-semibold text-white">OpenClaw skills</span> run on Novyx Core — persistent memory across 100+ conversations with rollback when needed.
               </p>
             </div>
           </div>

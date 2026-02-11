@@ -7,7 +7,6 @@ interface ServiceStatus {
 }
 
 const INITIAL_SERVICES: ServiceStatus[] = [
-  { name: 'RAM API', url: 'https://novyx-ram-api.fly.dev/health', status: 'checking' },
   { name: 'Novyx Core API', url: 'https://novyx-ram-api.fly.dev/health', status: 'checking' },
 ]
 

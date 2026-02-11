@@ -67,7 +67,7 @@ function UsageCard({ title, used, limit, isLifetime }: UsageCardProps) {
 
       <p className="text-sm text-gray-400">
         {isUnlimited ? 'Unlimited' : `${percentage.toFixed(1)}% used`}
-        {isLifetime && !isUnlimited && ' (lifetime)'}
+        {isLifetime && !isUnlimited && ' (resets monthly)'}
       </p>
     </div>
   )
