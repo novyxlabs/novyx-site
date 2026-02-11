@@ -15,7 +15,7 @@ export default function Errors() {
     {
       code: '403',
       error: 'Rollback limit reached',
-      meaning: 'Used all free rollbacks (3 lifetime)',
+      meaning: 'Used all free rollbacks (3/month)',
       fix: 'Upgrade to Pro for unlimited rollbacks',
     },
     {
@@ -76,7 +76,7 @@ export default function Errors() {
       description: "You've used all rollbacks available on your tier.",
       response: `{
   "error": "rollback_limit_reached",
-  "message": "Free tier allows 3 lifetime rollbacks. Upgrade for more.",
+  "message": "Free tier allows 3 rollbacks per month. Upgrade for more.",
   "used": 3,
   "limit": 3
 }`,

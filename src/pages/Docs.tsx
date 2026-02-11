@@ -33,11 +33,11 @@ results = nx.recall("communication preferences")
 print(results)
 # [{"content": "User prefers dark mode and hates email follow-ups", "score": 0.89}]
 
-# Start trace session (Pro tier)
+# Start trace session (Pro tier only)
 nx.trace_create("agent-1", metadata={"task": "send_email"})
 
 # Rollback (Pro tier)
-nx.rollback(target="2025-01-30T14:00:00Z")`}
+nx.rollback(target="2026-02-11T14:00:00Z")`}
             />
           </div>
         </section>
@@ -60,7 +60,7 @@ nx.rollback(target="2025-01-30T14:00:00Z")`}
                 code={`{
   "id": "urn:uuid:abc123...",
   "hash": "sha256:def456...",
-  "created_at": "2025-01-31T12:00:00Z"
+  "created_at": "2026-02-11T12:00:00Z"
 }`}
               />
             </div>
@@ -83,7 +83,7 @@ nx.rollback(target="2025-01-30T14:00:00Z")`}
     {
       "observation": "User prefers dark mode",
       "score": 0.85,
-      "created_at": "2025-01-31T12:00:00Z"
+      "created_at": "2026-02-11T12:00:00Z"
     }
   ]
 }`}
@@ -127,7 +127,7 @@ nx.rollback(target="2025-01-30T14:00:00Z")`}
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.rollback(target)</td>
                   <td className="py-2 text-gray-400">Magic Rollback</td>
-                  <td className="py-2 text-gray-400">Pro+</td>
+                  <td className="py-2 text-gray-400">All (3/mo Free, Unlimited Pro+)</td>
                 </tr>
               </tbody>
             </table>

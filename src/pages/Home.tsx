@@ -374,7 +374,7 @@ export default function Home() {
               <p className="text-gray-400">tamper-proof hashing</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="text-2xl font-semibold">4 lines</p>
+              <p className="text-2xl font-semibold">3 lines</p>
               <p className="text-gray-400">to get started</p>
             </div>
           </div>

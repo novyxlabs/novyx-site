@@ -18,7 +18,7 @@ const rows = [
   { label: 'Semantic search', values: ['✅', '✅', '✅'] },
   { label: 'Anomaly alerts', values: ['❌', '✅', '✅'] },
   { label: 'Trace audit', values: ['❌', '✅', '✅'] },
-  { label: 'Magic Rollback', values: ['Limited', '✅', '✅'] },
+  { label: 'Magic Rollback', values: ['3/month', '✅', '✅'] },
   { label: 'Circuit breaker', values: ['❌', '❌', '✅'] },
   { label: 'Audit retention', values: ['7 days', '30 days', '90 days'] },
   { label: 'Support', values: ['Community', 'Email', 'Priority'] },
@@ -107,11 +107,6 @@ export default function Pricing() {
                     <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
                       <span className="flex items-center gap-2">
                         {value}
-                        {row.highlight?.[index] && value === 'Unlimited' && (
-                          <span className="text-xs px-1.5 py-0.5 rounded bg-green-500/20 text-green-400">
-                            Pro
-                          </span>
-                        )}
                       </span>
                     </td>
                   ))}
