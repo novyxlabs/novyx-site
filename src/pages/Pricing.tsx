@@ -3,7 +3,7 @@ import UpgradeButton from '../components/UpgradeButton'
 
 const tiers = [
   { name: 'Free', price: '$0/mo' },
-  { name: 'Pro', price: '$49/mo', highlighted: true, callout: 'Most popular for production agents' },
+  { name: 'Pro', price: '$49/mo', highlighted: true, callout: 'Everything you need to ship production agents' },
   { name: 'Enterprise', price: '$299/mo' },
 ]
 
@@ -16,11 +16,12 @@ const rows = [
     highlight: [false, true, true],
   },
   { label: 'Semantic search', values: ['✅', '✅', '✅'] },
-  { label: 'Anomaly alerts', values: ['❌', '✅', '✅'] },
-  { label: 'Trace audit', values: ['❌', '✅', '✅'] },
-  { label: 'Magic Rollback', values: ['3/month', '✅', '✅'] },
-  { label: 'Circuit breaker', values: ['❌', '❌', '✅'] },
   { label: 'Audit retention', values: ['7 days', '30 days', '90 days'] },
+  { label: 'Memory Spaces', values: ['❌', '✅', '✅'], pro: true },
+  { label: 'Execution Traces', values: ['❌', '✅', '✅'], pro: true },
+  { label: 'Anomaly Alerts', values: ['❌', '✅', '✅'], pro: true },
+  { label: 'Conflict Resolution', values: ['Auto', 'Auto', 'Auto + Manual'] },
+  { label: 'Circuit Breaker', values: ['❌', '❌', '✅'] },
   { label: 'Support', values: ['Community', 'Email', 'Priority'] },
   { label: 'SLA', values: ['—', '99.5%', '99.9%'] },
 ]
@@ -44,7 +45,7 @@ const faqs = [
   },
   {
     q: 'Do I need security features for basic memory?',
-    a: 'No. Free tier gives you persistent memory and basic features. Upgrade to Pro when you need unlimited rollbacks, anomaly alerts, and full security auditing.',
+    a: 'No. Free tier gives you persistent memory and basic features. Upgrade to Pro when you need unlimited rollbacks, Memory Spaces, Execution Traces, anomaly alerts, and full security auditing.',
   },
   {
     q: 'What happens if I hit my API limit?',
@@ -52,7 +53,7 @@ const faqs = [
   },
   {
     q: 'Do you support self-hosting?',
-    a: 'Enterprise tier includes on-prem deployment options.',
+    a: 'Self-hosted deployment is on our roadmap for Q2 2026. Enterprise tier will include on-prem options. Join our Discord for updates.',
   },
   {
     q: 'Is my data secure?',
@@ -87,7 +88,7 @@ export default function Pricing() {
                       {tier.name}
                       {tier.highlighted && (
                         <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
-                          Most Popular
+                          Popular
                         </span>
                       )}
                     </div>
@@ -137,6 +138,57 @@ export default function Pricing() {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* Feature Descriptions */}
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Memory Spaces</h3>
+            <p className="text-sm text-gray-400">
+              Share memory between agents or team members. Collaborate without duplicating data.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Execution Traces</h3>
+            <p className="text-sm text-gray-400">
+              Debug your agent's decision-making. See exactly what happened and when.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Anomaly Alerts</h3>
+            <p className="text-sm text-gray-400">
+              Get notified when your agent behaves unexpectedly. Catch issues before users do.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Conflict Resolution</h3>
+            <p className="text-sm text-gray-400">
+              Vector clocks automatically handle concurrent writes. Enterprise adds manual review option.
+            </p>
+          </div>
+        </div>
+
+        {/* What's in Pro */}
+        <div className="mt-12 rounded-xl border-2 border-primary/40 bg-primary/5 p-8">
+          <h2 className="text-2xl font-semibold mb-2 text-center">What&apos;s in Pro</h2>
+          <p className="text-gray-400 text-center mb-6">Everything you need to ship production agents — $49/mo</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              'Unlimited memories & rollbacks',
+              'Memory sharing between agents',
+              'Execution traces for debugging',
+              'Anomaly detection alerts',
+              '30-day audit history',
+              'Email support',
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-2 text-sm">
+                <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-gray-200">{item}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Magic Rollback callout */}

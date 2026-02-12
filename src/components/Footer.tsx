@@ -16,7 +16,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-sm text-gray-400">
-              Constitutional infrastructure for AI agents.
+              Persistent memory + rollback for AI agents.
             </p>
           </div>
 

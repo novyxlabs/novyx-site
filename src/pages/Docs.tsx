@@ -36,7 +36,7 @@ print(results)
 # Start trace session (Pro tier only)
 nx.trace_create("agent-1", metadata={"task": "send_email"})
 
-# Rollback (Pro tier)
+# Rollback (Free: 3/month, Pro/Enterprise: unlimited)
 nx.rollback(target="2026-02-11T14:00:00Z")`}
             />
           </div>
