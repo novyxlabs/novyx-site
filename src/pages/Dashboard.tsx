@@ -141,6 +141,11 @@ export default function Dashboard() {
         },
       })
 
+      if (response.status === 402) {
+        window.location.href = '/pricing'
+        return
+      }
+
       if (!response.ok) {
         throw new Error('Failed to get billing portal URL')
       }
