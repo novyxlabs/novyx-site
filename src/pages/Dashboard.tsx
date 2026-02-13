@@ -16,6 +16,7 @@ function maskApiKey(key: string): string {
 }
 
 function formatNumber(num: number): string {
+  if (num == null) return '0'
   if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`
   if (num >= 1000) return `${(num / 1000).toFixed(1)}k`
   return num.toLocaleString()
@@ -159,15 +160,15 @@ export default function Dashboard() {
   }
 
   const hasWarning = usage && (
-    getPercentage(usage.memories.used, usage.memories.limit) >= 80 ||
-    getPercentage(usage.api_calls.used, usage.api_calls.limit) >= 80 ||
-    getPercentage(usage.rollbacks.used, usage.rollbacks.limit) >= 80
+    getPercentage(usage.memories?.used ?? 0, usage.memories?.limit ?? 0) >= 80 ||
+    getPercentage(usage.api_calls?.used ?? 0, usage.api_calls?.limit ?? 0) >= 80 ||
+    getPercentage(usage.rollbacks?.used ?? 0, usage.rollbacks?.limit ?? 0) >= 80
   )
 
   const hasDanger = usage && (
-    getPercentage(usage.memories.used, usage.memories.limit) >= 95 ||
-    getPercentage(usage.api_calls.used, usage.api_calls.limit) >= 95 ||
-    getPercentage(usage.rollbacks.used, usage.rollbacks.limit) >= 95
+    getPercentage(usage.memories?.used ?? 0, usage.memories?.limit ?? 0) >= 95 ||
+    getPercentage(usage.api_calls?.used ?? 0, usage.api_calls?.limit ?? 0) >= 95 ||
+    getPercentage(usage.rollbacks?.used ?? 0, usage.rollbacks?.limit ?? 0) >= 95
   )
 
   return (
@@ -283,18 +284,18 @@ export default function Dashboard() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <UsageCard
                 title="Memories"
-                used={usage.memories.used}
-                limit={usage.memories.limit}
+                used={usage.memories?.used ?? 0}
+                limit={usage.memories?.limit ?? 0}
               />
               <UsageCard
                 title="API Calls"
-                used={usage.api_calls.used}
-                limit={usage.api_calls.limit}
+                used={usage.api_calls?.used ?? 0}
+                limit={usage.api_calls?.limit ?? 0}
               />
               <UsageCard
                 title="Rollbacks"
-                used={usage.rollbacks.used}
-                limit={usage.rollbacks.limit}
+                used={usage.rollbacks?.used ?? 0}
+                limit={usage.rollbacks?.limit ?? 0}
                 isLifetime={usage.tier === 'Free'}
               />
             </div>
