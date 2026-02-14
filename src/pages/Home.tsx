@@ -242,10 +242,6 @@ export default function Home() {
               <p className="text-sm text-gray-400">Native memory + checkpointer</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">OpenClaw</h3>
-              <p className="text-sm text-gray-400">Skills available</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">REST API</h3>
               <p className="text-sm text-gray-400">Works with any HTTP client</p>
             </div>
@@ -297,17 +293,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* OpenClaw Callout */}
-          <div className="rounded-xl border border-primary/30 bg-primary/5 p-6">
-            <div className="flex items-start gap-3">
-              <svg className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <p className="text-gray-200">
-                Our <span className="font-semibold text-white">OpenClaw skills</span> run on Novyx Core — persistent memory across 100+ conversations with rollback when needed.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
