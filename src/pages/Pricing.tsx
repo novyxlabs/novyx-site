@@ -1,65 +1,94 @@
 import GetApiKeyModal from '../components/GetApiKeyModal'
+import ContactModal from '../components/ContactModal'
 import UpgradeButton from '../components/UpgradeButton'
 
 const tiers = [
-  { name: 'Free', price: '$0/mo' },
-  { name: 'Pro', price: '$49/mo', highlighted: true, callout: 'Everything you need to ship production agents' },
-  { name: 'Enterprise', price: '$299/mo' },
+  { name: 'Free', price: '$0/mo', tagline: 'For experimenting and side projects' },
+  { name: 'Starter', price: '$12/mo', tagline: 'For indie developers and personal agents', badge: 'Best Value' },
+  { name: 'Pro', price: '$39/mo', tagline: 'For teams and production workloads', highlighted: true, badge: 'Most Popular' },
+  { name: 'Enterprise', price: '$199/mo', tagline: 'For regulated industries and scale' },
 ]
 
-const rows = [
-  { label: 'Memories', values: ['5,000', 'Unlimited', 'Unlimited'] },
-  { label: 'API calls', values: ['5,000/mo', '100,000/mo', 'Unlimited'] },
-  {
-    label: 'Rollbacks',
-    values: ['3/month', 'Unlimited', 'Unlimited'],
-    highlight: [false, true, true],
-  },
-  { label: 'Semantic search', values: ['✅', '✅', '✅'] },
-  { label: 'Audit retention', values: ['7 days', '30 days', '90 days'] },
-  { label: 'Memory Spaces', values: ['❌', '✅', '✅'], pro: true },
-  { label: 'Execution Traces', values: ['❌', '✅', '✅'], pro: true },
-  { label: 'Anomaly Alerts', values: ['❌', '✅', '✅'], pro: true },
-  { label: 'Conflict Resolution', values: ['Auto', 'Auto', 'Auto + Manual'] },
-  { label: 'Circuit Breaker', values: ['❌', '❌', '✅'] },
-  { label: 'Support', values: ['Community', 'Email', 'Priority'] },
-  { label: 'SLA', values: ['—', '99.5%', '99.9%'] },
+const quotaRows = [
+  { label: 'Memories', values: ['5,000', '25,000', 'Unlimited', 'Unlimited'] },
+  { label: 'API Calls', values: ['5,000/mo', '25,000/mo', '100,000/mo', 'Unlimited'] },
+  { label: 'Rollbacks', values: ['10/mo', '50/mo', 'Unlimited', 'Unlimited'] },
+  { label: 'Rate Limit', values: ['1,000/min', '10,000/min', '10,000/min', '10,000/min'] },
+]
+
+const coreRows = [
+  { label: 'Semantic Search', values: ['✅', '✅', '✅', '✅'] },
+  { label: 'Memory Spaces (CRUD)', values: ['✅', '✅', '✅', '✅'] },
+  { label: 'Circuit Breaker', values: ['✅', '✅', '✅', '✅'] },
+  { label: 'Conflict Resolution', values: ['Reject only', 'All strategies', 'All strategies', 'All strategies'] },
+]
+
+const intelligenceRows = [
+  { label: 'AI Rollback Suggestions', values: ['—', '✅', '✅', '✅'] },
+  { label: 'Audit Export', values: ['—', '✅', '✅', '✅'] },
+  { label: 'Async Rollback Jobs', values: ['—', '—', '✅', '✅'] },
+  { label: 'Memory Space Sharing', values: ['—', '—', '✅', '✅'] },
+  { label: 'Execution Traces (RSA-signed)', values: ['—', '—', '✅', '✅'] },
+  { label: 'Anomaly Alerts', values: ['—', '—', '✅', '✅'] },
+  { label: 'Audit Verification', values: ['—', '—', '✅', '✅'] },
+]
+
+const complianceRows = [
+  { label: 'Audit Retention', values: ['7 days', '14 days', '30 days', '90 days'] },
+  { label: 'Memory Version History', values: ['—', '—', '—', '✅'] },
+  { label: 'SSO Ready', values: ['—', '—', '—', '✅'] },
+  { label: 'SLA', values: ['—', '—', '99.5%', '99.9%'] },
+  { label: 'Support', values: ['Community', 'Community', 'Email', 'Priority'] },
 ]
 
 const faqs = [
   {
-    q: "What's the difference between Novyx and Mem0?",
-    a: 'Mem0 is memory-only. Novyx is memory + security. We add tamper detection, threat alerts, Magic Rollback, and cryptographic audit trails. Same price, more protection.',
+    q: 'Is OpenClaw required to use Novyx?',
+    a: 'No. Novyx is a standalone API with a Python SDK. OpenClaw integration is one of many ways to use it. Works with any AI agent framework.',
   },
   {
-    q: 'What happens when I use all my free rollbacks?',
-    a: "You'll be prompted to upgrade. Your memories and data are safe - you just can't roll back until you upgrade.",
+    q: 'What happens when I hit my limit?',
+    a: "Your agent keeps working. Memory operations gracefully degrade — we never crash your agent. You'll get clear error messages with your usage stats and upgrade path.",
   },
   {
-    q: 'Do rollback limits reset?',
-    a: 'Free tier rollbacks are 3 per month. Pro and Enterprise get unlimited rollbacks.',
+    q: 'Can I upgrade or downgrade anytime?',
+    a: 'Yes. Upgrades take effect immediately. Downgrades apply at the end of your billing cycle.',
   },
   {
-    q: 'Can I upgrade mid-month?',
-    a: 'Yes, upgrades are immediate. Your new limits apply right away.',
+    q: 'Do you offer annual pricing?',
+    a: 'Not yet. Coming soon with a discount.',
   },
   {
-    q: 'Do I need security features for basic memory?',
-    a: 'No. Free tier gives you persistent memory and basic features. Upgrade to Pro when you need unlimited rollbacks, Memory Spaces, Execution Traces, anomaly alerts, and full security auditing.',
+    q: "What's the difference between memories and API calls?",
+    a: 'A memory is a stored observation. An API call is any request to the API (store, search, list, delete, rollback). A single agent interaction typically uses 2-3 API calls.',
   },
   {
-    q: 'What happens if I hit my API limit?',
-    a: "We'll send you a warning at 80%. If you go over, requests will be queued, not dropped. Upgrade anytime.",
+    q: 'What are Memory Spaces?',
+    a: 'Scoped namespaces that let you organize agent memories by project, client, or context. CRUD is available on all plans. Sharing spaces across tenants requires Pro.',
   },
   {
-    q: 'Do you support self-hosting?',
-    a: 'Self-hosted deployment is on our roadmap for Q2 2026. Enterprise tier will include on-prem options. Join our Discord for updates.',
+    q: "What's the Circuit Breaker?",
+    a: "Built-in protection that detects and stops runaway agent loops, data exfiltration attempts, and suspicious financial operations. Included free on every plan because safety shouldn't be a premium feature.",
   },
   {
-    q: 'Is my data secure?',
-    a: 'Every memory is SHA-256 hashed. Tamper detection is automatic. Pro adds unlimited Magic Rollback. Enterprise adds compliance certifications.',
+    q: 'What are Execution Traces?',
+    a: "A cryptographic audit trail of every step your agent takes — thoughts, actions, observations, outputs. Each step is hash-chained and the final trace is RSA-4096 signed. Independently verifiable proof of what your agent did and why. Available on Pro and above.",
+  },
+  {
+    q: 'How is Novyx different from Mem0?',
+    a: 'Novyx is the only agent memory layer with point-in-time rollback, hash-chained audit trails, RSA-signed execution traces, anomaly detection, and circuit breaker protection. We built for the world where agents are autonomous and need accountability, not just recall.',
   },
 ]
+
+function SectionHeader({ title }: { title: string }) {
+  return (
+    <tr className="border-t-2 border-primary/30">
+      <td colSpan={5} className="px-4 py-3 text-sm font-semibold text-primary bg-primary/5">
+        {title}
+      </td>
+    </tr>
+  )
+}
 
 export default function Pricing() {
   return (
@@ -68,7 +97,7 @@ export default function Pricing() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Simple, transparent pricing</h1>
           <p className="text-xl text-gray-400">
-            Start free. Scale as you grow. Only pay for security when you need it.
+            Start free. Scale as you grow. Only pay for what you need.
           </p>
         </div>
 
@@ -86,33 +115,71 @@ export default function Pricing() {
                   >
                     <div className="flex items-center gap-2">
                       {tier.name}
-                      {tier.highlighted && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">
-                          Popular
+                      {tier.badge && (
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${
+                          tier.highlighted
+                            ? 'bg-primary/20 text-primary'
+                            : 'bg-emerald-500/20 text-emerald-400'
+                        }`}>
+                          {tier.badge}
                         </span>
                       )}
                     </div>
                     <div className="mt-1 text-lg font-semibold">{tier.price}</div>
-                    {tier.callout && (
-                      <div className="mt-1 text-xs text-primary font-normal">{tier.callout}</div>
-                    )}
+                    <div className="mt-1 text-xs text-gray-400 font-normal">{tier.tagline}</div>
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {rows.map((row) => (
+              <SectionHeader title="Quotas" />
+              {quotaRows.map((row) => (
                 <tr key={row.label} className="border-t border-border">
                   <td className="px-4 py-4 text-gray-400">{row.label}</td>
                   {row.values.map((value, index) => (
                     <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
-                      <span className="flex items-center gap-2">
-                        {value}
-                      </span>
+                      {value}
                     </td>
                   ))}
                 </tr>
               ))}
+
+              <SectionHeader title="Core Features" />
+              {coreRows.map((row) => (
+                <tr key={row.label} className="border-t border-border">
+                  <td className="px-4 py-4 text-gray-400">{row.label}</td>
+                  {row.values.map((value, index) => (
+                    <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+
+              <SectionHeader title="Intelligence & Control" />
+              {intelligenceRows.map((row) => (
+                <tr key={row.label} className="border-t border-border">
+                  <td className="px-4 py-4 text-gray-400">{row.label}</td>
+                  {row.values.map((value, index) => (
+                    <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+
+              <SectionHeader title="Compliance & Enterprise" />
+              {complianceRows.map((row) => (
+                <tr key={row.label} className="border-t border-border">
+                  <td className="px-4 py-4 text-gray-400">{row.label}</td>
+                  {row.values.map((value, index) => (
+                    <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+
               <tr className="border-t border-border bg-[#111827]">
                 <td className="px-4 py-5 text-gray-400">Get started</td>
                 <td className="px-4 py-5">
@@ -123,16 +190,23 @@ export default function Pricing() {
                 </td>
                 <td className="px-4 py-5">
                   <UpgradeButton
-                    tier="Pro"
-                    label="Start Pro"
-                    className="block w-full text-center py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
+                    tier="Starter"
+                    label="Start Building"
+                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
                   />
                 </td>
                 <td className="px-4 py-5">
                   <UpgradeButton
-                    tier="Enterprise"
-                    label="Start Enterprise"
-                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
+                    tier="Pro"
+                    label="Go Pro"
+                    className="block w-full text-center py-3 px-6 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors cursor-pointer disabled:opacity-50"
+                  />
+                </td>
+                <td className="px-4 py-5">
+                  <ContactModal
+                    label="Talk to Us"
+                    plan="Enterprise"
+                    className="block w-full text-center py-3 px-6 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium transition-colors cursor-pointer"
                   />
                 </td>
               </tr>
@@ -145,13 +219,13 @@ export default function Pricing() {
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Memory Spaces</h3>
             <p className="text-sm text-gray-400">
-              Share memory between agents or team members. Collaborate without duplicating data.
+              Scoped namespaces to organize agent memories by project, client, or context. CRUD on all plans. Sharing across tenants on Pro+.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Execution Traces</h3>
             <p className="text-sm text-gray-400">
-              Debug your agent's decision-making. See exactly what happened and when.
+              Cryptographic audit trail of every agent step — hash-chained and RSA-4096 signed. Independently verifiable proof of what your agent did and why.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
@@ -163,7 +237,7 @@ export default function Pricing() {
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Conflict Resolution</h3>
             <p className="text-sm text-gray-400">
-              Vector clocks automatically handle concurrent writes. Enterprise adds manual review option.
+              Handle concurrent writes gracefully. Free tier uses reject strategy. Starter+ unlocks all strategies including last-write-wins and merge.
             </p>
           </div>
         </div>
@@ -171,12 +245,12 @@ export default function Pricing() {
         {/* What's in Pro */}
         <div className="mt-12 rounded-xl border-2 border-primary/40 bg-primary/5 p-8">
           <h2 className="text-2xl font-semibold mb-2 text-center">What&apos;s in Pro</h2>
-          <p className="text-gray-400 text-center mb-6">Everything you need to ship production agents — $49/mo</p>
+          <p className="text-gray-400 text-center mb-6">Everything you need to ship production agents — $39/mo</p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               'Unlimited memories & rollbacks',
               'Memory sharing between agents',
-              'Execution traces for debugging',
+              'RSA-signed execution traces',
               'Anomaly detection alerts',
               '30-day audit history',
               'Email support',

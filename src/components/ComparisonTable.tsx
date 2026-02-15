@@ -6,6 +6,9 @@ const rows = [
   { feature: 'Tamper detection', mem0: false, langsmith: false, novyx: true },
   { feature: 'Cryptographic audit', mem0: false, langsmith: 'Basic', novyx: true },
   { feature: 'Circuit breaker', mem0: false, langsmith: false, novyx: true },
+  { feature: 'Execution traces', mem0: false, langsmith: true, novyx: true },
+  { feature: 'Conflict resolution', mem0: false, langsmith: false, novyx: true },
+  { feature: 'Memory sharing', mem0: 'Basic', langsmith: false, novyx: true },
 ]
 
 function Cell({ value }: { value: boolean | string }) {

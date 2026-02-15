@@ -1,6 +1,23 @@
 export default function Changelog() {
   const releases = [
     {
+      version: 'v1.3.0',
+      date: 'Feb 14, 2026',
+      title: '4-Tier Pricing, Execution Traces & Feature Gating Updates',
+      changes: [
+        'New 4-tier pricing: Free ($0), Starter ($12/mo), Pro ($39/mo), Enterprise ($199/mo)',
+        'Execution Traces now live on Pro+ — RSA-4096 signed, hash-chained audit trails',
+        'Context Spaces (formerly Memory Namespaces) shipped on all tiers',
+        'Memory Space Sharing live on Pro+',
+        'AI Rollback Suggestions available on Starter+',
+        'Free tier rollbacks increased from 3/month to 10/month',
+        'Starter tier: 25,000 memories, 25,000 API calls/mo, 50 rollbacks/mo',
+        'Conflict Resolution: reject-only on Free, all strategies on Starter+',
+        'Audit Export and Audit Verification now available',
+        'Anomaly Alerts live on Pro+',
+      ],
+    },
+    {
       version: 'v1.2.0',
       date: 'Feb 8, 2026',
       title: 'Pricing Simplification & Novyx Core Launch',

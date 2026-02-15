@@ -3,7 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import UpgradeButton from '../components/UpgradeButton'
 
 interface UsageData {
-  tier: 'Free' | 'Pro' | 'Enterprise'
+  tier: 'Free' | 'Starter' | 'Pro' | 'Enterprise'
   memories: { used: number; limit: number }
   api_calls: { used: number; limit: number }
   rollbacks: { used: number; limit: number }
@@ -30,6 +30,7 @@ function getPercentage(used: number, limit: number): number {
 function getTierColor(tier: string): string {
   switch (tier) {
     case 'Free': return 'bg-gray-500'
+    case 'Starter': return 'bg-emerald-500'
     case 'Pro': return 'bg-indigo-500'
     case 'Enterprise': return 'bg-purple-500'
     default: return 'bg-gray-500'
@@ -122,7 +123,18 @@ export default function Dashboard() {
       }
 
       const data = await response.json()
-      setUsage(data)
+      // Normalize: backend may return "used" or "current", "resets_at" or "period"
+      const normalize = (bucket: any) => ({
+        used: bucket?.used ?? bucket?.current ?? 0,
+        limit: bucket?.limit ?? 0,
+      })
+      setUsage({
+        tier: data.tier,
+        memories: normalize(data.memories),
+        api_calls: normalize(data.api_calls),
+        rollbacks: normalize(data.rollbacks),
+        resets_at: data.resets_at ?? data.period ?? '',
+      })
     } catch {
       setError('Failed to connect to API. Please try again.')
     } finally {
@@ -257,14 +269,14 @@ export default function Dashboard() {
                 <span className={`px-3 py-1 rounded-full text-sm font-medium text-white ${getTierColor(usage.tier)}`}>
                   {usage.tier}
                 </span>
-                {usage.tier === 'Free' && (
+                {(usage.tier === 'Free' || usage.tier === 'Starter') && (
                   <UpgradeButton
                     tier="Pro"
                     label="Upgrade to Pro"
                     className="px-3 py-1 text-sm bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-colors"
                   />
                 )}
-                {usage.tier !== 'Free' && (
+                {usage.tier !== 'Free' && usage.tier !== 'Starter' && (
                   <button
                     onClick={handleManageBilling}
                     disabled={billingLoading}

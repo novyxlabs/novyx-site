@@ -36,7 +36,7 @@ print(results)
 # Start trace session (Pro tier only)
 nx.trace_create("agent-1", metadata={"task": "send_email"})
 
-# Rollback (Free: 3/month, Pro/Enterprise: unlimited)
+# Rollback (Free: 10/month, Starter: 50/month, Pro+: unlimited)
 nx.rollback(target="2026-02-11T14:00:00Z")`}
             />
           </div>
@@ -105,7 +105,7 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
               </thead>
               <tbody>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.remember(content, tags=[])</td>
+                  <td className="py-2 font-mono">nx.remember(observation, tags=[])</td>
                   <td className="py-2 text-gray-400">Store a memory</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
@@ -127,7 +127,7 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.rollback(target)</td>
                   <td className="py-2 text-gray-400">Magic Rollback</td>
-                  <td className="py-2 text-gray-400">All (3/mo Free, Unlimited Pro+)</td>
+                  <td className="py-2 text-gray-400">All (10/mo Free, 50/mo Starter, Unlimited Pro+)</td>
                 </tr>
               </tbody>
             </table>

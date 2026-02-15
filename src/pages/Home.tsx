@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
 import ComparisonTable from '../components/ComparisonTable'
+import ContactModal from '../components/ContactModal'
 import GetApiKeyModal from '../components/GetApiKeyModal'
 import UpgradeButton from '../components/UpgradeButton'
 
@@ -110,7 +111,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">✓</span>
-                  <span>Share across agents with Spaces <span className="text-xs text-primary">(Pro)</span></span>
+                  <span>Share across agents with Spaces <span className="text-xs text-primary">(Pro+)</span></span>
                 </li>
               </ul>
             </div>
@@ -133,6 +134,10 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">✓</span>
                   <span>Surgical precision</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>AI-suggested rollback points <span className="text-xs text-primary">(Starter+)</span></span>
                 </li>
               </ul>
             </div>
@@ -158,7 +163,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">✓</span>
-                  <span>Anomaly alerts when something&apos;s wrong <span className="text-xs text-primary">(Pro)</span></span>
+                  <span>Anomaly alerts when something&apos;s wrong <span className="text-xs text-primary">(Pro+)</span></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>RSA-signed execution traces <span className="text-xs text-primary">(Pro+)</span></span>
                 </li>
               </ul>
             </div>
@@ -217,7 +226,7 @@ export default function Home() {
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
               <p className="text-3xl font-bold text-primary mb-2">99.9% uptime</p>
-              <p className="text-gray-400">Target SLA</p>
+              <p className="text-gray-400">SLA (Enterprise)</p>
             </div>
           </div>
           <p className="text-center text-gray-400">
@@ -288,7 +297,7 @@ export default function Home() {
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-lg font-semibold mb-3">Multi-Agent Memory Sharing</h3>
               <p className="text-gray-400">
-                Multiple agents sharing the same memory layer. One learns, all benefit.
+                Multiple agents sharing the same memory layer via Context Spaces. One learns, all benefit. Live on Pro+.
               </p>
             </div>
           </div>
@@ -308,8 +317,8 @@ export default function Home() {
               <p className="text-gray-400 text-sm">Run Novyx Core on your own infrastructure. Coming Q2 2026.</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Memory namespaces</h3>
-              <p className="text-gray-400 text-sm">Isolated memory spaces for different agents and teams. Coming Q2 2026.</p>
+              <h3 className="text-lg font-semibold mb-2">Annual pricing</h3>
+              <p className="text-gray-400 text-sm">Pay annually and save. Coming soon.</p>
             </div>
           </div>
         </div>
@@ -360,14 +369,14 @@ export default function Home() {
       {/* Inline Pricing */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-xl font-semibold mb-1">Free</h3>
               <p className="text-gray-400 text-sm mb-4">$0/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
                 <li>5,000 memories</li>
                 <li>5,000 API calls/mo</li>
-                <li>3 rollbacks/mo</li>
+                <li>10 rollbacks/mo</li>
                 <li>7-day audit</li>
               </ul>
               <GetApiKeyModal
@@ -375,9 +384,27 @@ export default function Home() {
                 className="inline-flex items-center justify-center w-full gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors text-sm"
               />
             </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+              <h3 className="text-xl font-semibold mb-1">Starter</h3>
+              <p className="text-gray-400 text-sm mb-4">$12/mo</p>
+              <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
+                <li>25,000 memories</li>
+                <li>25,000 API calls/mo</li>
+                <li>50 rollbacks/mo</li>
+                <li>14-day audit</li>
+              </ul>
+              <UpgradeButton
+                tier="Starter"
+                label="Start Building"
+                className="inline-flex items-center justify-center w-full gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors text-sm cursor-pointer"
+              />
+            </div>
             <div className="rounded-xl border-2 border-primary bg-[#18181B] p-6 text-center">
-              <h3 className="text-xl font-semibold mb-1">Pro</h3>
-              <p className="text-primary text-sm mb-4">$49/mo</p>
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <h3 className="text-xl font-semibold">Pro</h3>
+                <span className="text-xs px-2 py-0.5 rounded-full bg-primary/20 text-primary">Most Popular</span>
+              </div>
+              <p className="text-primary text-sm mb-4">$39/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
                 <li>Unlimited memories</li>
                 <li>100,000 API calls/mo</li>
@@ -386,22 +413,22 @@ export default function Home() {
               </ul>
               <UpgradeButton
                 tier="Pro"
-                label="Start Pro"
+                label="Go Pro"
                 className="inline-flex items-center justify-center w-full gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2.5 rounded-lg font-medium transition-colors text-sm cursor-pointer"
               />
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-xl font-semibold mb-1">Enterprise</h3>
-              <p className="text-gray-400 text-sm mb-4">$299/mo</p>
+              <p className="text-gray-400 text-sm mb-4">$199/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
                 <li>Unlimited memories</li>
                 <li>Unlimited API calls</li>
                 <li>Unlimited rollbacks</li>
                 <li>90-day audit</li>
               </ul>
-              <UpgradeButton
-                tier="Enterprise"
-                label="Start Enterprise"
+              <ContactModal
+                label="Talk to Us"
+                plan="Enterprise"
                 className="inline-flex items-center justify-center w-full gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors text-sm cursor-pointer"
               />
             </div>

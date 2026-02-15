@@ -15,13 +15,19 @@ export default function Errors() {
     {
       code: '403',
       error: 'Rollback limit reached',
-      meaning: 'Used all free rollbacks (3/month)',
-      fix: 'Upgrade to Pro for unlimited rollbacks',
+      meaning: 'Used all free rollbacks (10/month)',
+      fix: 'Upgrade to Starter (50/mo) or Pro (unlimited) for more rollbacks',
     },
     {
       code: '429',
       error: 'Rate limit exceeded',
-      meaning: 'Too many API calls this month',
+      meaning: 'Too many requests per minute',
+      fix: 'Slow down request frequency',
+    },
+    {
+      code: '429',
+      error: 'API calls exhausted',
+      meaning: 'Monthly API call quota reached',
       fix: 'Wait for monthly reset or upgrade tier',
     },
     {
@@ -44,7 +50,7 @@ export default function Errors() {
       title: 'Invalid API Key',
       description: 'Your API key is either missing, malformed, or has been revoked.',
       response: `{
-  "error": "invalid_api_key",
+  "error": "auth.invalid_key",
   "message": "The provided API key is invalid or has been revoked."
 }`,
       steps: [
@@ -76,12 +82,13 @@ export default function Errors() {
       description: "You've used all rollbacks available on your tier.",
       response: `{
   "error": "rollback_limit_reached",
-  "message": "Free tier allows 3 rollbacks per month. Upgrade for more.",
-  "used": 3,
-  "limit": 3
+  "message": "Free tier allows 10 rollbacks per month. Upgrade for more.",
+  "used": 10,
+  "limit": 10
 }`,
       steps: [
-        'Free tier: 3 rollbacks per month (resets monthly)',
+        'Free tier: 10 rollbacks per month (resets monthly)',
+        'Starter: 50 rollbacks per month',
         'Pro/Enterprise: Unlimited rollbacks',
         'Upgrade at /pricing to restore rollback access',
       ],
@@ -89,9 +96,23 @@ export default function Errors() {
     {
       code: '429',
       title: 'Rate Limit Exceeded',
+      description: "You're sending too many requests per minute.",
+      response: `{
+  "error": "rate_limit.exceeded",
+  "message": "Too many requests. Please slow down.",
+}`,
+      steps: [
+        'Add a short delay between requests',
+        'Implement exponential backoff on retries',
+        'Batch operations where possible',
+      ],
+    },
+    {
+      code: '429',
+      title: 'API Calls Exhausted',
       description: "You've exceeded your monthly API call quota.",
       response: `{
-  "error": "rate_limit_exceeded",
+  "error": "api_calls_exhausted",
   "message": "Monthly API limit reached. Resets on the 1st.",
   "used": 5000,
   "limit": 5000,
