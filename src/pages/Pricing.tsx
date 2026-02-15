@@ -43,40 +43,40 @@ const complianceRows = [
 
 const faqs = [
   {
-    q: 'Is OpenClaw required to use Novyx?',
-    a: 'No. Novyx is a standalone API with a Python SDK. OpenClaw integration is one of many ways to use it. Works with any AI agent framework.',
-  },
-  {
     q: 'What happens when I hit my limit?',
-    a: "Your agent keeps working. Memory operations gracefully degrade — we never crash your agent. You'll get clear error messages with your usage stats and upgrade path.",
+    a: "Your agent keeps working. Memory operations gracefully degrade — we return a 429 with your current usage, the limit, your plan, and an upgrade URL. We never crash your agent, and we never silently drop requests.",
   },
   {
-    q: 'Can I upgrade or downgrade anytime?',
-    a: 'Yes. Upgrades take effect immediately. Downgrades apply at the end of your billing cycle.',
+    q: 'Do rollback limits reset?',
+    a: 'Yes, monthly. Free tier gets 10 rollbacks/month. Starter gets 50/month. Pro and Enterprise get unlimited.',
   },
   {
-    q: 'Do you offer annual pricing?',
-    a: 'Not yet. Coming soon with a discount.',
+    q: 'Can I upgrade mid-month?',
+    a: 'Yes, upgrades are immediate. Your new limits and features apply right away. Downgrades take effect at the end of your billing cycle.',
   },
   {
-    q: "What's the difference between memories and API calls?",
-    a: 'A memory is a stored observation. An API call is any request to the API (store, search, list, delete, rollback). A single agent interaction typically uses 2-3 API calls.',
+    q: 'Do I need security features for basic memory?',
+    a: 'No. Free tier gives you persistent memory, semantic search, Memory Spaces, and Circuit Breaker protection. Upgrade to Starter when you want conflict resolution strategies, audit export, and AI rollback suggestions. Upgrade to Pro for execution traces, anomaly alerts, and memory sharing.',
   },
   {
-    q: 'What are Memory Spaces?',
-    a: 'Scoped namespaces that let you organize agent memories by project, client, or context. CRUD is available on all plans. Sharing spaces across tenants requires Pro.',
+    q: 'What happens if I hit my API limit?',
+    a: "You'll get usage pressure warnings as you approach your limit. If you exceed it, requests return a 429 with your usage stats and upgrade path. Your data is always safe.",
   },
   {
-    q: "What's the Circuit Breaker?",
-    a: "Built-in protection that detects and stops runaway agent loops, data exfiltration attempts, and suspicious financial operations. Included free on every plan because safety shouldn't be a premium feature.",
+    q: 'Do you support self-hosting?',
+    a: 'Self-hosted deployment is on our roadmap for Q2 2026. Join our Discord for updates.',
+  },
+  {
+    q: 'Is my data secure?',
+    a: 'Every memory is SHA-256 hashed and chain-linked. Tamper detection is automatic on all tiers. Circuit Breaker protects against runaway loops and data exfiltration. Pro adds RSA-signed execution traces and anomaly detection. Enterprise adds 90-day audit retention and memory version history.',
   },
   {
     q: 'What are Execution Traces?',
-    a: "A cryptographic audit trail of every step your agent takes — thoughts, actions, observations, outputs. Each step is hash-chained and the final trace is RSA-4096 signed. Independently verifiable proof of what your agent did and why. Available on Pro and above.",
+    a: "A cryptographic record of every step your agent takes — thoughts, actions, observations, outputs. Each step is hash-chained and the final trace is RSA-4096 signed. You get independently verifiable proof of what your agent did, when, and why. Available on Pro+.",
   },
   {
-    q: 'How is Novyx different from Mem0?',
-    a: 'Novyx is the only agent memory layer with point-in-time rollback, hash-chained audit trails, RSA-signed execution traces, anomaly detection, and circuit breaker protection. We built for the world where agents are autonomous and need accountability, not just recall.',
+    q: "What's the Circuit Breaker?",
+    a: "Built-in protection that detects and stops runaway agent loops, data exfiltration attempts, and suspicious financial operations. It runs on every plan including Free — because safety shouldn't be a premium feature.",
   },
 ]
 
@@ -97,7 +97,7 @@ export default function Pricing() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Simple, transparent pricing</h1>
           <p className="text-xl text-gray-400">
-            Start free. Scale as you grow. Only pay for what you need.
+            Start free. Scale as you grow.
           </p>
         </div>
 
@@ -219,25 +219,25 @@ export default function Pricing() {
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Memory Spaces</h3>
             <p className="text-sm text-gray-400">
-              Scoped namespaces to organize agent memories by project, client, or context. CRUD on all plans. Sharing across tenants on Pro+.
+              Organize agent memories into scoped namespaces. CRUD available on all plans. Share across tenants on Pro+.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Execution Traces</h3>
             <p className="text-sm text-gray-400">
-              Cryptographic audit trail of every agent step — hash-chained and RSA-4096 signed. Independently verifiable proof of what your agent did and why.
+              RSA-4096 signed record of every agent step. Hash-chained integrity. Independently verifiable. Pro+.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Anomaly Alerts</h3>
             <p className="text-sm text-gray-400">
-              Get notified when your agent behaves unexpectedly. Catch issues before users do.
+              Behavioral baselines detect velocity spikes, suspicious patterns, and potential tampering. Pro+.
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Conflict Resolution</h3>
             <p className="text-sm text-gray-400">
-              Handle concurrent writes gracefully. Free tier uses reject strategy. Starter+ unlocks all strategies including last-write-wins and merge.
+              Vector clocks handle concurrent writes. Free tier gets auto-reject. Starter+ gets all strategies including manual review.
             </p>
           </div>
         </div>
@@ -270,6 +270,14 @@ export default function Pricing() {
           <p className="text-gray-200">
             <span className="font-semibold text-primary">Magic Rollback</span> — Undo agent mistakes instantly.{' '}
             <span className="text-gray-400">Pro tier includes unlimited rollbacks.</span>
+          </p>
+        </div>
+
+        {/* Circuit Breaker note */}
+        <div className="mt-4 p-4 rounded-lg border border-emerald-500/30 bg-emerald-500/5 text-center">
+          <p className="text-gray-200">
+            <span className="font-semibold text-emerald-400">Circuit Breaker</span> protection is included free on every plan.{' '}
+            <span className="text-gray-400">Safety shouldn&apos;t be a premium feature.</span>
           </p>
         </div>
 

@@ -15,8 +15,8 @@ export default function Errors() {
     {
       code: '403',
       error: 'Rollback limit reached',
-      meaning: 'Used all free rollbacks (10/month)',
-      fix: 'Upgrade to Starter (50/mo) or Pro (unlimited) for more rollbacks',
+      meaning: 'Used all rollbacks for your tier (Free: 10/mo, Starter: 50/mo)',
+      fix: 'Upgrade to Starter ($12/mo) for 50/month, or Pro ($39/mo) for unlimited',
     },
     {
       code: '429',
@@ -34,7 +34,7 @@ export default function Errors() {
       code: '409',
       error: 'Conflict detected',
       meaning: 'Memory conflicts with existing data',
-      fix: 'Use conflict_strategy: "lww" or "merge"',
+      fix: 'Use conflict_strategy: "lww" or "manual" (Starter+ only. Free: reject only)',
     },
     {
       code: '500',
@@ -72,7 +72,7 @@ export default function Errors() {
 }`,
       steps: [
         'Delete old or unused memories via the API',
-        'Upgrade to Pro (unlimited memories) at /pricing',
+        'Upgrade to Starter (25,000 memories) or Pro (unlimited) at /pricing',
         'Use tags to organize and bulk-delete old memories',
       ],
     },
@@ -135,8 +135,9 @@ export default function Errors() {
   "existing_id": "urn:uuid:abc123"
 }`,
       steps: [
-        'Use conflict_strategy: "lww" (last-write-wins) to overwrite',
-        'Use conflict_strategy: "merge" to combine data',
+        'Use conflict_strategy: "lww" (last-write-wins) to overwrite (Starter+ only)',
+        'Use conflict_strategy: "manual" to flag for human review (Starter+ only)',
+        'Free tier only supports conflict_strategy: "reject" (returns 409, no write occurs)',
         'Generate a new unique ID for your memory',
         'Check if the memory already exists before writing',
       ],

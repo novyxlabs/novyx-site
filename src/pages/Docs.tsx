@@ -129,6 +129,16 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
                   <td className="py-2 text-gray-400">Magic Rollback</td>
                   <td className="py-2 text-gray-400">All (10/mo Free, 50/mo Starter, Unlimited Pro+)</td>
                 </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.audit_export(since, until)</td>
+                  <td className="py-2 text-gray-400">Export audit logs</td>
+                  <td className="py-2 text-gray-400">Starter+</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.conflict_resolve(strategy)</td>
+                  <td className="py-2 text-gray-400">Set conflict strategy</td>
+                  <td className="py-2 text-gray-400">Starter+ (Free: reject only)</td>
+                </tr>
               </tbody>
             </table>
           </div>

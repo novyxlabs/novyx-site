@@ -1,49 +1,47 @@
-const rows = [
-  { feature: 'Persistent memory', mem0: true, langsmith: false, novyx: true },
-  { feature: 'Semantic search', mem0: true, langsmith: false, novyx: true },
-  { feature: 'Security layer', mem0: false, langsmith: false, novyx: true },
-  { feature: 'Rollback', mem0: false, langsmith: false, novyx: true },
-  { feature: 'Tamper detection', mem0: false, langsmith: false, novyx: true },
-  { feature: 'Cryptographic audit', mem0: false, langsmith: 'Basic', novyx: true },
-  { feature: 'Circuit breaker', mem0: false, langsmith: false, novyx: true },
-  { feature: 'Execution traces', mem0: false, langsmith: true, novyx: true },
-  { feature: 'Conflict resolution', mem0: false, langsmith: false, novyx: true },
-  { feature: 'Memory sharing', mem0: 'Basic', langsmith: false, novyx: true },
+const features = [
+  {
+    title: 'Persistent Memory',
+    description: 'Semantic search across all agent memories. Sub-100ms recall. Survives restarts, crashes, and deploys.',
+  },
+  {
+    title: 'Point-in-Time Rollback',
+    description: "Restore agent state to any moment. Preview before executing. Like git for your agent's brain.",
+  },
+  {
+    title: 'Cryptographic Audit Trail',
+    description: 'Every operation SHA-256 hashed and chained. Tamper-proof. Exportable for compliance.',
+  },
+  {
+    title: 'Execution Traces',
+    description: 'RSA-4096 signed record of every agent step. Independently verifiable proof of what your agent did and why.',
+  },
+  {
+    title: 'Circuit Breaker',
+    description: 'Automatic protection against runaway loops, data exfiltration, and suspicious operations. Free on every plan.',
+  },
+  {
+    title: 'Anomaly Detection',
+    description: 'Behavioral baselines detect unusual agent activity. Get alerted before users notice.',
+  },
+  {
+    title: 'Conflict Resolution',
+    description: 'Vector clocks handle concurrent writes. Last-write-wins, reject, or flag for manual review.',
+  },
+  {
+    title: 'Memory Sharing',
+    description: 'Multiple agents, one memory layer. Scoped namespaces with tenant-level access control.',
+  },
 ]
-
-function Cell({ value }: { value: boolean | string }) {
-  if (value === true) {
-    return <span className="text-green-500">✓</span>
-  }
-  if (value === false) {
-    return <span className="text-gray-600">—</span>
-  }
-  return <span className="text-gray-300">{value}</span>
-}
 
 export default function ComparisonTable() {
   return (
-    <div className="overflow-x-auto rounded-xl border border-border bg-[#0D1117]">
-      <table className="w-full text-left text-sm">
-        <thead className="bg-[#111827] text-gray-300">
-          <tr>
-            <th className="px-4 py-3 font-medium">Feature</th>
-            <th className="px-4 py-3 font-medium">Mem0</th>
-            <th className="px-4 py-3 font-medium">LangSmith</th>
-            <th className="px-4 py-3 font-medium text-white">Novyx</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.feature} className="border-t border-border">
-              <td className="px-4 py-3 text-gray-300">{row.feature}</td>
-              <td className="px-4 py-3"><Cell value={row.mem0} /></td>
-              <td className="px-4 py-3"><Cell value={row.langsmith} /></td>
-              <td className="px-4 py-3"><Cell value={row.novyx} /></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="grid md:grid-cols-2 gap-6">
+      {features.map((feature) => (
+        <div key={feature.title} className="rounded-xl border border-border bg-[#18181B] p-6">
+          <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+          <p className="text-sm text-gray-400">{feature.description}</p>
+        </div>
+      ))}
     </div>
   )
 }

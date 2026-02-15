@@ -225,8 +225,8 @@ export default function Home() {
               <p className="text-gray-400">95th percentile recall</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
-              <p className="text-3xl font-bold text-primary mb-2">99.9% uptime</p>
-              <p className="text-gray-400">SLA (Enterprise)</p>
+              <p className="text-3xl font-bold text-primary mb-2">Up to 99.9%</p>
+              <p className="text-gray-400">uptime SLA</p>
             </div>
           </div>
           <p className="text-center text-gray-400">
@@ -258,10 +258,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Comparison */}
+      {/* Why Teams Choose Novyx */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8">Why Novyx?</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8">Why teams choose Novyx</h2>
           <ComparisonTable />
         </div>
       </section>
