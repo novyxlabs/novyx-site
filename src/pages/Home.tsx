@@ -66,20 +66,33 @@ export default function Home() {
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-lg font-semibold mb-3">The Memory Problem</h3>
               <p className="text-gray-400">
-                ChatGPT forgets. Claude forgets. Every conversation starts from zero.
-                Your context window is a lie — it resets every session.
+                Most AI conversations start from zero. Your context window is temporary — it resets every session. Everything your agent learned yesterday is gone today.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-lg font-semibold mb-3">The Security Problem</h3>
               <p className="text-gray-400">
-                Anyone can poison your agent&apos;s memory. Inject bad data. Corrupt
+                Anyone can corrupt your agent&apos;s memory. Inject bad data. Corrupt
                 months of context. And there&apos;s no rollback. No audit trail. No
                 proof of what happened.
               </p>
             </div>
           </div>
           <p className="mt-6 text-gray-300 font-medium">Novyx fixes both.</p>
+        </div>
+      </section>
+
+      {/* Origin Story */}
+      <section className="py-12 border-t border-border">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <blockquote className="rounded-xl border border-primary/30 bg-primary/5 p-8">
+            <p className="text-lg text-gray-200 italic leading-relaxed">
+              &ldquo;Built after my agent mass-deleted user data. No audit trail. No way to prove what happened. No undo. Three days of manual reconstruction. Never again.&rdquo;
+            </p>
+            <footer className="mt-4 text-sm text-gray-400">
+              — Blake Heron, Founder
+            </footer>
+          </blockquote>
         </div>
       </section>
 
@@ -241,14 +254,10 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
             Works with your stack
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">Python SDK</h3>
               <p className="text-sm text-gray-400">pip install novyx</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
-              <h3 className="text-lg font-semibold mb-2">LangChain</h3>
-              <p className="text-sm text-gray-400">Native memory + checkpointer</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">REST API</h3>
@@ -275,12 +284,9 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-lg font-semibold mb-3">AI Assistants That Remember</h3>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400">
                 Your assistant remembers user preferences, past conversations, and context — across sessions, forever.
               </p>
-              <div className="mt-4 rounded-lg border border-primary/30 bg-primary/5 px-4 py-3 text-sm text-gray-300">
-                Built after my agent mass-deleted user data. No audit trail. No way to prove what happened. No undo. Three days of manual reconstruction. Never again.
-              </div>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-lg font-semibold mb-3">Agents That Can Undo Mistakes</h3>
