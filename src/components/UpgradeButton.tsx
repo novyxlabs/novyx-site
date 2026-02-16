@@ -41,13 +41,19 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
     }
 
     try {
+      const controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 15000)
+
       const response = await fetch('https://novyx-ram-api.fly.dev/v1/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       })
+
+      clearTimeout(timeout)
 
       if (!response.ok) {
         const data = await response.json().catch(() => ({}))
@@ -63,7 +69,11 @@ export default function UpgradeButton({ tier, label, className }: UpgradeButtonP
       // Redirect to Stripe checkout
       window.location.href = data.checkout_url
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        setError('Service temporarily unavailable, please try again.')
+      } else {
+        setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+      }
       setLoading(false)
     }
   }
