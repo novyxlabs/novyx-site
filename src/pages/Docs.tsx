@@ -25,8 +25,12 @@ export default function Docs() {
 # Initialize with your API key
 nx = Novyx(api_key="YOUR_API_KEY")
 
-# Store a memory
-nx.remember("User prefers dark mode and hates email follow-ups")
+# Store a temporary memory (expires in 1 hour)
+nx.remember("Session context: user is debugging auth flow",
+            tags=["session"], ttl_seconds=3600)
+
+# Store a permanent memory (default, no TTL)
+nx.remember("User prefers dark mode", tags=["prefs"])
 
 # Search memories (semantic)
 results = nx.recall("communication preferences")
@@ -52,7 +56,7 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
               code={`curl -X POST https://novyx-ram-api.fly.dev/v1/memories \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
-  -d '{"observation": "User prefers dark mode"}'`}
+  -d '{"observation": "User prefers dark mode", "ttl_seconds": 3600}'`}
             />
             <div className="mt-4">
               <CodeBlock
@@ -62,6 +66,7 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
   "uuid": "abc123...",
   "hash": "sha256:def456...",
   "created_at": "2026-02-11T12:00:00Z",
+  "expires_at": "2026-02-11T13:00:00Z",
   "message": "Memory stored successfully",
   "conflict_detected": false,
   "conflict_metadata": null
@@ -87,7 +92,8 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
     {
       "observation": "User prefers dark mode",
       "score": 0.85,
-      "created_at": "2026-02-11T12:00:00Z"
+      "created_at": "2026-02-11T12:00:00Z",
+      "expires_at": null
     }
   ]
 }`}
@@ -109,8 +115,8 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
               </thead>
               <tbody>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.remember(observation, tags=None, on_conflict=LWW)</td>
-                  <td className="py-2 text-gray-400">Store a memory (ConflictStrategy: LWW, REJECT, MANUAL)</td>
+                  <td className="py-2 font-mono">nx.remember(observation, tags=None, on_conflict=LWW, ttl_seconds=None)</td>
+                  <td className="py-2 text-gray-400">Store a memory. Optional TTL (60–7,776,000s) for auto-expiry.</td>
                   <td className="py-2 text-gray-400">All (REJECT only on Free)</td>
                 </tr>
                 <tr className="border-b border-border">
