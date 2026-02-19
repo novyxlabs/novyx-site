@@ -43,7 +43,7 @@ export default function Privacy() {
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li><strong>Memories:</strong> Stored until you delete them or close your account</li>
               <li><strong>API Logs:</strong> Retained for 30 days</li>
-              <li><strong>Audit Trails:</strong> Retained according to your plan tier (7 days Free, 30 days Pro, 90 days Enterprise)</li>
+              <li><strong>Audit Trails:</strong> Retained according to your plan tier (7 days Free, 14 days Starter, 30 days Pro, 90 days Enterprise)</li>
               <li><strong>Account Information:</strong> Retained while your account is active</li>
             </ul>
           </section>

@@ -30,8 +30,8 @@ nx.remember("User prefers dark mode and hates email follow-ups")
 
 # Search memories (semantic)
 results = nx.recall("communication preferences")
-print(results)
-# [{"content": "User prefers dark mode and hates email follow-ups", "score": 0.89}]
+print(results.memories[0].observation)
+# "User prefers dark mode and hates email follow-ups"
 
 # Start trace session (Pro tier only)
 nx.trace_create("agent-1", metadata={"task": "send_email"})
@@ -59,8 +59,12 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
                 language="json"
                 code={`{
   "id": "urn:uuid:abc123...",
+  "uuid": "abc123...",
   "hash": "sha256:def456...",
-  "created_at": "2026-02-11T12:00:00Z"
+  "created_at": "2026-02-11T12:00:00Z",
+  "message": "Memory stored successfully",
+  "conflict_detected": false,
+  "conflict_metadata": null
 }`}
               />
             </div>
@@ -105,9 +109,9 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
               </thead>
               <tbody>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.remember(observation, tags=[])</td>
-                  <td className="py-2 text-gray-400">Store a memory</td>
-                  <td className="py-2 text-gray-400">All</td>
+                  <td className="py-2 font-mono">nx.remember(observation, tags=None, on_conflict=LWW)</td>
+                  <td className="py-2 text-gray-400">Store a memory (ConflictStrategy: LWW, REJECT, MANUAL)</td>
+                  <td className="py-2 text-gray-400">All (REJECT only on Free)</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.recall(query, limit=5)</td>
@@ -133,11 +137,6 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
                   <td className="py-2 font-mono">nx.audit_export(since, until)</td>
                   <td className="py-2 text-gray-400">Export audit logs</td>
                   <td className="py-2 text-gray-400">Starter+</td>
-                </tr>
-                <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.conflict_resolve(strategy)</td>
-                  <td className="py-2 text-gray-400">Set conflict strategy</td>
-                  <td className="py-2 text-gray-400">Starter+ (Free: reject only)</td>
                 </tr>
               </tbody>
             </table>

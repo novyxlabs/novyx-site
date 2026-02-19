@@ -50,8 +50,12 @@ export default function Errors() {
       title: 'Invalid API Key',
       description: 'Your API key is either missing, malformed, or has been revoked.',
       response: `{
-  "error": "auth.invalid_key",
-  "message": "The provided API key is invalid or has been revoked."
+  "error": "novyx_ram.v1.auth.invalid_key",
+  "code": "novyx_ram.v1.auth.invalid_key",
+  "message": "Invalid API key",
+  "detail": "Invalid API key format",
+  "docs": "https://novyxlabs.com/errors#auth-invalid_key",
+  "error_key": "invalid_api_key"
 }`,
       steps: [
         'Verify your key starts with nram_',
@@ -65,10 +69,12 @@ export default function Errors() {
       title: 'Memory Limit Reached',
       description: "You've hit the memory storage limit for your current tier.",
       response: `{
-  "error": "memory_limit_reached",
+  "error": "novyx_ram.v1.quota.memory_limit_reached",
+  "code": "novyx_ram.v1.quota.memory_limit_reached",
   "message": "Memory limit of 5000 reached for Free tier.",
   "current": 5000,
-  "limit": 5000
+  "limit": 5000,
+  "docs": "https://novyxlabs.com/errors#quota-memory_limit_reached"
 }`,
       steps: [
         'Delete old or unused memories via the API',
@@ -81,10 +87,12 @@ export default function Errors() {
       title: 'Rollback Limit Reached',
       description: "You've used all rollbacks available on your tier.",
       response: `{
-  "error": "rollback_limit_reached",
+  "error": "novyx_ram.v1.quota.rollback_limit_reached",
+  "code": "novyx_ram.v1.quota.rollback_limit_reached",
   "message": "Free tier allows 10 rollbacks per month. Upgrade for more.",
   "used": 10,
-  "limit": 10
+  "limit": 10,
+  "docs": "https://novyxlabs.com/errors#quota-rollback_limit_reached"
 }`,
       steps: [
         'Free tier: 10 rollbacks per month (resets monthly)',
@@ -98,8 +106,10 @@ export default function Errors() {
       title: 'Rate Limit Exceeded',
       description: "You're sending too many requests per minute.",
       response: `{
-  "error": "rate_limit.exceeded",
+  "error": "novyx_ram.v1.rate_limit.exceeded",
+  "code": "novyx_ram.v1.rate_limit.exceeded",
   "message": "Too many requests. Please slow down.",
+  "docs": "https://novyxlabs.com/errors#rate_limit-exceeded"
 }`,
       steps: [
         'Add a short delay between requests',
@@ -112,11 +122,13 @@ export default function Errors() {
       title: 'API Calls Exhausted',
       description: "You've exceeded your monthly API call quota.",
       response: `{
-  "error": "api_calls_exhausted",
+  "error": "novyx_ram.v1.quota.api_calls_exhausted",
+  "code": "novyx_ram.v1.quota.api_calls_exhausted",
   "message": "Monthly API limit reached. Resets on the 1st.",
   "used": 5000,
   "limit": 5000,
-  "resets_at": "2026-03-01T00:00:00Z"
+  "resets_at": "2026-03-01T00:00:00Z",
+  "docs": "https://novyxlabs.com/errors#quota-api_calls_exhausted"
 }`,
       steps: [
         'Wait for your monthly quota to reset on the 1st',
@@ -130,9 +142,11 @@ export default function Errors() {
       title: 'Conflict Detected',
       description: 'A memory write conflicts with existing data (e.g., duplicate ID or concurrent writes).',
       response: `{
-  "error": "conflict",
-  "message": "Memory with this ID already exists.",
-  "existing_id": "urn:uuid:abc123"
+  "error": "Conflict detected",
+  "existing_memory_id": "abc123...",
+  "existing_observation": "User prefers dark mode",
+  "similarity_score": 0.92,
+  "message": "Similar memory already exists. Use conflict_strategy=lww to overwrite."
 }`,
       steps: [
         'Use conflict_strategy: "lww" (last-write-wins) to overwrite (Starter+ only)',
@@ -147,9 +161,10 @@ export default function Errors() {
       title: 'Server Error',
       description: 'An unexpected error occurred on our servers.',
       response: `{
-  "error": "internal_server_error",
+  "error": "novyx_ram.v1.internal_server_error",
+  "code": "novyx_ram.v1.internal_server_error",
   "message": "Something went wrong. Please try again.",
-  "request_id": "req_xyz789"
+  "docs": "https://novyxlabs.com/errors#internal_server_error"
 }`,
       steps: [
         'Wait a moment and retry your request',

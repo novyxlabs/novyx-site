@@ -15,7 +15,7 @@ But memory alone isn't enough. What happens when someone poisons your agent's me
 
 Novyx Core includes Magic Rollback. Every memory write is cryptographically hashed and timestamped. When something goes wrong—and it will—you can surgically revert only the corrupted data. Your agent recovers in seconds, not hours. This is the security layer AI agents have been missing.
 
-Three lines of code. That's all it takes to add persistent, secure memory to any AI agent. We're starting with a Python SDK, with TypeScript and REST APIs coming soon. Free tier gives you 5,000 memories. No credit card required.
+Three lines of code. That's all it takes to add persistent, secure memory to any AI agent. Python SDK and REST API are live today. Free tier gives you 5,000 memories. No credit card required.
 
 Your AI finally remembers. And stays safe.
     `.trim(),

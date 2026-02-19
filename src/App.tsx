@@ -27,10 +27,12 @@ function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/errors" element={<Errors />} />
         <Route path="/changelog" element={<Changelog />} />
+        <Route path="/docs/errors" element={<Navigate to="/errors" replace />} />
         <Route path="/about" element={<Navigate to="/docs" replace />} />
         <Route path="/ram" element={<Navigate to="/" replace />} />
         <Route path="/sentinel" element={<Navigate to="/" replace />} />
         <Route path="/forge" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
   )
