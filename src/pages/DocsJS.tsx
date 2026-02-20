@@ -1,51 +1,125 @@
 import { Link } from 'react-router-dom'
 import CodeBlock from '../components/CodeBlock'
 
-export default function Docs() {
+export default function DocsJS() {
   return (
     <div className="animate-fade-in py-16 md:py-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold mb-4">API Documentation</h1>
+        <h1 className="text-4xl font-bold mb-4">JavaScript / TypeScript SDK</h1>
         <p className="text-gray-400 mb-4">
-          Everything you need to integrate Novyx Core into your AI agents.
+          Everything you need to integrate Novyx Core into your AI agents with JavaScript or TypeScript.
         </p>
         <p className="text-sm text-gray-500 mb-10">
-          Using JavaScript? <Link to="/docs/js" className="text-primary hover:text-primary-hover">JS / TS SDK docs →</Link>
+          Looking for Python? <Link to="/docs" className="text-primary hover:text-primary-hover">Python SDK docs →</Link>
         </p>
 
         <div className="mb-12 rounded-lg border border-border bg-[#18181B] p-4 text-sm text-gray-300">
-          Use the <span className="text-white">Get Free API Key</span> button to generate a key.
-          Save it immediately — you won&apos;t see it again.
+          <strong>Requirements:</strong> Node.js 18+ or any modern browser. Zero dependencies. Full API parity with the Python SDK.
         </div>
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Quick Start</h2>
-          <CodeBlock language="bash" code="pip3 install novyx" />
+          <CodeBlock language="bash" code="npm install novyx" />
           <div className="mt-6">
             <CodeBlock
-              language="python"
-              code={`from novyx import Novyx
+              language="typescript"
+              code={`import { Novyx } from 'novyx';
 
-# Initialize with your API key
-nx = Novyx(api_key="YOUR_API_KEY")
+// Initialize with your API key
+const nx = new Novyx({ apiKey: 'nram_your_key_here' });
 
-# Store a temporary memory (expires in 1 hour)
-nx.remember("Session context: user is debugging auth flow",
-            tags=["session"], ttl_seconds=3600)
+// Store a temporary memory (expires in 1 hour)
+await nx.remember('Session context: user is debugging auth flow', {
+  tags: ['session'],
+  ttlSeconds: 3600,
+});
 
-# Store a permanent memory (default, no TTL)
-nx.remember("User prefers dark mode", tags=["prefs"])
+// Store a permanent memory (default, no TTL)
+await nx.remember('User prefers dark mode', { tags: ['prefs'] });
 
-# Search memories (semantic)
-results = nx.recall("communication preferences")
-print(results.memories[0].observation)
-# "User prefers dark mode and hates email follow-ups"
+// Search memories (semantic)
+const results = await nx.recall('communication preferences');
+console.log(results.memories[0].observation);
+// "User prefers dark mode"
 
-# Start trace session (Pro tier only)
-nx.trace_create("agent-1", metadata={"task": "send_email"})
+// Start trace session (Pro tier only)
+await nx.traceCreate('agent-1', { metadata: { task: 'send_email' } });
 
-# Rollback (Free: 10/month, Starter: 50/month, Pro+: unlimited)
-nx.rollback(target="2026-02-11T14:00:00Z")`}
+// Rollback (Free: 10/month, Starter: 50/month, Pro+: unlimited)
+await nx.rollback({ target: '2026-02-11T14:00:00Z' });`}
+            />
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Sessions</h2>
+          <p className="text-gray-400 mb-4">
+            Group memories by conversation or session. A scoped session automatically tags and filters memories so they stay isolated.
+          </p>
+          <CodeBlock
+            language="typescript"
+            code={`const session = nx.session('chat-123');
+
+// Memories are automatically scoped to this session
+await session.remember('User asked about pricing');
+await session.remember('User is on the Pro plan');
+
+// Only searches memories in this session
+const memories = await session.recall('pricing');
+console.log(memories.memories[0].observation);
+// "User asked about pricing"`}
+          />
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Memory Links</h2>
+          <p className="text-gray-400 mb-4">
+            Create explicit relationships between memories to build a knowledge graph. Links are directional edges with a relation label and optional weight.
+          </p>
+          <CodeBlock
+            language="typescript"
+            code={`// Link two memories
+await nx.link('memory-uuid-1', 'memory-uuid-2', {
+  relation: 'caused_by',
+  weight: 0.9,
+});
+
+// Get all links for a memory
+const links = await nx.links('memory-uuid-1');
+console.log(links);
+// [{ source_id: "memory-uuid-1", target_id: "memory-uuid-2", relation: "caused_by", weight: 0.9 }]
+
+// Remove a link
+await nx.unlink('memory-uuid-1', 'memory-uuid-2');`}
+          />
+
+          <h3 className="text-lg font-medium mt-8 mb-4">REST Endpoints</h3>
+          <div className="mb-4">
+            <CodeBlock
+              language="bash"
+              code={`# Create a link
+curl -X POST https://novyx-ram-api.fly.dev/v1/memories/link \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"source_id": "uuid-1", "target_id": "uuid-2", "relation": "caused_by", "weight": 0.9}'`}
+            />
+          </div>
+          <div className="mb-4">
+            <CodeBlock
+              language="bash"
+              code={`# Get links for a memory
+curl "https://novyx-ram-api.fly.dev/v1/memories/uuid-1/links" \\
+  -H "Authorization: Bearer YOUR_API_KEY"`}
+            />
+          </div>
+          <div>
+            <CodeBlock
+              language="bash"
+              code={`# Delete a link
+curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"source_id": "uuid-1", "target_id": "uuid-2"}'`}
             />
           </div>
         </section>
@@ -107,77 +181,6 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
         </section>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Sessions</h2>
-          <p className="text-gray-400 mb-4">
-            Group memories by conversation or session. A scoped session automatically tags and filters memories so they stay isolated.
-          </p>
-          <CodeBlock
-            language="python"
-            code={`session = nx.session("chat-123")
-
-# Memories are automatically scoped to this session
-session.remember("User asked about pricing")
-session.remember("User is on the Pro plan")
-
-# Only searches memories in this session
-memories = session.recall("pricing")
-print(memories.memories[0].observation)
-# "User asked about pricing"`}
-          />
-        </section>
-
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Memory Links</h2>
-          <p className="text-gray-400 mb-4">
-            Create explicit relationships between memories to build a knowledge graph. Links are directional edges with a relation label and optional weight.
-          </p>
-          <CodeBlock
-            language="python"
-            code={`# Link two memories
-nx.link("memory-uuid-1", "memory-uuid-2",
-        relation="caused_by", weight=0.9)
-
-# Get all links for a memory
-links = nx.links("memory-uuid-1")
-print(links)
-# [{"source_id": "memory-uuid-1", "target_id": "memory-uuid-2", "relation": "caused_by", "weight": 0.9}]
-
-# Remove a link
-nx.unlink("memory-uuid-1", "memory-uuid-2")`}
-          />
-
-          <h3 className="text-lg font-medium mt-8 mb-4">REST Endpoints</h3>
-          <div className="mb-4">
-            <CodeBlock
-              language="bash"
-              code={`# Create a link
-curl -X POST https://novyx-ram-api.fly.dev/v1/memories/link \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{"source_id": "uuid-1", "target_id": "uuid-2", "relation": "caused_by", "weight": 0.9}'`}
-            />
-          </div>
-          <div className="mb-4">
-            <CodeBlock
-              language="bash"
-              code={`# Get links for a memory
-curl "https://novyx-ram-api.fly.dev/v1/memories/uuid-1/links" \\
-  -H "Authorization: Bearer YOUR_API_KEY"`}
-            />
-          </div>
-          <div>
-            <CodeBlock
-              language="bash"
-              code={`# Delete a link
-curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
-  -H "Authorization: Bearer YOUR_API_KEY" \\
-  -H "Content-Type: application/json" \\
-  -d '{"source_id": "uuid-1", "target_id": "uuid-2"}'`}
-            />
-          </div>
-        </section>
-
-        <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">SDK Reference</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -190,53 +193,53 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
               </thead>
               <tbody>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.remember(observation, tags=None, on_conflict=LWW, ttl_seconds=None)</td>
-                  <td className="py-2 text-gray-400">Store a memory. Optional TTL (60–7,776,000s) for auto-expiry.</td>
+                  <td className="py-2 font-mono">nx.remember(observation, opts?)</td>
+                  <td className="py-2 text-gray-400">Store a memory. Options: tags, onConflict, ttlSeconds (60–7,776,000).</td>
                   <td className="py-2 text-gray-400">All (REJECT only on Free)</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.recall(query, limit=5)</td>
-                  <td className="py-2 text-gray-400">Semantic search</td>
+                  <td className="py-2 font-mono">nx.recall(query, opts?)</td>
+                  <td className="py-2 text-gray-400">Semantic search. Options: limit (default 5).</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.session(session_id)</td>
+                  <td className="py-2 font-mono">nx.session(sessionId)</td>
                   <td className="py-2 text-gray-400">Scoped session with .remember() and .recall()</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.link(source_id, target_id, relation, weight)</td>
-                  <td className="py-2 text-gray-400">Create a link between memories</td>
+                  <td className="py-2 font-mono">nx.link(sourceId, targetId, opts?)</td>
+                  <td className="py-2 text-gray-400">Create a link between memories. Options: relation, weight.</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.unlink(source_id, target_id)</td>
+                  <td className="py-2 font-mono">nx.unlink(sourceId, targetId)</td>
                   <td className="py-2 text-gray-400">Remove a link between memories</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.links(memory_id)</td>
+                  <td className="py-2 font-mono">nx.links(memoryId)</td>
                   <td className="py-2 text-gray-400">Get all links for a memory</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.audit(limit, since)</td>
-                  <td className="py-2 text-gray-400">Audit trail</td>
+                  <td className="py-2 font-mono">nx.audit(opts?)</td>
+                  <td className="py-2 text-gray-400">Audit trail. Options: limit, since.</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.trace_create(agent_id)</td>
+                  <td className="py-2 font-mono">nx.traceCreate(agentId, opts?)</td>
                   <td className="py-2 text-gray-400">Start trace session</td>
                   <td className="py-2 text-gray-400">Pro+</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.rollback(target)</td>
-                  <td className="py-2 text-gray-400">Magic Rollback</td>
+                  <td className="py-2 font-mono">nx.rollback(opts)</td>
+                  <td className="py-2 text-gray-400">Magic Rollback. Options: target (ISO timestamp).</td>
                   <td className="py-2 text-gray-400">All (10/mo Free, 50/mo Starter, Unlimited Pro+)</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.audit_export(since, until)</td>
-                  <td className="py-2 text-gray-400">Export audit logs</td>
+                  <td className="py-2 font-mono">nx.auditExport(opts)</td>
+                  <td className="py-2 text-gray-400">Export audit logs. Options: since, until.</td>
                   <td className="py-2 text-gray-400">Starter+</td>
                 </tr>
               </tbody>

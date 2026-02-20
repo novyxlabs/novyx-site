@@ -11,6 +11,7 @@ import Terms from './pages/Terms'
 import Errors from './pages/Errors'
 import Changelog from './pages/Changelog'
 import Dashboard from './pages/Dashboard'
+import DocsJS from './pages/DocsJS'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/docs" element={<Docs />} />
+        <Route path="/docs/js" element={<DocsJS />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/status" element={<Status />} />
         <Route path="/blog" element={<Blog />} />
