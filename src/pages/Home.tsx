@@ -269,14 +269,24 @@ export default function Home() {
             Works with your stack
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+            <a
+              href="https://pypi.org/project/novyx/2.5.0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
+            >
               <h3 className="text-lg font-semibold mb-2">Python SDK</h3>
               <p className="text-sm text-gray-400">pip install novyx</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+            </a>
+            <a
+              href="https://www.npmjs.com/package/novyx"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
+            >
               <h3 className="text-lg font-semibold mb-2">JS / TS SDK</h3>
               <p className="text-sm text-gray-400">npm install novyx</p>
-            </div>
+            </a>
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">REST API</h3>
               <p className="text-sm text-gray-400">Works with any HTTP client</p>

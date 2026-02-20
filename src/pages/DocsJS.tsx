@@ -128,52 +128,151 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
           <h2 className="text-2xl font-semibold mb-4">API Reference</h2>
 
           <div className="mb-8">
-            <h3 className="text-lg font-medium mb-2">Store Memory</h3>
+            <h3 className="text-lg font-medium mb-2">POST /v1/memories — Store Memory</h3>
             <CodeBlock
               language="bash"
               code={`curl -X POST https://novyx-ram-api.fly.dev/v1/memories \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
-  -d '{"observation": "User prefers dark mode", "ttl_seconds": 3600}'`}
+  -d '{
+    "observation": "User prefers dark mode for all interfaces",
+    "tags": ["preference", "ui"],
+    "importance": 7,
+    "context": "Settings discussion",
+    "ttl_seconds": 86400,
+    "auto_link": true
+  }'`}
             />
             <div className="mt-4">
               <CodeBlock
                 language="json"
                 code={`{
-  "id": "urn:uuid:abc123...",
-  "uuid": "abc123...",
-  "hash": "sha256:def456...",
-  "created_at": "2026-02-11T12:00:00Z",
-  "expires_at": "2026-02-11T13:00:00Z",
+  "id": "urn:uuid:a1b2c3d4-...",
+  "uuid": "urn:uuid:a1b2c3d4-...",
+  "hash": "sha256:9f86d08...",
+  "created_at": "2026-02-20T18:30:00+00:00",
   "message": "Memory stored successfully",
   "conflict_detected": false,
-  "conflict_metadata": null
+  "conflict_metadata": null,
+  "auto_links": ["urn:uuid:e5f6g7h8-..."]
 }`}
               />
             </div>
+            <p className="mt-3 text-sm text-gray-400">
+              <strong className="text-gray-300">Optional fields:</strong> agent_id, space_id, confidence (0–1), ttl_seconds (auto-expire), auto_link (link to similar memories).
+            </p>
           </div>
 
           <div className="mb-8">
-            <h3 className="text-lg font-medium mb-2">Search Memories</h3>
+            <h3 className="text-lg font-medium mb-2">GET /v1/memories/search — Semantic Search</h3>
             <CodeBlock
               language="bash"
-              code={`curl "https://novyx-ram-api.fly.dev/v1/memories/search?q=preferences&limit=5" \\
+              code={`curl "https://novyx-ram-api.fly.dev/v1/memories/search?q=user+preferences&limit=5&recency_weight=0.3&include_superseded=false" \\
   -H "Authorization: Bearer YOUR_API_KEY"`}
             />
             <div className="mt-4">
               <CodeBlock
                 language="json"
                 code={`{
-  "query": "preferences",
-  "total_results": 1,
+  "query": "user preferences",
+  "total_results": 3,
   "memories": [
     {
-      "observation": "User prefers dark mode",
-      "score": 0.85,
-      "created_at": "2026-02-11T12:00:00Z",
-      "expires_at": null
+      "uuid": "urn:uuid:a1b2c3d4-...",
+      "observation": "User prefers dark mode for all interfaces",
+      "tags": ["preference", "ui"],
+      "importance": 7,
+      "confidence": 1.0,
+      "score": 0.82,
+      "similarity": 0.91,
+      "match_confidence": 0.4928,
+      "created_at": "2026-02-20T18:30:00+00:00",
+      "expires_at": "2026-02-21T18:30:00+00:00",
+      "superseded_by": null
     }
   ]
+}`}
+              />
+            </div>
+            <div className="mt-3 text-sm text-gray-400 space-y-1">
+              <p><strong className="text-gray-300">Query params:</strong></p>
+              <ul className="list-disc list-inside space-y-1 ml-2">
+                <li><span className="font-mono text-gray-300">q</span> (required) — search query</li>
+                <li><span className="font-mono text-gray-300">limit</span> — max results (default 5, max 100)</li>
+                <li><span className="font-mono text-gray-300">min_score</span> — minimum similarity (0.0–1.0)</li>
+                <li><span className="font-mono text-gray-300">tags</span> — comma-separated tag filter</li>
+                <li><span className="font-mono text-gray-300">recency_weight</span> — blend recency into scoring (0.0 = disabled, 1.0 = fully recency-based)</li>
+                <li><span className="font-mono text-gray-300">include_superseded</span> — include replaced memories (default false)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-lg font-medium mb-2">GET /v1/memories/{'{id}'} — Get Memory</h3>
+            <CodeBlock
+              language="bash"
+              code={`curl "https://novyx-ram-api.fly.dev/v1/memories/urn:uuid:a1b2c3d4-..." \\
+  -H "Authorization: Bearer YOUR_API_KEY"`}
+            />
+            <div className="mt-4">
+              <CodeBlock
+                language="json"
+                code={`{
+  "uuid": "urn:uuid:a1b2c3d4-...",
+  "observation": "User prefers dark mode for all interfaces",
+  "context": "Settings discussion",
+  "agent_id": null,
+  "tags": ["preference", "ui"],
+  "importance": 7,
+  "confidence": 1.0,
+  "created_at": "2026-02-20T18:30:00+00:00",
+  "expires_at": "2026-02-21T18:30:00+00:00",
+  "superseded_by": null,
+  "recall_count": 3,
+  "last_recalled_at": "2026-02-20T19:45:00+00:00"
+}`}
+              />
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-lg font-medium mb-2">PATCH /v1/memories/{'{id}'} — Update Memory</h3>
+            <CodeBlock
+              language="bash"
+              code={`curl -X PATCH "https://novyx-ram-api.fly.dev/v1/memories/urn:uuid:a1b2c3d4-..." \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "importance": 9,
+    "tags": ["preference", "ui", "confirmed"]
+  }'`}
+            />
+            <p className="mt-3 text-sm text-gray-400">
+              Response has the same shape as GET /v1/memories/{'{id}'} with updated fields.
+            </p>
+            <p className="mt-2 text-sm text-gray-400">
+              <strong className="text-gray-300">Updatable fields:</strong> observation, importance, confidence, tags, superseded_by (UUID of the memory that replaces this one — marks it as outdated).
+            </p>
+          </div>
+
+          <div className="mb-8">
+            <h3 className="text-lg font-medium mb-2">GET /v1/context/now — Temporal Context</h3>
+            <CodeBlock
+              language="bash"
+              code={`curl "https://novyx-ram-api.fly.dev/v1/context/now" \\
+  -H "Authorization: Bearer YOUR_API_KEY"`}
+            />
+            <div className="mt-4">
+              <CodeBlock
+                language="json"
+                code={`{
+  "server_time_utc": "2026-02-20T20:00:00+00:00",
+  "recent_memories": [...],
+  "recent_count": 5,
+  "upcoming": [],
+  "upcoming_count": 0,
+  "last_session_at": "2026-02-20T19:45:00+00:00",
+  "seconds_since_last_session": 900
 }`}
               />
             </div>
@@ -220,6 +319,21 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.links(memoryId)</td>
                   <td className="py-2 text-gray-400">Get all links for a memory</td>
+                  <td className="py-2 text-gray-400">All</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.get(memoryId)</td>
+                  <td className="py-2 text-gray-400">Get a memory by ID</td>
+                  <td className="py-2 text-gray-400">All</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.update(memoryId, opts)</td>
+                  <td className="py-2 text-gray-400">Update a memory. Options: observation, importance, confidence, tags, supersededBy.</td>
+                  <td className="py-2 text-gray-400">All</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.contextNow()</td>
+                  <td className="py-2 text-gray-400">Temporal context — recent memories, last session, server time</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
