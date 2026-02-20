@@ -37,7 +37,7 @@ export default function CodeBlock({ tabs, code, language = 'bash' }: CodeBlockPr
                 onClick={() => setActiveTab(index)}
                 className={`px-3 py-1 text-xs rounded transition ${
                   activeTab === index
-                    ? 'text-white bg-[#30363D]'
+                    ? 'text-white bg-primary'
                     : 'text-gray-400 hover:text-white'
                 }`}
               >

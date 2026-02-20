@@ -5,12 +5,26 @@ import ContactModal from '../components/ContactModal'
 import GetApiKeyModal from '../components/GetApiKeyModal'
 import UpgradeButton from '../components/UpgradeButton'
 
-const heroCode = `from novyx import Novyx
+const heroTabs = [
+  {
+    language: 'python',
+    label: 'Python',
+    code: `from novyx import Novyx
 
-nx = Novyx(api_key="...")
-nx.remember("user prefers dark mode")
-nx.recall("user preferences")
-nx.rollback("2 hours ago")`
+nx = Novyx(api_key="nram_...")
+nx.remember("User prefers dark mode", tags=["ui"])
+memories = nx.recall("user preferences")`,
+  },
+  {
+    language: 'javascript',
+    label: 'JavaScript',
+    code: `import { Novyx } from 'novyx';
+
+const nx = new Novyx({ apiKey: 'nram_...' });
+await nx.remember('User prefers dark mode', { tags: ['ui'] });
+const memories = await nx.recall('user preferences');`,
+  },
+]
 
 const setupCode = `pip3 install novyx
 
@@ -51,7 +65,7 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <CodeBlock code={heroCode} language="python" />
+            <CodeBlock tabs={heroTabs} />
           </div>
         </div>
       </section>
