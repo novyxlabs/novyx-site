@@ -254,10 +254,14 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
             Works with your stack
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">Python SDK</h3>
               <p className="text-sm text-gray-400">pip install novyx</p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+              <h3 className="text-lg font-semibold mb-2">JS / TS SDK</h3>
+              <p className="text-sm text-gray-400">npm install novyx</p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
               <h3 className="text-lg font-semibold mb-2">REST API</h3>
