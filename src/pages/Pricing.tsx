@@ -26,6 +26,7 @@ const coreRows = [
 const intelligenceRows = [
   { label: 'AI Rollback Suggestions', values: ['—', '✅', '✅', '✅'] },
   { label: 'Audit Export', values: ['—', '✅', '✅', '✅'] },
+  { label: 'Knowledge Graph (Triples)', values: ['—', '—', '✅', '✅'] },
   { label: 'Async Rollback Jobs', values: ['—', '—', '✅', '✅'] },
   { label: 'Memory Space Sharing', values: ['—', '—', '✅', '✅'] },
   { label: 'Execution Traces (RSA-signed)', values: ['—', '—', '✅', '✅'] },
@@ -240,6 +241,12 @@ export default function Pricing() {
               Vector clocks handle concurrent writes. Free tier gets auto-reject. Starter+ gets all strategies including manual review.
             </p>
           </div>
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Knowledge Graph</h3>
+            <p className="text-sm text-gray-400">
+              Subject–predicate–object triples with automatic entity deduplication. Build entity-relationship graphs on top of flat memories. Pro+.
+            </p>
+          </div>
         </div>
 
         {/* What's in Pro */}
@@ -249,6 +256,7 @@ export default function Pricing() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               'Unlimited memories & rollbacks',
+              'Knowledge Graph (triples)',
               'Memory sharing between agents',
               'RSA-signed execution traces',
               'Anomaly detection alerts',
