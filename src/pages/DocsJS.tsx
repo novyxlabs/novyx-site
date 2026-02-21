@@ -125,6 +125,85 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
         </section>
 
         <section className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Knowledge Graph</h2>
+          <p className="text-gray-400 mb-4">
+            Store structured relationships as subject–predicate–object triples.
+            Entities are auto-created by name and deduplicated per tenant.
+            Available on <strong className="text-gray-300">Pro+</strong> plans.
+          </p>
+          <CodeBlock
+            language="typescript"
+            code={`// Create a triple (entities auto-created by name)
+await nx.triple('blake', 'founded', 'novyx labs', {
+  subjectType: 'person',
+  objectType: 'company',
+});
+
+// Query triples
+const triples = await nx.triples({ subject: 'blake' });
+console.log(triples.triples[0].predicate); // "founded"
+
+// Traverse an entity — all connections as subject or object
+const entity = await nx.entity(entityId);
+console.log(entity.as_subject);  // triples where entity is subject
+console.log(entity.as_object);   // triples where entity is object
+
+// List entities
+const entities = await nx.entities({ entityType: 'person' });
+
+// Delete a triple or entity (cascade deletes its triples)
+await nx.deleteTriple(tripleId);
+await nx.deleteEntity(entityId);`}
+          />
+
+          <h3 className="text-lg font-medium mt-8 mb-4">REST Endpoints</h3>
+          <div className="mb-4">
+            <CodeBlock
+              language="bash"
+              code={`# Create a triple
+curl -X POST https://novyx-ram-api.fly.dev/v1/knowledge/triples \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "subject": "blake",
+    "predicate": "founded",
+    "object": "novyx labs",
+    "subject_type": "person",
+    "object_type": "company"
+  }'`}
+            />
+          </div>
+          <div className="mb-4">
+            <CodeBlock
+              language="bash"
+              code={`# List triples (filter by subject, predicate, object, source_memory_id)
+curl "https://novyx-ram-api.fly.dev/v1/knowledge/triples?subject=blake&limit=10" \\
+  -H "Authorization: Bearer YOUR_API_KEY"`}
+            />
+          </div>
+          <div className="mb-4">
+            <CodeBlock
+              language="bash"
+              code={`# Traverse entity — returns all triples where entity is subject or object
+curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities/{entity_id}" \\
+  -H "Authorization: Bearer YOUR_API_KEY"`}
+            />
+          </div>
+          <div>
+            <CodeBlock
+              language="bash"
+              code={`# List entities (filter by entity_type, q= name prefix)
+curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
+  -H "Authorization: Bearer YOUR_API_KEY"`}
+            />
+          </div>
+          <p className="mt-3 text-sm text-gray-400">
+            Re-stating an existing triple updates its confidence and metadata instead of creating a duplicate.
+            Entity names are normalized to lowercase.
+          </p>
+        </section>
+
+        <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">API Reference</h2>
 
           <div className="mb-8">
@@ -335,6 +414,36 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
                   <td className="py-2 font-mono">nx.contextNow()</td>
                   <td className="py-2 text-gray-400">Temporal context — recent memories, last session, server time</td>
                   <td className="py-2 text-gray-400">All</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.triple(subject, predicate, object, opts?)</td>
+                  <td className="py-2 text-gray-400">Create a knowledge graph triple</td>
+                  <td className="py-2 text-gray-400">Pro+</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.triples(opts?)</td>
+                  <td className="py-2 text-gray-400">List/filter triples. Options: subject, predicate, object.</td>
+                  <td className="py-2 text-gray-400">Pro+</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.entities(opts?)</td>
+                  <td className="py-2 text-gray-400">List entities. Options: entityType, q.</td>
+                  <td className="py-2 text-gray-400">Pro+</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.entity(entityId)</td>
+                  <td className="py-2 text-gray-400">Traverse entity connections</td>
+                  <td className="py-2 text-gray-400">Pro+</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.deleteTriple(tripleId)</td>
+                  <td className="py-2 text-gray-400">Delete a triple</td>
+                  <td className="py-2 text-gray-400">Pro+</td>
+                </tr>
+                <tr className="border-b border-border">
+                  <td className="py-2 font-mono">nx.deleteEntity(entityId)</td>
+                  <td className="py-2 text-gray-400">Delete entity + cascade triples</td>
+                  <td className="py-2 text-gray-400">Pro+</td>
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.audit(opts?)</td>
