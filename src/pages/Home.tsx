@@ -114,9 +114,9 @@ export default function Home() {
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
-            Built on three pillars
+            Built on four pillars
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Pillar 1: Persistent Memory */}
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-xl font-semibold mb-3">Persistent Memory</h3>
@@ -195,6 +195,32 @@ export default function Home() {
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-0.5">✓</span>
                   <span>RSA-signed execution traces <span className="text-xs text-primary">(Pro+)</span></span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Pillar 4: Knowledge Graph */}
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-xl font-semibold mb-3">Knowledge Graph</h3>
+              <p className="text-gray-400 mb-4">
+                Structured relationships as subject–predicate–object triples. Auto-created entities with dedup.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Subject–predicate–object triples</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Auto-created &amp; deduplicated entities</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Entity traversal &amp; filtering</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>Cascade deletes <span className="text-xs text-primary">(Pro+)</span></span>
                 </li>
               </ul>
             </div>
