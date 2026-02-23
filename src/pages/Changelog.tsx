@@ -1,6 +1,24 @@
 export default function Changelog() {
   const releases = [
     {
+      version: 'v1.4.0',
+      date: 'Feb 19, 2026',
+      title: 'Knowledge Graph, JS/TS SDK & API Expansion',
+      changes: [
+        'Knowledge Graph API — store structured relationships as subject–predicate–object triples (Pro+)',
+        'Entity traversal and filtering with auto-dedup and cascade deletes',
+        'JavaScript / TypeScript SDK published to npm — full API parity with Python, zero dependencies, Node.js 18+ and browsers',
+        'New JS/TS docs page at /docs/js with complete examples',
+        'Session-scoped memories — nx.session() groups memories by conversation',
+        'Memory Links — explicit directional relationships between memories with relation labels and weights',
+        'New endpoints: GET /v1/memories/{id}, PATCH /v1/memories/{id}, GET /v1/context/now',
+        'Search API expanded: recency_weight, match_confidence, superseded_by, tag filtering',
+        'Store API expanded: importance, context, auto_link, confidence fields',
+        'Python/JS SDK cards on homepage now link to PyPI and npm',
+        'Hero code snippet upgraded to tabbed Python/JS toggle',
+      ],
+    },
+    {
       version: 'v1.3.0',
       date: 'Feb 14, 2026',
       title: '4-Tier Pricing, Execution Traces & Feature Gating Updates',
