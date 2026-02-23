@@ -63,6 +63,9 @@ export default function Home() {
                 View Docs
               </Link>
             </div>
+            <p className="mt-6 text-sm text-gray-400">
+              <span className="text-gray-300 font-medium">Model-agnostic.</span> Switch from Claude to GPT to local models. Your agent&apos;s memory stays.
+            </p>
           </div>
           <div>
             <CodeBlock tabs={heroTabs} />
@@ -99,12 +102,20 @@ export default function Home() {
       {/* Origin Story */}
       <section className="py-12 border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <blockquote className="rounded-xl border border-primary/30 bg-primary/5 p-8">
+          <blockquote className="rounded-xl border border-primary/30 bg-primary/5 p-8 mb-6">
             <p className="text-lg text-gray-200 italic leading-relaxed">
               &ldquo;Built after my agent mass-deleted user data. No audit trail. No way to prove what happened. No undo. Three days of manual reconstruction. Never again.&rdquo;
             </p>
             <footer className="mt-4 text-sm text-gray-400">
               — Blake Heron, Founder
+            </footer>
+          </blockquote>
+          <blockquote className="rounded-xl border border-border bg-[#18181B] p-8">
+            <p className="text-lg text-gray-200 italic leading-relaxed">
+              &ldquo;It&apos;s the first memory system I&apos;ve used that feels like it&apos;s built for agents, not just by agents. The rollback especially — knowing I can undo if I store something wrong gives me confidence to capture everything.&rdquo;
+            </p>
+            <footer className="mt-4 text-sm text-gray-400">
+              — Novyx agent, internal testing
             </footer>
           </blockquote>
         </div>
@@ -203,7 +214,7 @@ export default function Home() {
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <h3 className="text-xl font-semibold mb-3">Knowledge Graph</h3>
               <p className="text-gray-400 mb-4">
-                Structured relationships as subject–predicate–object triples. Auto-created entities with dedup.
+                Structured relationships as subject–predicate–object triples. Auto-created entities with dedup. No other memory provider ships graph traversal + rollback + cryptographic audit together.
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
@@ -224,6 +235,59 @@ export default function Home() {
                 </li>
               </ul>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Intelligence Features */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8">
+            Smarter recall, not just more storage
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Memory TTL</h3>
+              <p className="text-gray-400">
+                Session context expires automatically. Long-term knowledge stays forever. Set per-memory TTLs from 60 seconds to 90 days.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Recency-Weighted Recall</h3>
+              <p className="text-gray-400">
+                Tune search to prioritize recent context or long-term knowledge. Blend semantic relevance with recency in a single query.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Match Confidence Scoring</h3>
+              <p className="text-gray-400">
+                Every recall result includes a confidence score so your agent knows how much to trust it. Factors in similarity, rank position, and gap to the next result.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Memory Supersession</h3>
+              <p className="text-gray-400">
+                Replace outdated information cleanly. Old version archived, not deleted. Your agent always gets the latest, with full history intact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Context Spaces */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              Context Spaces
+            </h2>
+            <p className="text-xl text-gray-300 mb-4 max-w-2xl">
+              Agent A learns it, Agent B knows it. Shared memory across your entire agent fleet.
+            </p>
+            <p className="text-gray-400 max-w-2xl">
+              Context Spaces let multiple agents read and write to the same memory pool. One agent discovers a user preference, and every other agent in the space knows it instantly. No message passing, no sync logic, no stale caches.
+            </p>
+            <p className="mt-4 text-sm text-primary">Available on all tiers. Space sharing on Pro+.</p>
           </div>
         </div>
       </section>
@@ -337,31 +401,38 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-3">AI Assistants That Remember</h3>
+              <h3 className="text-lg font-semibold mb-3">Cross-Session Recall</h3>
               <p className="text-gray-400">
-                Your assistant remembers user preferences, past conversations, and context — across sessions, forever.
+                A scheduling agent that auto-recalled a contact&apos;s timezone and meeting preferences in a brand new session — without being told.
               </p>
             </div>
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-3">Agents That Can Undo Mistakes</h3>
+              <h3 className="text-lg font-semibold mb-3">30-Second Recovery</h3>
               <p className="text-gray-400">
-                Agent hallucinated? Wrote bad data? Rollback to before it happened. No data loss, no panic.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-3">Auditable AI for Production</h3>
-              <p className="text-gray-400">
-                Every agent action is logged with cryptographic proof. Know exactly what your agent did and when.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-3">Multi-Agent Memory Sharing</h3>
-              <p className="text-gray-400">
-                Multiple agents sharing the same memory layer via Context Spaces. One learns, all benefit. Live on Pro+.
+                An agent that stored bad data for 3 days. One rollback command. 30 seconds. Clean state.
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* Works with OpenClaw */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl border border-border bg-[#18181B] p-8 flex flex-col md:flex-row items-center gap-6">
+            <div className="flex-1">
+              <h3 className="text-xl font-semibold mb-2">Works with OpenClaw</h3>
+              <p className="text-gray-400">
+                4 extensions, 26 tools, drop-in persistent memory for OpenClaw agents. Add long-term memory, rollback, and audit to any OpenClaw workflow with zero configuration.
+              </p>
+            </div>
+            <Link
+              to="/docs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-white rounded-lg font-medium transition-colors hover:border-white/40 whitespace-nowrap"
+            >
+              View integration docs
+            </Link>
+          </div>
         </div>
       </section>
 
