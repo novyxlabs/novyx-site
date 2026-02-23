@@ -87,7 +87,7 @@ await nx.link('memory-uuid-1', 'memory-uuid-2', {
 // Get all links for a memory
 const links = await nx.links('memory-uuid-1');
 console.log(links);
-// [{ source_id: "memory-uuid-1", target_id: "memory-uuid-2", relation: "caused_by", weight: 0.9 }]
+// { memory_id: "memory-uuid-1", edges: [{ target_id: "memory-uuid-2", relation: "caused_by", weight: 0.9 }], total: 1 }
 
 // Remove a link
 await nx.unlink('memory-uuid-1', 'memory-uuid-2');`}
@@ -130,6 +130,7 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
             Store structured relationships as subject–predicate–object triples.
             Entities are auto-created by name and deduplicated per tenant.
             Available on <strong className="text-gray-300">Pro+</strong> plans.
+            <span className="block mt-2 text-yellow-400/80 text-xs">KG methods require SDK ≥ 2.6.1 (not yet published to npm — REST endpoints are available now).</span>
           </p>
           <CodeBlock
             language="typescript"
@@ -238,7 +239,7 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
               />
             </div>
             <p className="mt-3 text-sm text-gray-400">
-              <strong className="text-gray-300">Optional fields:</strong> agent_id, space_id, confidence (0–1), ttl_seconds (auto-expire), auto_link (link to similar memories).
+              <strong className="text-gray-300">Optional fields:</strong> agent_id, space_id, ttl_seconds (auto-expire), auto_link (link to similar memories). Confidence is set server-side.
             </p>
           </div>
 
@@ -401,13 +402,13 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.get(memoryId)</td>
+                  <td className="py-2 font-mono">nx.memory(memoryId)</td>
                   <td className="py-2 text-gray-400">Get a memory by ID</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.update(memoryId, opts)</td>
-                  <td className="py-2 text-gray-400">Update a memory. Options: observation, importance, confidence, tags, supersededBy.</td>
+                  <td className="py-2 font-mono">nx.supersede(memoryId, observation)</td>
+                  <td className="py-2 text-gray-400">Replace a memory with a new observation (marks original as superseded)</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
@@ -462,7 +463,7 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                 </tr>
                 <tr className="border-b border-border">
                   <td className="py-2 font-mono">nx.auditExport(opts)</td>
-                  <td className="py-2 text-gray-400">Export audit logs. Options: since, until.</td>
+                  <td className="py-2 text-gray-400">Export audit logs. Options: format.</td>
                   <td className="py-2 text-gray-400">Starter+</td>
                 </tr>
               </tbody>

@@ -85,7 +85,7 @@ nx.rollback(target="2026-02-11T14:00:00Z")`}
               />
             </div>
             <p className="mt-3 text-sm text-gray-400">
-              <strong className="text-gray-300">Optional fields:</strong> agent_id, space_id, confidence (0–1), ttl_seconds (auto-expire), auto_link (link to similar memories).
+              <strong className="text-gray-300">Optional fields:</strong> agent_id, space_id, ttl_seconds (auto-expire), auto_link (link to similar memories). Confidence is set server-side.
             </p>
           </div>
 
@@ -239,7 +239,7 @@ nx.link("memory-uuid-1", "memory-uuid-2",
 # Get all links for a memory
 links = nx.links("memory-uuid-1")
 print(links)
-# [{"source_id": "memory-uuid-1", "target_id": "memory-uuid-2", "relation": "caused_by", "weight": 0.9}]
+# {"memory_id": "memory-uuid-1", "edges": [{"target_id": "memory-uuid-2", "relation": "caused_by", "weight": 0.9}], "total": 1}
 
 # Remove a link
 nx.unlink("memory-uuid-1", "memory-uuid-2")`}
@@ -282,6 +282,7 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
             Store structured relationships as subject–predicate–object triples.
             Entities are auto-created by name and deduplicated per tenant.
             Available on <strong className="text-gray-300">Pro+</strong> plans.
+            <span className="block mt-2 text-yellow-400/80 text-xs">KG methods require SDK ≥ 2.6.1 (not yet published to PyPI — REST endpoints are available now).</span>
           </p>
           <CodeBlock
             language="python"
@@ -366,7 +367,7 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
               </thead>
               <tbody>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.remember(observation, tags=None, on_conflict=LWW, ttl_seconds=None)</td>
+                  <td className="py-2 font-mono">nx.remember(observation, tags=None, on_conflict=None, ttl_seconds=None)</td>
                   <td className="py-2 text-gray-400">Store a memory. Optional TTL (60–7,776,000s) for auto-expiry.</td>
                   <td className="py-2 text-gray-400">All (REJECT only on Free)</td>
                 </tr>
@@ -381,7 +382,7 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.link(source_id, target_id, relation, weight)</td>
+                  <td className="py-2 font-mono">nx.link(source_id, target_id, *, relation="related", weight=1.0)</td>
                   <td className="py-2 text-gray-400">Create a link between memories</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
@@ -396,13 +397,13 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.get(memory_id)</td>
+                  <td className="py-2 font-mono">nx.memory(memory_id)</td>
                   <td className="py-2 text-gray-400">Get a memory by ID</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.update(memory_id, **fields)</td>
-                  <td className="py-2 text-gray-400">Update a memory (observation, importance, confidence, tags, superseded_by)</td>
+                  <td className="py-2 font-mono">nx.supersede(memory_id, observation)</td>
+                  <td className="py-2 text-gray-400">Replace a memory with a new observation (marks original as superseded)</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
@@ -456,7 +457,7 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                   <td className="py-2 text-gray-400">All (10/mo Free, 50/mo Starter, Unlimited Pro+)</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.audit_export(since, until)</td>
+                  <td className="py-2 font-mono">nx.audit_export(format="csv")</td>
                   <td className="py-2 text-gray-400">Export audit logs</td>
                   <td className="py-2 text-gray-400">Starter+</td>
                 </tr>
