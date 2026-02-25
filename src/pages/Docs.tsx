@@ -282,7 +282,7 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
             Store structured relationships as subject–predicate–object triples.
             Entities are auto-created by name and deduplicated per tenant.
             Available on <strong className="text-gray-300">Pro+</strong> plans.
-            <span className="block mt-2 text-yellow-400/80 text-xs">KG methods require SDK ≥ 2.6.1 (not yet published to PyPI — REST endpoints are available now).</span>
+            <span className="block mt-2 text-gray-400 text-xs">KG methods require SDK ≥ 2.6.1. Install: <span className="font-mono text-gray-300">pip install novyx&gt;=2.6.1</span></span>
           </p>
           <CodeBlock
             language="python"
@@ -402,8 +402,8 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
-                  <td className="py-2 font-mono">nx.supersede(memory_id, observation)</td>
-                  <td className="py-2 text-gray-400">Replace a memory with a new observation (marks original as superseded)</td>
+                  <td className="py-2 font-mono">nx.supersede(old_memory_id, new_memory_id)</td>
+                  <td className="py-2 text-gray-400">Mark a memory as superseded by another memory</td>
                   <td className="py-2 text-gray-400">All</td>
                 </tr>
                 <tr className="border-b border-border">
@@ -463,6 +463,59 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
                 </tr>
               </tbody>
             </table>
+          </div>
+        </section>
+
+        <section id="openclaw" className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">OpenClaw Integration</h2>
+          <p className="text-gray-400 mb-4">
+            Novyx ships <strong className="text-white">4 OpenClaw extensions</strong> with <strong className="text-white">26 tools</strong>. Install and your agent gets persistent memory, rollback, and audit with zero configuration.
+          </p>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-medium mb-3">Extensions</h3>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li><span className="font-mono text-primary">novyx-memory</span> — store, search, forget, status</li>
+              <li><span className="font-mono text-primary">novyx-handoff</span> — multi-agent context sharing via spaces</li>
+              <li><span className="font-mono text-primary">novyx-reflect</span> — memory health, pruning, boosting</li>
+              <li><span className="font-mono text-primary">novyx-compliance</span> — audit export, verification, compliance reports</li>
+            </ul>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-medium mb-3">Install</h3>
+            <CodeBlock
+              language="bash"
+              code={`git clone https://github.com/novyxlabs/novyx-memory-skill.git extensions/novyx-memory
+cd extensions/novyx-memory && npm install`}
+            />
+          </div>
+
+          <div className="mb-6">
+            <h3 className="text-lg font-medium mb-3">Add to your OpenClaw config.json</h3>
+            <CodeBlock
+              language="json"
+              code={`{
+  "extensions": {
+    "novyx-memory": {
+      "apiKey": "nram_your_key_here"
+    }
+  }
+}`}
+            />
+            <p className="mt-3 text-sm text-gray-400">
+              Repeat for each extension (novyx-handoff, novyx-reflect, novyx-compliance).
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-lg font-medium mb-3">GitHub Repos</h3>
+            <ul className="space-y-1 text-sm">
+              <li><a href="https://github.com/novyxlabs/novyx-memory-skill" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-memory-skill</a></li>
+              <li><a href="https://github.com/novyxlabs/novyx-handoff" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-handoff</a></li>
+              <li><a href="https://github.com/novyxlabs/novyx-reflect" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-reflect</a></li>
+              <li><a href="https://github.com/novyxlabs/novyx-compliance" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-compliance</a></li>
+            </ul>
           </div>
         </section>
 

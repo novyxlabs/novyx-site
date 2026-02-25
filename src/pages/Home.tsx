@@ -427,8 +427,8 @@ export default function Home() {
               </p>
             </div>
             <Link
-              to="/docs"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border border-border text-white rounded-lg font-medium transition-colors hover:border-white/40 whitespace-nowrap"
+              to="/docs#openclaw"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-primary-hover text-white rounded-lg font-medium transition-colors whitespace-nowrap"
             >
               View integration docs
             </Link>
