@@ -1,6 +1,37 @@
 export default function Changelog() {
   const releases = [
     {
+      version: 'v1.6.0',
+      date: 'Feb 19, 2026',
+      title: 'Replay — Time-Travel Debugging',
+      changes: [
+        'Replay API — memory-level observability for AI agents (Pro+)',
+        'Memory Timeline: paginated feed of every create, update, delete, and rollback',
+        'Point-in-Time Snapshots: reconstruct full memory + knowledge graph state at any timestamp',
+        'Memory Lifecycle: track a single memory from creation to deletion with all events',
+        'Memory Diff: compare memory state between two timestamps — added, removed, modified',
+        'Counterfactual Recall (Enterprise): re-run semantic search against historical memory state',
+        'Drift Analysis (Enterprise): track tag frequency shifts, importance changes, emerging/disappearing topics',
+        'New /docs/replay page with full endpoint documentation, Python + JS examples',
+        'Replay section added to homepage and pricing page',
+        'SDK 2.7.0 — replay_timeline(), replay_snapshot(), replay_memory(), replay_diff(), replay_recall(), replay_drift()',
+      ],
+    },
+    {
+      version: 'v1.5.0',
+      date: 'Feb 19, 2026',
+      title: 'Integrations — LangChain, CrewAI, MCP & OpenClaw',
+      changes: [
+        'novyx-langchain v2.0.0 — LangChain memory backend with persistent semantic memory, rollback, and LangGraph checkpointer',
+        'novyx-crewai v1.0.0 — CrewAI storage backend for all 3 memory types (short-term, long-term, entity)',
+        'novyx-mcp v1.0.0 — MCP server for Claude Desktop, Cursor, and Claude Code with 10 tools',
+        'New /integrations page with install instructions, quickstart snippets, and PyPI links for all packages',
+        'OpenClaw section moved from docs to /integrations — 4 extensions, 26 tools',
+        'Templates section: Customer Support Agent, Research Knowledge Agent, Trading Audit Agent',
+        'Integrations added to navbar and footer navigation',
+      ],
+    },
+    {
       version: 'v1.4.0',
       date: 'Feb 19, 2026',
       title: 'Knowledge Graph, JS/TS SDK & API Expansion',

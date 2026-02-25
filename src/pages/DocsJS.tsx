@@ -131,7 +131,7 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
             Store structured relationships as subject–predicate–object triples.
             Entities are auto-created by name and deduplicated per tenant.
             Available on <strong className="text-gray-300">Pro+</strong> plans.
-            <span className="block mt-2 text-gray-400 text-xs">KG methods require SDK ≥ 2.6.1. Install: <span className="font-mono text-gray-300">npm install novyx@&gt;=2.6.1</span></span>
+            <span className="block mt-2 text-gray-400 text-xs">KG methods require SDK ≥ 2.7.0. Install: <span className="font-mono text-gray-300">npm install novyx@&gt;=2.7.0</span></span>
           </p>
           <CodeBlock
             language="typescript"
