@@ -10,7 +10,8 @@ export default function DocsJS() {
           Everything you need to integrate Novyx Core into your AI agents with JavaScript or TypeScript.
         </p>
         <p className="text-sm text-gray-500 mb-10">
-          Looking for Python? <Link to="/docs" className="text-primary hover:text-primary-hover">Python SDK docs →</Link>
+          Looking for Python? <Link to="/docs" className="text-primary hover:text-primary-hover">Python SDK docs →</Link>{' · '}
+          <Link to="/docs/replay" className="text-primary hover:text-primary-hover">Replay docs →</Link>
         </p>
 
         <div className="mb-12 rounded-lg border border-border bg-[#18181B] p-4 text-sm text-gray-300">

@@ -274,6 +274,74 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Replay */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4">
+              New
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              Replay — Time-Travel Debugging for AI Agents
+            </h2>
+            <p className="text-xl text-gray-300 mb-4 max-w-2xl">
+              See exactly what your agent <em>knew</em> when it made a decision. Not just what it said — what it remembered.
+            </p>
+            <p className="text-gray-400 max-w-2xl mb-6">
+              Novyx Replay lets you scrub through your agent&apos;s memory timeline, reconstruct its knowledge state at any point in time, and even re-run searches against historical memory. Debug bad decisions by seeing the exact memories your agent had access to — not just the LLM trace. No other memory platform offers this.
+            </p>
+            <p className="text-gray-300 italic mb-6 border-l-2 border-primary pl-4">
+              &ldquo;LangSmith shows you what your agent said. Novyx shows you what your agent knew.&rdquo;
+            </p>
+            <Link
+              to="/docs/replay"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              Start debugging smarter →
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Memory Timeline</h3>
+              <p className="text-gray-400 text-sm">
+                Scrub through every create, update, delete, and rollback with timestamps, agent IDs, and content previews.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Point-in-Time Snapshots</h3>
+              <p className="text-gray-400 text-sm">
+                Reconstruct the full memory state + knowledge graph at any timestamp. See exactly what your agent knew at 3:47 PM on Tuesday.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Memory Lifecycle</h3>
+              <p className="text-gray-400 text-sm">
+                Track a single memory from birth to death: when it was created, updated, recalled, linked to other memories, and deleted.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Memory Diff</h3>
+              <p className="text-gray-400 text-sm">
+                Compare two points in time. What memories were added, removed, or modified between deploy A and deploy B?
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Counterfactual Recall <span className="text-xs text-primary">(Enterprise)</span></h3>
+              <p className="text-gray-400 text-sm">
+                &ldquo;What would my agent have recalled if I asked it this question yesterday?&rdquo; Re-runs semantic search against historical memory state.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Drift Analysis <span className="text-xs text-primary">(Enterprise)</span></h3>
+              <p className="text-gray-400 text-sm">
+                Track how your agent&apos;s knowledge evolves. Tag frequency shifts, importance distribution changes, topics appearing and disappearing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Context Spaces */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

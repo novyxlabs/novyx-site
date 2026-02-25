@@ -34,6 +34,15 @@ const intelligenceRows = [
   { label: 'Audit Verification', values: ['—', '—', '✅', '✅'] },
 ]
 
+const replayRows = [
+  { label: 'Memory Timeline', values: ['—', '—', '✅', '✅'] },
+  { label: 'Point-in-Time Snapshots', values: ['—', '—', '✅', '✅'] },
+  { label: 'Memory Lifecycle', values: ['—', '—', '✅', '✅'] },
+  { label: 'Memory Diff', values: ['—', '—', '✅', '✅'] },
+  { label: 'Counterfactual Recall', values: ['—', '—', '—', '✅'] },
+  { label: 'Drift Analysis', values: ['—', '—', '—', '✅'] },
+]
+
 const complianceRows = [
   { label: 'Audit Retention', values: ['7 days', '14 days', '30 days', '90 days'] },
   { label: 'Memory Version History', values: ['—', '—', '—', '✅'] },
@@ -169,6 +178,18 @@ export default function Pricing() {
                 </tr>
               ))}
 
+              <SectionHeader title="Replay (Time-Travel Debugging)" />
+              {replayRows.map((row) => (
+                <tr key={row.label} className="border-t border-border">
+                  <td className="px-4 py-4 text-gray-400">{row.label}</td>
+                  {row.values.map((value, index) => (
+                    <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+
               <SectionHeader title="Compliance & Enterprise" />
               {complianceRows.map((row) => (
                 <tr key={row.label} className="border-t border-border">
@@ -242,6 +263,12 @@ export default function Pricing() {
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Replay</h3>
+            <p className="text-sm text-gray-400">
+              Time-travel debugging: memory timeline, point-in-time snapshots, diffs, and memory lifecycle tracking. Enterprise adds counterfactual recall and drift analysis. Pro+.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Knowledge Graph</h3>
             <p className="text-sm text-gray-400">
               Subject–predicate–object triples with automatic entity deduplication. Build entity-relationship graphs on top of flat memories. Pro+.
@@ -256,6 +283,7 @@ export default function Pricing() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               'Unlimited memories & rollbacks',
+              'Replay (timeline, snapshots, diff)',
               'Knowledge Graph (triples)',
               'Memory sharing between agents',
               'RSA-signed execution traces',

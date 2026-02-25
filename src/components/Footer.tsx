@@ -26,6 +26,7 @@ export default function Footer() {
               <li><Link to="/" className="hover:text-white transition-colors">Novyx Core</Link></li>
               <li><Link to="/docs" className="hover:text-white transition-colors">Python SDK</Link></li>
               <li><Link to="/docs/js" className="hover:text-white transition-colors">JS / TS SDK</Link></li>
+              <li><Link to="/docs/replay" className="hover:text-white transition-colors">Replay Docs</Link></li>
               <li><Link to="/integrations" className="hover:text-white transition-colors">Integrations</Link></li>
               <li><Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link></li>
             </ul>

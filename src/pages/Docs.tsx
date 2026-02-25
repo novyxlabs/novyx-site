@@ -10,7 +10,8 @@ export default function Docs() {
           Everything you need to integrate Novyx Core into your AI agents.
         </p>
         <p className="text-sm text-gray-500 mb-10">
-          Using JavaScript? <Link to="/docs/js" className="text-primary hover:text-primary-hover">JS / TS SDK docs →</Link>
+          Using JavaScript? <Link to="/docs/js" className="text-primary hover:text-primary-hover">JS / TS SDK docs →</Link>{' · '}
+          <Link to="/docs/replay" className="text-primary hover:text-primary-hover">Replay docs →</Link>
         </p>
 
         <div className="mb-12 rounded-lg border border-border bg-[#18181B] p-4 text-sm text-gray-300">
