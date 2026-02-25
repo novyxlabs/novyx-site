@@ -12,6 +12,7 @@ import Errors from './pages/Errors'
 import Changelog from './pages/Changelog'
 import Dashboard from './pages/Dashboard'
 import DocsJS from './pages/DocsJS'
+import Integrations from './pages/Integrations'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/docs" element={<Docs />} />
         <Route path="/docs/js" element={<DocsJS />} />
+        <Route path="/integrations" element={<Integrations />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/status" element={<Status />} />
         <Route path="/blog" element={<Blog />} />

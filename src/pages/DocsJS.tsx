@@ -471,58 +471,10 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
           </div>
         </section>
 
-        <section id="openclaw" className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">OpenClaw Integration</h2>
-          <p className="text-gray-400 mb-4">
-            Novyx ships <strong className="text-white">4 OpenClaw extensions</strong> with <strong className="text-white">26 tools</strong>. Install and your agent gets persistent memory, rollback, and audit with zero configuration.
-          </p>
-
-          <div className="mb-6">
-            <h3 className="text-lg font-medium mb-3">Extensions</h3>
-            <ul className="space-y-2 text-gray-300 text-sm">
-              <li><span className="font-mono text-primary">novyx-memory</span> — store, search, forget, status</li>
-              <li><span className="font-mono text-primary">novyx-handoff</span> — multi-agent context sharing via spaces</li>
-              <li><span className="font-mono text-primary">novyx-reflect</span> — memory health, pruning, boosting</li>
-              <li><span className="font-mono text-primary">novyx-compliance</span> — audit export, verification, compliance reports</li>
-            </ul>
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-lg font-medium mb-3">Install</h3>
-            <CodeBlock
-              language="bash"
-              code={`git clone https://github.com/novyxlabs/novyx-memory-skill.git extensions/novyx-memory
-cd extensions/novyx-memory && npm install`}
-            />
-          </div>
-
-          <div className="mb-6">
-            <h3 className="text-lg font-medium mb-3">Add to your OpenClaw config.json</h3>
-            <CodeBlock
-              language="json"
-              code={`{
-  "extensions": {
-    "novyx-memory": {
-      "apiKey": "nram_your_key_here"
-    }
-  }
-}`}
-            />
-            <p className="mt-3 text-sm text-gray-400">
-              Repeat for each extension (novyx-handoff, novyx-reflect, novyx-compliance).
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-lg font-medium mb-3">GitHub Repos</h3>
-            <ul className="space-y-1 text-sm">
-              <li><a href="https://github.com/novyxlabs/novyx-memory-skill" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-memory-skill</a></li>
-              <li><a href="https://github.com/novyxlabs/novyx-handoff" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-handoff</a></li>
-              <li><a href="https://github.com/novyxlabs/novyx-reflect" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-reflect</a></li>
-              <li><a href="https://github.com/novyxlabs/novyx-compliance" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-compliance</a></li>
-            </ul>
-          </div>
-        </section>
+        <div className="mb-12 p-4 rounded-lg border border-border bg-[#18181B] text-sm text-gray-400">
+          Looking for framework integrations (LangChain, CrewAI, MCP, OpenClaw)?{' '}
+          <Link to="/integrations" className="text-primary hover:text-primary-hover">Integrations page →</Link>
+        </div>
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">Error Codes</h2>

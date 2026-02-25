@@ -4,6 +4,7 @@ import GetApiKeyModal from './GetApiKeyModal'
 
 const navLinks = [
   { name: 'Docs', path: '/docs' },
+  { name: 'Integrations', path: '/integrations' },
   { name: 'Dashboard', path: '/dashboard' },
   { name: 'Pricing', path: '/pricing' },
 ]
