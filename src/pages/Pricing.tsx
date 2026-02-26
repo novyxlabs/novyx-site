@@ -43,6 +43,13 @@ const replayRows = [
   { label: 'Drift Analysis', values: ['—', '—', '—', '✅'] },
 ]
 
+const cortexRows = [
+  { label: 'Consolidation', values: ['—', '—', '✅', '✅'] },
+  { label: 'Reinforcement', values: ['—', '—', '✅', '✅'] },
+  { label: 'Decay', values: ['—', '—', '✅', '✅'] },
+  { label: 'Insight Generation', values: ['—', '—', '—', '✅'] },
+]
+
 const complianceRows = [
   { label: 'Audit Retention', values: ['7 days', '14 days', '30 days', '90 days'] },
   { label: 'Memory Version History', values: ['—', '—', '—', '✅'] },
@@ -190,6 +197,18 @@ export default function Pricing() {
                 </tr>
               ))}
 
+              <SectionHeader title="Cortex (Autonomous Memory Intelligence)" />
+              {cortexRows.map((row) => (
+                <tr key={row.label} className="border-t border-border">
+                  <td className="px-4 py-4 text-gray-400">{row.label}</td>
+                  {row.values.map((value, index) => (
+                    <td key={`${row.label}-${index}`} className="px-4 py-4 text-gray-200">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+
               <SectionHeader title="Compliance & Enterprise" />
               {complianceRows.map((row) => (
                 <tr key={row.label} className="border-t border-border">
@@ -269,6 +288,12 @@ export default function Pricing() {
             </p>
           </div>
           <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <h3 className="text-lg font-semibold mb-2">Cortex</h3>
+            <p className="text-sm text-gray-400">
+              Autonomous memory maintenance: consolidation merges duplicates, reinforcement boosts what matters, decay removes noise. Enterprise adds insight generation. Pro+.
+            </p>
+          </div>
+          <div className="rounded-xl border border-border bg-[#18181B] p-6">
             <h3 className="text-lg font-semibold mb-2">Knowledge Graph</h3>
             <p className="text-sm text-gray-400">
               Subject–predicate–object triples with automatic entity deduplication. Build entity-relationship graphs on top of flat memories. Pro+.
@@ -284,6 +309,7 @@ export default function Pricing() {
             {[
               'Unlimited memories & rollbacks',
               'Replay (timeline, snapshots, diff)',
+              'Cortex (consolidation, reinforcement, decay)',
               'Knowledge Graph (triples)',
               'Memory sharing between agents',
               'RSA-signed execution traces',

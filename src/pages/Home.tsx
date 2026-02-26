@@ -342,6 +342,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Cortex */}
+      <section className="py-16 border-t border-border">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4">
+              New
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              Cortex — Autonomous Memory Intelligence
+            </h2>
+            <p className="text-xl text-gray-300 mb-4 max-w-2xl">
+              Your agent&apos;s memory doesn&apos;t just store — it thinks.
+            </p>
+            <p className="text-gray-400 max-w-2xl mb-6">
+              Cortex automatically maintains your agent&apos;s memory: merging near-duplicates, boosting knowledge that matters, decaying noise, and surfacing patterns you&apos;d never spot manually. Set it once, and your agent gets smarter over time without any extra code.
+            </p>
+            <Link
+              to="/docs/cortex"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              Explore Cortex docs →
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Consolidation</h3>
+              <p className="text-gray-400 text-sm">
+                Auto-merge near-duplicate memories using pgvector similarity. Reduce noise without losing information.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Reinforcement</h3>
+              <p className="text-gray-400 text-sm">
+                Boost frequently-recalled memories and decay forgotten noise. Your agent&apos;s memory naturally prioritizes what matters.
+              </p>
+            </div>
+            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+              <h3 className="text-lg font-semibold mb-2">Insight Generation <span className="text-xs text-primary">(Enterprise)</span></h3>
+              <p className="text-gray-400 text-sm">
+                Pattern detection across the memory corpus. Recurring themes, emerging trends, and correlations — surfaced automatically.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Context Spaces */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -428,7 +475,7 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <a
-              href="https://pypi.org/project/novyx/2.7.0/"
+              href="https://pypi.org/project/novyx/2.8.0/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"

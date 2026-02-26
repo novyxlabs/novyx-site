@@ -1,6 +1,22 @@
 export default function Changelog() {
   const releases = [
     {
+      version: 'v2.8.0',
+      date: 'Feb 25, 2026',
+      title: 'Cortex — Autonomous Memory Intelligence',
+      changes: [
+        'Cortex API — autonomous memory maintenance for AI agents (Pro+)',
+        'Consolidation: auto-merge near-duplicate memories using pgvector similarity',
+        'Reinforcement: boost frequently-recalled memories, decay forgotten noise',
+        'Insight Generation: pattern detection from memory corpus (Enterprise)',
+        '5 new API endpoints: /v1/cortex/status, config (GET/PATCH), run, insights',
+        'Configurable per-tenant: thresholds, decay age, feature toggles',
+        'New /docs/cortex page with full endpoint documentation, Python + JS examples',
+        'Cortex section added to homepage and pricing page',
+        'SDK 2.8.0 — cortex_status(), cortex_config(), cortex_configure(), cortex_run(), cortex_insights()',
+      ],
+    },
+    {
       version: 'v1.6.0',
       date: 'Feb 19, 2026',
       title: 'Replay — Time-Travel Debugging',

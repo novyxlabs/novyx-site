@@ -11,7 +11,8 @@ export default function DocsJS() {
         </p>
         <p className="text-sm text-gray-500 mb-10">
           Looking for Python? <Link to="/docs" className="text-primary hover:text-primary-hover">Python SDK docs →</Link>{' · '}
-          <Link to="/docs/replay" className="text-primary hover:text-primary-hover">Replay docs →</Link>
+          <Link to="/docs/replay" className="text-primary hover:text-primary-hover">Replay docs →</Link>{' · '}
+          <Link to="/docs/cortex" className="text-primary hover:text-primary-hover">Cortex docs →</Link>
         </p>
 
         <div className="mb-12 rounded-lg border border-border bg-[#18181B] p-4 text-sm text-gray-300">
@@ -131,7 +132,7 @@ curl -X DELETE https://novyx-ram-api.fly.dev/v1/memories/link \\
             Store structured relationships as subject–predicate–object triples.
             Entities are auto-created by name and deduplicated per tenant.
             Available on <strong className="text-gray-300">Pro+</strong> plans.
-            <span className="block mt-2 text-gray-400 text-xs">KG methods require SDK ≥ 2.7.0. Install: <span className="font-mono text-gray-300">npm install novyx@&gt;=2.7.0</span></span>
+            <span className="block mt-2 text-gray-400 text-xs">KG methods require SDK ≥ 2.8.0. Install: <span className="font-mono text-gray-300">npm install novyx@&gt;=2.8.0</span></span>
           </p>
           <CodeBlock
             language="typescript"

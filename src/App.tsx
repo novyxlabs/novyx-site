@@ -14,6 +14,7 @@ import Dashboard from './pages/Dashboard'
 import DocsJS from './pages/DocsJS'
 import Integrations from './pages/Integrations'
 import DocsReplay from './pages/DocsReplay'
+import DocsCortex from './pages/DocsCortex'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/docs/js" element={<DocsJS />} />
         <Route path="/integrations" element={<Integrations />} />
         <Route path="/docs/replay" element={<DocsReplay />} />
+        <Route path="/docs/cortex" element={<DocsCortex />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/status" element={<Status />} />
         <Route path="/blog" element={<Blog />} />
