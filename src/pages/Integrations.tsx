@@ -207,7 +207,7 @@ cd extensions/novyx-memory && npm install`}
           </p>
           <div className="grid gap-4 sm:grid-cols-3">
             <a
-              href="https://github.com/novyxlabs/novyx/tree/main/templates/customer-support-agent"
+              href="https://github.com/novyxlabs/novyx-starter-kit/tree/main/templates/customer-support-agent"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-lg border border-border bg-[#18181B] hover:border-primary/50 transition-colors"
@@ -216,7 +216,7 @@ cd extensions/novyx-memory && npm install`}
               <p className="text-sm text-gray-400">Persistent context across support tickets with rollback.</p>
             </a>
             <a
-              href="https://github.com/novyxlabs/novyx/tree/main/templates/research-knowledge-agent"
+              href="https://github.com/novyxlabs/novyx-starter-kit/tree/main/templates/research-knowledge-agent"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-lg border border-border bg-[#18181B] hover:border-primary/50 transition-colors"
@@ -225,7 +225,7 @@ cd extensions/novyx-memory && npm install`}
               <p className="text-sm text-gray-400">Knowledge graph + semantic memory for research workflows.</p>
             </a>
             <a
-              href="https://github.com/novyxlabs/novyx/tree/main/templates/trading-audit-agent"
+              href="https://github.com/novyxlabs/novyx-starter-kit/tree/main/templates/trading-audit-agent"
               target="_blank"
               rel="noopener noreferrer"
               className="p-4 rounded-lg border border-border bg-[#18181B] hover:border-primary/50 transition-colors"
