@@ -538,7 +538,7 @@ export default function Home() {
             <div className="flex-1">
               <h3 className="text-xl font-semibold mb-2">Works with OpenClaw</h3>
               <p className="text-gray-400">
-                4 extensions, 26 tools, drop-in persistent memory for OpenClaw agents. Add long-term memory, rollback, and audit to any OpenClaw workflow with zero configuration.
+                3 skills, drop-in persistent memory for OpenClaw agents. Add long-term memory, rollback, and audit to any OpenClaw workflow with zero configuration.
               </p>
             </div>
             <Link

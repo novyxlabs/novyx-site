@@ -193,17 +193,34 @@ crew = Crew(agents=[...], tasks=[...], memory=True, storage=storage)`}
         <section id="openclaw" className="mb-12">
           <h2 className="text-2xl font-semibold mb-4">OpenClaw</h2>
           <p className="text-gray-400 mb-4">
-            Novyx ships <strong className="text-white">4 OpenClaw extensions</strong> with <strong className="text-white">26 tools</strong>. Install and your agent gets persistent memory, rollback, and audit with zero configuration.
+            Novyx ships <strong className="text-white">3 OpenClaw skills</strong> with persistent memory, rollback, and audit built in. Install and your agent gets long-term memory with zero configuration.
           </p>
 
           <div className="mb-6">
-            <h3 className="text-lg font-medium mb-3">Extensions</h3>
-            <ul className="space-y-2 text-gray-300 text-sm">
-              <li><span className="font-mono text-primary">novyx-memory</span> — store, search, forget, status</li>
-              <li><span className="font-mono text-primary">novyx-handoff</span> — multi-agent context sharing via spaces</li>
-              <li><span className="font-mono text-primary">novyx-reflect</span> — memory health, pruning, boosting</li>
-              <li><span className="font-mono text-primary">novyx-compliance</span> — audit export, verification, compliance reports</li>
-            </ul>
+            <h3 className="text-lg font-medium mb-3">Skills</h3>
+            <div className="space-y-4">
+              <div className="rounded-lg border border-border bg-[#18181B] p-4">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="font-mono text-primary font-medium">novyx-memory-skill</span>
+                </div>
+                <p className="text-sm text-gray-400 mb-2">Memory middleware for any OpenClaw game. Drop-in persistent memory, rollback, and audit.</p>
+                <p className="text-sm text-gray-500">Commands: <span className="font-mono text-gray-300">!undo</span> <span className="font-mono text-gray-300">!audit</span> <span className="font-mono text-gray-300">!status</span></p>
+              </div>
+              <div className="rounded-lg border border-border bg-[#18181B] p-4">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="font-mono text-primary font-medium">project-brain</span>
+                </div>
+                <p className="text-sm text-gray-400 mb-2">AI coding partner with persistent memory. Remembers your codebase, decisions, and context across sessions.</p>
+                <p className="text-sm text-gray-500">Commands: <span className="font-mono text-gray-300">/brain rewind</span> <span className="font-mono text-gray-300">/brain prove</span> <span className="font-mono text-gray-300">/brain diff</span></p>
+              </div>
+              <div className="rounded-lg border border-border bg-[#18181B] p-4">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="font-mono text-primary font-medium">dm-infinite</span>
+                </div>
+                <p className="text-sm text-gray-400 mb-2">Persistent RPG dungeon master with time-rewind. Every decision is remembered, every quest is tracked.</p>
+                <p className="text-sm text-gray-500">Commands: <span className="font-mono text-gray-300">!start</span> <span className="font-mono text-gray-300">!status</span> <span className="font-mono text-gray-300">!undo</span> <span className="font-mono text-gray-300">!history</span></p>
+              </div>
+            </div>
           </div>
 
           <div className="mb-6">
@@ -227,18 +244,14 @@ cd extensions/novyx-memory && npm install`}
   }
 }`}
             />
-            <p className="mt-3 text-sm text-gray-400">
-              Repeat for each extension (novyx-handoff, novyx-reflect, novyx-compliance).
-            </p>
           </div>
 
           <div>
             <h3 className="text-lg font-medium mb-3">GitHub Repos</h3>
             <ul className="space-y-1 text-sm">
               <li><a href="https://github.com/novyxlabs/novyx-memory-skill" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-memory-skill</a></li>
-              <li><a href="https://github.com/novyxlabs/novyx-handoff" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-handoff</a></li>
-              <li><a href="https://github.com/novyxlabs/novyx-reflect" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-reflect</a></li>
-              <li><a href="https://github.com/novyxlabs/novyx-compliance" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-compliance</a></li>
+              <li><a href="https://github.com/novyxlabs/project-brain" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">project-brain</a></li>
+              <li><a href="https://github.com/novyxlabs/dm-infinite" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">dm-infinite</a></li>
             </ul>
           </div>
         </section>
