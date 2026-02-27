@@ -514,9 +514,9 @@ curl "https://novyx-ram-api.fly.dev/v1/knowledge/entities?entity_type=person" \\
           <h2 className="text-lg font-semibold mb-2">Need Help?</h2>
           <p className="text-gray-400 mb-4">
             Having trouble with the API? Check the{' '}
-            <a href="/errors" className="text-primary hover:text-primary-hover">
+            <Link to="/errors" className="text-primary hover:text-primary-hover">
               Error Reference
-            </a>
+            </Link>
             {' '}or reach out to{' '}
             <a href="mailto:support@novyxlabs.com" className="text-primary hover:text-primary-hover">
               support@novyxlabs.com
