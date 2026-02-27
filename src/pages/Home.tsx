@@ -110,14 +110,6 @@ export default function Home() {
               — Blake Heron, Founder
             </footer>
           </blockquote>
-          <blockquote className="rounded-xl border border-border bg-[#18181B] p-8">
-            <p className="text-lg text-gray-200 italic leading-relaxed">
-              &ldquo;It&apos;s the first memory system I&apos;ve used that feels like it&apos;s built for agents, not just by agents. The rollback especially — knowing I can undo if I store something wrong gives me confidence to capture everything.&rdquo;
-            </p>
-            <footer className="mt-4 text-sm text-gray-400">
-              — Novyx agent, internal testing
-            </footer>
-          </blockquote>
         </div>
       </section>
 
@@ -234,41 +226,6 @@ export default function Home() {
                   <span>Cascade deletes <span className="text-xs text-primary">(Pro+)</span></span>
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Intelligence Features */}
-      <section className="py-16 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8">
-            Smarter recall, not just more storage
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Memory TTL</h3>
-              <p className="text-gray-400">
-                Session context expires automatically. Long-term knowledge stays forever. Set per-memory TTLs from 60 seconds to 90 days.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Recency-Weighted Recall</h3>
-              <p className="text-gray-400">
-                Tune search to prioritize recent context or long-term knowledge. Blend semantic relevance with recency in a single query.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Match Confidence Scoring</h3>
-              <p className="text-gray-400">
-                Every recall result includes a confidence score so your agent knows how much to trust it. Factors in similarity, rank position, and gap to the next result.
-              </p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Memory Supersession</h3>
-              <p className="text-gray-400">
-                Replace outdated information cleanly. Old version archived, not deleted. Your agent always gets the latest, with full history intact.
-              </p>
             </div>
           </div>
         </div>
@@ -503,7 +460,7 @@ export default function Home() {
       {/* Why Teams Choose Novyx */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8">Why teams choose Novyx</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold mb-8">Safety &amp; reliability built in</h2>
           <ComparisonTable />
         </div>
       </section>
@@ -551,25 +508,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Coming Soon */}
-      <section className="py-16 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
-            Coming soon
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Self-hosted option</h3>
-              <p className="text-gray-400 text-sm">Run Novyx Core on your own infrastructure. Coming Q2 2026.</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <h3 className="text-lg font-semibold mb-2">Annual pricing</h3>
-              <p className="text-gray-400 text-sm">Pay annually and save. Coming soon.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* How It Works */}
       <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -584,29 +522,6 @@ export default function Home() {
             <div className="rounded-xl border border-border bg-[#18181B] p-6">
               <p className="text-sm text-gray-400 mb-3">Then just 3 lines: remember, recall, rollback</p>
               <CodeBlock code={threeLinesCode} language="python" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Built For */}
-      <section className="py-16 border-t border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-semibold mb-8">
-            Built for developers shipping production AI
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="text-2xl font-semibold">Sub-100ms</p>
-              <p className="text-gray-400">semantic search</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="text-2xl font-semibold">SHA-256</p>
-              <p className="text-gray-400">tamper-proof hashing</p>
-            </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
-              <p className="text-2xl font-semibold">3 lines</p>
-              <p className="text-gray-400">to get started</p>
             </div>
           </div>
         </div>
@@ -654,8 +569,8 @@ export default function Home() {
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
                 <li>Unlimited memories</li>
                 <li>100,000 API calls/mo</li>
+                <li>Replay, Cortex, 23 MCP tools</li>
                 <li>Unlimited rollbacks</li>
-                <li>30-day audit</li>
               </ul>
               <UpgradeButton
                 tier="Pro"
@@ -667,10 +582,10 @@ export default function Home() {
               <h3 className="text-xl font-semibold mb-1">Enterprise</h3>
               <p className="text-gray-400 text-sm mb-4">$199/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
-                <li>Unlimited memories</li>
-                <li>Unlimited API calls</li>
-                <li>Unlimited rollbacks</li>
-                <li>90-day audit</li>
+                <li>Unlimited everything</li>
+                <li>Cortex insights, counterfactual recall</li>
+                <li>Drift analysis</li>
+                <li>90-day audit, 99.9% SLA</li>
               </ul>
               <ContactModal
                 label="Talk to Us"

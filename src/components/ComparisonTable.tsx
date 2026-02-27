@@ -1,17 +1,5 @@
 const features = [
   {
-    title: 'Persistent Memory',
-    description: 'Semantic search across all agent memories. Sub-100ms recall. Survives restarts, crashes, and deploys.',
-  },
-  {
-    title: 'Point-in-Time Rollback',
-    description: "Restore agent state to any moment. Preview before executing. Like git for your agent's brain.",
-  },
-  {
-    title: 'Cryptographic Audit Trail',
-    description: 'Every operation SHA-256 hashed and chained. Tamper-proof. Exportable for compliance.',
-  },
-  {
     title: 'Execution Traces',
     description: 'RSA-4096 signed record of every agent step. Independently verifiable proof of what your agent did and why.',
   },
@@ -26,10 +14,6 @@ const features = [
   {
     title: 'Conflict Resolution',
     description: 'Vector clocks handle concurrent writes. Last-write-wins, reject, or flag for manual review.',
-  },
-  {
-    title: 'Memory Sharing',
-    description: 'Multiple agents, one memory layer. Scoped namespaces with tenant-level access control.',
   },
 ]
 
