@@ -1,6 +1,41 @@
 export default function Changelog() {
   const releases = [
     {
+      version: 'v2.9.0',
+      date: 'Feb 26, 2026',
+      title: 'SDK 2.9.0 — Context Spaces, Replay & Cortex Methods',
+      changes: [
+        '13 new SDK methods across Python and JS/TS',
+        'Context Spaces: create_space(), list_spaces(), space_memories(), update_space(), delete_space(), share_space()',
+        'Replay: replay_timeline(), replay_snapshot(), replay_lifecycle(), replay_diff()',
+        'Cortex: cortex_status(), cortex_run(), cortex_insights()',
+        'Full API parity between Python and JS/TS SDKs',
+      ],
+    },
+    {
+      version: 'MCP v2.0.0',
+      date: 'Feb 26, 2026',
+      title: 'MCP Server 2.0 — 23 Tools, Resources & Prompts',
+      changes: [
+        '23 MCP tools: core memory (10), context spaces (6), replay (4), cortex (3)',
+        '6 resources: novyx://memories, novyx://stats, novyx://usage, novyx://spaces, and per-ID lookups',
+        '3 prompts: memory-context, session-summary, space-context',
+        'Context spaces for multi-agent collaboration via MCP',
+        'Replay and Cortex tools now accessible via MCP, not just raw API',
+        'Graceful tier gating — tools return clear upgrade messages on lower tiers',
+      ],
+    },
+    {
+      version: 'API Fixes',
+      date: 'Feb 26, 2026',
+      title: 'API Improvements — LWW, Tag Filtering & Limits',
+      changes: [
+        'Last-write-wins (LWW) conflict resolution now available on all tiers (was Starter+)',
+        'Tag AND filtering: search memories matching all specified tags',
+        'PATCH /v1/memories/{id} tag limit increased from 10 to 25',
+      ],
+    },
+    {
       version: 'v2.8.0',
       date: 'Feb 25, 2026',
       title: 'Cortex — Autonomous Memory Intelligence',

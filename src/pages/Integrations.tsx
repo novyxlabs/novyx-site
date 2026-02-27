@@ -20,7 +20,7 @@ export default function Integrations() {
               rel="noopener noreferrer"
               className="px-3 py-1 rounded-full bg-primary/20 text-primary font-mono text-sm hover:bg-primary/30 transition-colors"
             >
-              novyx v2.8.0
+              novyx v2.9.0
             </a>
           </div>
           <CodeBlock language="bash" code="npm install novyx" />
@@ -115,17 +115,18 @@ crew = Crew(agents=[...], tasks=[...], memory=True, storage=storage)`}
             <h2 className="text-2xl font-semibold">MCP Server</h2>
             <span className="text-sm text-gray-400">Claude Desktop / Cursor / Claude Code</span>
             <a
-              href="https://pypi.org/project/novyx-mcp/1.0.0/"
+              href="https://pypi.org/project/novyx-mcp/2.0.0/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-1 rounded-full bg-primary/20 text-primary font-mono text-sm hover:bg-primary/30 transition-colors"
             >
-              novyx-mcp v1.0.0
+              novyx-mcp v2.0.0
             </a>
           </div>
           <CodeBlock language="bash" code="pip install novyx-mcp" />
+
           <div className="mt-6">
-            <h3 className="text-lg font-medium mb-3">Claude Desktop config</h3>
+            <h3 className="text-lg font-medium mb-3">Claude Desktop / Cursor</h3>
             <CodeBlock
               language="json"
               code={`{
@@ -139,10 +140,53 @@ crew = Crew(agents=[...], tasks=[...], memory=True, storage=storage)`}
 }`}
             />
           </div>
-          <ul className="mt-4 space-y-1 text-sm text-gray-400">
-            <li>• Gives Claude persistent memory across conversations</li>
-            <li>• 10 tools: remember, recall, rollback, audit, knowledge graph, and more</li>
-          </ul>
+          <div className="mt-4">
+            <h3 className="text-lg font-medium mb-3">Claude Code</h3>
+            <CodeBlock
+              language="bash"
+              code="claude mcp add novyx-memory -- python -m novyx_mcp"
+            />
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-3">23 Tools</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-2 text-gray-400">Category</th>
+                    <th className="text-left py-2 text-gray-400">Tools</th>
+                    <th className="text-left py-2 text-gray-400">Tier</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border"><td className="py-2 text-gray-300">Core Memory</td><td className="py-2 text-gray-400">remember, recall, forget, list_memories, memory_stats, rollback, audit, link_memories, add_triple, query_triples</td><td className="py-2 text-gray-400">Free+</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 text-gray-300">Context Spaces</td><td className="py-2 text-gray-400">create_space, list_spaces, space_memories, update_space, delete_space, share_space</td><td className="py-2 text-gray-400">Free+</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 text-gray-300">Replay</td><td className="py-2 text-gray-400">replay_timeline, replay_snapshot, replay_lifecycle, replay_diff</td><td className="py-2 text-gray-400">Pro+</td></tr>
+                  <tr className="border-b border-border"><td className="py-2 text-gray-300">Cortex</td><td className="py-2 text-gray-400">cortex_status, cortex_run, cortex_insights</td><td className="py-2 text-gray-400">Pro+</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <h3 className="text-lg font-medium mb-3">6 Resources &amp; 3 Prompts</h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <ul className="space-y-1 text-sm text-gray-400">
+                <li>• <span className="font-mono text-gray-300">novyx://memories</span> — list all memories</li>
+                <li>• <span className="font-mono text-gray-300">novyx://memories/{'{id}'}</span> — get by UUID</li>
+                <li>• <span className="font-mono text-gray-300">novyx://stats</span> — memory statistics</li>
+                <li>• <span className="font-mono text-gray-300">novyx://usage</span> — usage and plan info</li>
+                <li>• <span className="font-mono text-gray-300">novyx://spaces</span> — list context spaces</li>
+                <li>• <span className="font-mono text-gray-300">novyx://spaces/{'{id}'}</span> — get space</li>
+              </ul>
+              <ul className="space-y-1 text-sm text-gray-400">
+                <li>• <span className="font-mono text-gray-300">memory-context</span> — recall + format as context</li>
+                <li>• <span className="font-mono text-gray-300">session-summary</span> — list session memories</li>
+                <li>• <span className="font-mono text-gray-300">space-context</span> — recall from a context space</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         {/* OpenClaw */}

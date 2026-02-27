@@ -475,7 +475,7 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <a
-              href="https://pypi.org/project/novyx/2.8.0/"
+              href="https://pypi.org/project/novyx/2.9.0/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"

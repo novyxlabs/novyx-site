@@ -20,7 +20,7 @@ const coreRows = [
   { label: 'Semantic Search', values: ['✅', '✅', '✅', '✅'] },
   { label: 'Memory Spaces (CRUD)', values: ['✅', '✅', '✅', '✅'] },
   { label: 'Circuit Breaker', values: ['✅', '✅', '✅', '✅'] },
-  { label: 'Conflict Resolution', values: ['Reject only', 'All strategies', 'All strategies', 'All strategies'] },
+  { label: 'Conflict Resolution', values: ['All strategies', 'All strategies', 'All strategies', 'All strategies'] },
 ]
 
 const intelligenceRows = [
@@ -32,6 +32,7 @@ const intelligenceRows = [
   { label: 'Execution Traces (RSA-signed)', values: ['—', '—', '✅', '✅'] },
   { label: 'Anomaly Alerts', values: ['—', '—', '✅', '✅'] },
   { label: 'Audit Verification', values: ['—', '—', '✅', '✅'] },
+  { label: 'MCP Server (23 tools)', values: ['10 tools', '10 tools', '23 tools', '23 tools'] },
 ]
 
 const replayRows = [
@@ -73,7 +74,7 @@ const faqs = [
   },
   {
     q: 'Do I need security features for basic memory?',
-    a: 'No. Free tier gives you persistent memory, semantic search, Memory Spaces, and Circuit Breaker protection. Upgrade to Starter when you want conflict resolution strategies, audit export, and AI rollback suggestions. Upgrade to Pro for execution traces, anomaly alerts, and memory sharing.',
+    a: 'No. Free tier gives you persistent memory, semantic search, Memory Spaces, all conflict resolution strategies, and Circuit Breaker protection. Upgrade to Starter when you want audit export and AI rollback suggestions. Upgrade to Pro for execution traces, anomaly alerts, memory sharing, and the full MCP server.',
   },
   {
     q: 'What happens if I hit my API limit?',
@@ -313,6 +314,7 @@ export default function Pricing() {
               'Knowledge Graph (triples)',
               'Memory sharing between agents',
               'RSA-signed execution traces',
+              'MCP Server (23 tools)',
               'Anomaly detection alerts',
               '30-day audit history',
               'Email support',

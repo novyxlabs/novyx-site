@@ -17,7 +17,7 @@ export default function DocsCortex() {
           <p><strong>Requirements:</strong></p>
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li>Pro plan or above</li>
-            <li>SDK 2.8.0+ — <span className="font-mono text-gray-300">pip install novyx&gt;=2.8.0</span> / <span className="font-mono text-gray-300">npm install novyx@latest</span></li>
+            <li>SDK 2.9.0+ — <span className="font-mono text-gray-300">pip install novyx&gt;=2.9.0</span> / <span className="font-mono text-gray-300">npm install novyx@latest</span></li>
           </ul>
         </div>
 
