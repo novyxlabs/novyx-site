@@ -250,8 +250,8 @@ cd extensions/novyx-memory && npm install`}
             <h3 className="text-lg font-medium mb-3">GitHub Repos</h3>
             <ul className="space-y-1 text-sm">
               <li><a href="https://github.com/novyxlabs/novyx-memory-skill" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">novyx-memory-skill</a></li>
-              <li><a href="https://github.com/novyxlabs" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">project-brain</a></li>
-              <li><a href="https://github.com/novyxlabs" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">dm-infinite</a></li>
+              <li><a href="https://github.com/novyxlabs/project-brain" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">project-brain</a></li>
+              <li><a href="https://github.com/novyxlabs/dm-infinite" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-hover">dm-infinite</a></li>
             </ul>
           </div>
         </section>
