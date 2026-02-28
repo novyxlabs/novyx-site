@@ -460,7 +460,7 @@ export default function Home() {
               <p className="text-sm text-gray-400">npm install novyx</p>
             </a>
             <a
-              href="https://github.com/novyxlabs/novyx-core"
+              href="https://github.com/novyxlabs"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
