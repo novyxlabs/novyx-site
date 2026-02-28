@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* Problem */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             AI agents have amnesia. And no security.
@@ -113,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* Origin Story */}
-      <section className="py-12 section-divider">
+      <section className="py-12 border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="rounded-xl border border-primary/30 bg-primary/5 p-8 mb-6">
             <p className="text-lg text-gray-200 italic leading-relaxed">
@@ -127,7 +127,7 @@ export default function Home() {
       </section>
 
       {/* Three Pillars */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             Built on four pillars
@@ -245,7 +245,7 @@ export default function Home() {
       </section>
 
       {/* Replay */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 shadow-lg shadow-primary/5 mb-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4 animate-pulse-subtle">
@@ -313,7 +313,7 @@ export default function Home() {
       </section>
 
       {/* Cortex */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 shadow-lg shadow-primary/5 mb-8">
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4 animate-pulse-subtle">
@@ -360,7 +360,7 @@ export default function Home() {
       </section>
 
       {/* Context Spaces */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 shadow-lg shadow-primary/5">
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -378,7 +378,7 @@ export default function Home() {
       </section>
 
       {/* How Rollback Works */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">How Rollback Works</h2>
           <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
@@ -412,7 +412,7 @@ export default function Home() {
       </section>
 
       {/* Production Trust */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
             Production-ready from day one
@@ -438,7 +438,7 @@ export default function Home() {
       </section>
 
       {/* Integrations */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
             Works with your stack
@@ -476,7 +476,7 @@ export default function Home() {
       </section>
 
       {/* Why Teams Choose Novyx */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">Safety &amp; reliability built in</h2>
           <ComparisonTable />
@@ -484,7 +484,7 @@ export default function Home() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             What developers are building
@@ -507,7 +507,7 @@ export default function Home() {
       </section>
 
       {/* Works with OpenClaw */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 flex flex-col md:flex-row items-center gap-6">
             <div className="flex-1">
@@ -527,7 +527,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             Get started in 30 seconds
@@ -546,7 +546,7 @@ export default function Home() {
       </section>
 
       {/* Inline Pricing */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
@@ -621,7 +621,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 section-divider">
+      <section className="py-16 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             Your AI finally remembers.
