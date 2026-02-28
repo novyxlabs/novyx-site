@@ -20,7 +20,7 @@ export default function Integrations() {
               rel="noopener noreferrer"
               className="px-3 py-1 rounded-full bg-primary/20 text-primary font-mono text-sm hover:bg-primary/30 transition-colors"
             >
-              novyx v2.9.0
+              novyx v2.9.2
             </a>
           </div>
           <CodeBlock language="bash" code="npm install novyx" />

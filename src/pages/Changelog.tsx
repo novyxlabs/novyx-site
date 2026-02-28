@@ -1,9 +1,9 @@
 export default function Changelog() {
   const releases = [
     {
-      version: 'v2.9.0',
-      date: 'Feb 26, 2026',
-      title: 'SDK 2.9.0 — Context Spaces, Replay & Cortex Methods',
+      version: 'v2.9.2',
+      date: 'Feb 27, 2026',
+      title: 'SDK 2.9.2 — Context Spaces, Replay & Cortex Methods',
       changes: [
         '13 new SDK methods across Python and JS/TS',
         'Context Spaces: create_space(), list_spaces(), space_memories(), update_space(), delete_space(), share_space()',

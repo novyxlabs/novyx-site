@@ -18,7 +18,7 @@ export default function DocsReplay() {
           <ul className="list-disc list-inside space-y-1 ml-2">
             <li>Pro plan or above</li>
             <li>Postgres backend (all cloud-hosted Novyx accounts use Postgres)</li>
-            <li>SDK 2.9.0+ — <span className="font-mono text-gray-300">pip install novyx&gt;=2.9.0</span> / <span className="font-mono text-gray-300">npm install novyx@latest</span></li>
+            <li>SDK 2.9.2+ — <span className="font-mono text-gray-300">pip install novyx&gt;=2.9.2</span> / <span className="font-mono text-gray-300">npm install novyx@latest</span></li>
           </ul>
         </div>
 

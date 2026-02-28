@@ -13,7 +13,8 @@ const heroTabs = [
 
 nx = Novyx(api_key="nram_...")
 nx.remember("User prefers dark mode", tags=["ui"])
-memories = nx.recall("user preferences")`,
+memories = nx.recall("user preferences")
+nx.rollback("2 hours ago")`,
   },
   {
     language: 'javascript',
@@ -22,7 +23,8 @@ memories = nx.recall("user preferences")`,
 
 const nx = new Novyx({ apiKey: 'nram_...' });
 await nx.remember('User prefers dark mode', { tags: ['ui'] });
-const memories = await nx.recall('user preferences');`,
+const memories = await nx.recall('user preferences');
+await nx.rollback('2 hours ago');`,
   },
 ]
 
@@ -46,10 +48,10 @@ export default function Home() {
               Now Live
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Persistent memory + rollback for AI agents
+              Memory that belongs to you, not the model.
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-xl">
-              Your agent remembers. You stay in control. Three lines of code.
+              Persistent memory, rollback, and audit for AI agents. Three lines of code.
             </p>
             <div className="flex flex-wrap gap-4">
               <GetApiKeyModal
@@ -62,6 +64,14 @@ export default function Home() {
               >
                 View Docs
               </Link>
+              <a
+                href="https://try.novyxlabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-border text-white px-6 py-3 rounded-lg font-medium transition-colors hover:border-white/40"
+              >
+                Try Live →
+              </a>
             </div>
             <p className="mt-6 text-sm text-gray-400">
               <span className="text-gray-300 font-medium">Model-agnostic.</span> Switch from Claude to GPT to local models. Your agent&apos;s memory stays.
@@ -432,7 +442,7 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             <a
-              href="https://pypi.org/project/novyx/2.9.0/"
+              href="https://pypi.org/project/novyx/2.9.2/"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
@@ -449,10 +459,15 @@ export default function Home() {
               <h3 className="text-lg font-semibold mb-2">JS / TS SDK</h3>
               <p className="text-sm text-gray-400">npm install novyx</p>
             </a>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+            <a
+              href="https://github.com/novyxlabs/novyx-core"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
+            >
               <h3 className="text-lg font-semibold mb-2">REST API</h3>
-              <p className="text-sm text-gray-400">Works with any HTTP client</p>
-            </div>
+              <p className="text-sm text-gray-400">Open source on GitHub</p>
+            </a>
           </div>
         </div>
       </section>
