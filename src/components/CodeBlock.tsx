@@ -26,7 +26,7 @@ export default function CodeBlock({ tabs, code, language = 'bash' }: CodeBlockPr
   }
 
   return (
-    <div className="rounded-lg overflow-hidden bg-[#0D1117] border border-[#30363D]">
+    <div className="rounded-lg overflow-hidden bg-[#0D1117] border border-[#30363D] shadow-lg shadow-black/20">
       {/* Header with tabs or language label */}
       <div className="flex justify-between items-center px-4 py-2 bg-[#161B22] border-b border-[#30363D]">
         {tabs && tabs.length > 1 ? (

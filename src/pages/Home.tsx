@@ -41,13 +41,16 @@ export default function Home() {
   return (
     <div className="animate-fade-in">
       {/* Hero */}
-      <section className="py-20 md:py-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center">
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/[0.04] rounded-full blur-[120px]" />
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center relative">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-[#18181B] px-3 py-1 text-xs text-gray-300 mb-5">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary mb-5 animate-pulse-subtle">
               Now Live
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-transparent">
               Memory that belongs to you, not the model.
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-xl">
@@ -56,11 +59,11 @@ export default function Home() {
             <div className="flex flex-wrap gap-4">
               <GetApiKeyModal
                 label="Get Free API Key"
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/25"
               />
               <Link
                 to="/docs"
-                className="inline-flex items-center gap-2 border border-border text-white px-6 py-3 rounded-lg font-medium transition-colors hover:border-white/40"
+                className="inline-flex items-center gap-2 border border-border text-white px-6 py-3 rounded-lg font-medium transition-all hover:border-white/30 hover:bg-white/[0.03]"
               >
                 View Docs
               </Link>
@@ -68,7 +71,7 @@ export default function Home() {
                 href="https://try.novyxlabs.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-border text-white px-6 py-3 rounded-lg font-medium transition-colors hover:border-white/40"
+                className="inline-flex items-center gap-2 border border-border text-white px-6 py-3 rounded-lg font-medium transition-all hover:border-white/30 hover:bg-white/[0.03]"
               >
                 Try Live →
               </a>
@@ -77,26 +80,26 @@ export default function Home() {
               <span className="text-gray-300 font-medium">Model-agnostic.</span> Switch from Claude to GPT to local models. Your agent&apos;s memory stays.
             </p>
           </div>
-          <div>
+          <div className="shadow-2xl shadow-primary/10 rounded-lg">
             <CodeBlock tabs={heroTabs} />
           </div>
         </div>
       </section>
 
       {/* Problem */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             AI agents have amnesia. And no security.
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-3">The Memory Problem</h3>
               <p className="text-gray-400">
                 Most AI conversations start from zero. Your context window is temporary — it resets every session. Everything your agent learned yesterday is gone today.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-3">The Security Problem</h3>
               <p className="text-gray-400">
                 Anyone can corrupt your agent&apos;s memory. Inject bad data. Corrupt
@@ -110,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* Origin Story */}
-      <section className="py-12 border-t border-border">
+      <section className="py-12 section-divider">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <blockquote className="rounded-xl border border-primary/30 bg-primary/5 p-8 mb-6">
             <p className="text-lg text-gray-200 italic leading-relaxed">
@@ -124,14 +127,14 @@ export default function Home() {
       </section>
 
       {/* Three Pillars */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             Built on four pillars
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Pillar 1: Persistent Memory */}
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-xl font-semibold mb-3">Persistent Memory</h3>
               <p className="text-gray-400 mb-4">
                 Semantic search across all memories. Works across sessions, restarts, crashes.
@@ -157,7 +160,7 @@ export default function Home() {
             </div>
 
             {/* Pillar 2: Magic Rollback */}
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-xl font-semibold mb-3">Magic Rollback</h3>
               <p className="text-gray-400 mb-4">
                 Point-in-time restore. Preview before executing. Like git for agent state.
@@ -183,7 +186,7 @@ export default function Home() {
             </div>
 
             {/* Pillar 3: Audit Trail */}
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-xl font-semibold mb-3">Audit Trail</h3>
               <p className="text-gray-400 mb-4">
                 Cryptographic verification. Tamper-proof logs. Export for compliance.
@@ -213,7 +216,7 @@ export default function Home() {
             </div>
 
             {/* Pillar 4: Knowledge Graph */}
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-xl font-semibold mb-3">Knowledge Graph</h3>
               <p className="text-gray-400 mb-4">
                 Structured relationships as subject–predicate–object triples. Auto-created entities with dedup. No other memory provider ships graph traversal + rollback + cryptographic audit together.
@@ -242,10 +245,10 @@ export default function Home() {
       </section>
 
       {/* Replay */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 mb-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4">
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 shadow-lg shadow-primary/5 mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4 animate-pulse-subtle">
               New
             </div>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -262,44 +265,44 @@ export default function Home() {
             </p>
             <Link
               to="/docs/replay"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/25"
             >
               Start debugging smarter →
             </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Memory Timeline</h3>
               <p className="text-gray-400 text-sm">
                 Scrub through every create, update, delete, and rollback with timestamps, agent IDs, and content previews.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Point-in-Time Snapshots</h3>
               <p className="text-gray-400 text-sm">
                 Reconstruct the full memory state + knowledge graph at any timestamp. See exactly what your agent knew at 3:47 PM on Tuesday.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Memory Lifecycle</h3>
               <p className="text-gray-400 text-sm">
                 Track a single memory from birth to death: when it was created, updated, recalled, linked to other memories, and deleted.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Memory Diff</h3>
               <p className="text-gray-400 text-sm">
                 Compare two points in time. What memories were added, removed, or modified between deploy A and deploy B?
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Counterfactual Recall <span className="text-xs text-primary">(Enterprise)</span></h3>
               <p className="text-gray-400 text-sm">
                 &ldquo;What would my agent have recalled if I asked it this question yesterday?&rdquo; Re-runs semantic search against historical memory state.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Drift Analysis <span className="text-xs text-primary">(Enterprise)</span></h3>
               <p className="text-gray-400 text-sm">
                 Track how your agent&apos;s knowledge evolves. Tag frequency shifts, importance distribution changes, topics appearing and disappearing.
@@ -310,10 +313,10 @@ export default function Home() {
       </section>
 
       {/* Cortex */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 mb-8">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4">
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 shadow-lg shadow-primary/5 mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-primary mb-4 animate-pulse-subtle">
               New
             </div>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -327,26 +330,26 @@ export default function Home() {
             </p>
             <Link
               to="/docs/cortex"
-              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/25"
             >
               Explore Cortex docs →
             </Link>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Consolidation</h3>
               <p className="text-gray-400 text-sm">
                 Auto-merge near-duplicate memories using pgvector similarity. Reduce noise without losing information.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Reinforcement</h3>
               <p className="text-gray-400 text-sm">
                 Boost frequently-recalled memories and decay forgotten noise. Your agent&apos;s memory naturally prioritizes what matters.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-2">Insight Generation <span className="text-xs text-primary">(Enterprise)</span></h3>
               <p className="text-gray-400 text-sm">
                 Pattern detection across the memory corpus. Recurring themes, emerging trends, and correlations — surfaced automatically.
@@ -357,9 +360,9 @@ export default function Home() {
       </section>
 
       {/* Context Spaces */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12">
+          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-8 md:p-12 shadow-lg shadow-primary/5">
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
               Context Spaces
             </h2>
@@ -375,10 +378,10 @@ export default function Home() {
       </section>
 
       {/* How Rollback Works */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">How Rollback Works</h2>
-          <div className="rounded-xl border border-border bg-[#18181B] p-8">
+          <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
             <ol className="space-y-4 text-gray-300">
               <li className="flex gap-4">
                 <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-sm font-semibold">1</span>
@@ -409,21 +412,21 @@ export default function Home() {
       </section>
 
       {/* Production Trust */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
             Production-ready from day one
           </h2>
           <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
+            <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
               <p className="text-3xl font-bold text-primary mb-2">p50: &lt;100ms</p>
               <p className="text-gray-400">Median recall latency</p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
+            <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
               <p className="text-3xl font-bold text-primary mb-2">p95: &lt;200ms</p>
               <p className="text-gray-400">95th percentile recall</p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-8 text-center">
+            <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
               <p className="text-3xl font-bold text-primary mb-2">Up to 99.9%</p>
               <p className="text-gray-400">uptime SLA</p>
             </div>
@@ -435,7 +438,7 @@ export default function Home() {
       </section>
 
       {/* Integrations */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8 text-center">
             Works with your stack
@@ -445,7 +448,7 @@ export default function Home() {
               href="https://pypi.org/project/novyx/2.9.2/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
+              className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center hover:border-white/40 transition-colors"
             >
               <h3 className="text-lg font-semibold mb-2">Python SDK</h3>
               <p className="text-sm text-gray-400">pip install novyx</p>
@@ -454,7 +457,7 @@ export default function Home() {
               href="https://www.npmjs.com/package/novyx"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
+              className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center hover:border-white/40 transition-colors"
             >
               <h3 className="text-lg font-semibold mb-2">JS / TS SDK</h3>
               <p className="text-sm text-gray-400">npm install novyx</p>
@@ -463,7 +466,7 @@ export default function Home() {
               href="https://github.com/novyxlabs"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-xl border border-border bg-[#18181B] p-6 text-center hover:border-white/40 transition-colors"
+              className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center hover:border-white/40 transition-colors"
             >
               <h3 className="text-lg font-semibold mb-2">REST API</h3>
               <p className="text-sm text-gray-400">Open source on GitHub</p>
@@ -473,7 +476,7 @@ export default function Home() {
       </section>
 
       {/* Why Teams Choose Novyx */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">Safety &amp; reliability built in</h2>
           <ComparisonTable />
@@ -481,19 +484,19 @@ export default function Home() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             What developers are building
           </h2>
           <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-3">Cross-Session Recall</h3>
               <p className="text-gray-400">
                 A scheduling agent that auto-recalled a contact&apos;s timezone and meeting preferences in a brand new session — without being told.
               </p>
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <h3 className="text-lg font-semibold mb-3">30-Second Recovery</h3>
               <p className="text-gray-400">
                 An agent that stored bad data for 3 days. One rollback command. 30 seconds. Clean state.
@@ -504,9 +507,9 @@ export default function Home() {
       </section>
 
       {/* Works with OpenClaw */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-xl border border-border bg-[#18181B] p-8 flex flex-col md:flex-row items-center gap-6">
+          <div className="rounded-xl border border-border bg-[#18181B] p-8 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 flex flex-col md:flex-row items-center gap-6">
             <div className="flex-1">
               <h3 className="text-xl font-semibold mb-2">Works with OpenClaw</h3>
               <p className="text-gray-400">
@@ -524,17 +527,17 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             Get started in 30 seconds
           </h2>
           <div className="grid lg:grid-cols-2 gap-6">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <p className="text-sm text-gray-400 mb-3">Setup: Install &amp; initialize</p>
               <CodeBlock code={setupCode} language="python" />
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20">
               <p className="text-sm text-gray-400 mb-3">Then just 3 lines: remember, recall, rollback</p>
               <CodeBlock code={threeLinesCode} language="python" />
             </div>
@@ -543,10 +546,10 @@ export default function Home() {
       </section>
 
       {/* Inline Pricing */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
               <h3 className="text-xl font-semibold mb-1">Free</h3>
               <p className="text-gray-400 text-sm mb-4">$0/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
@@ -560,7 +563,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center w-full gap-2 bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-2.5 rounded-lg font-medium transition-colors text-sm"
               />
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
               <h3 className="text-xl font-semibold mb-1">Starter</h3>
               <p className="text-gray-400 text-sm mb-4">$12/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
@@ -593,7 +596,7 @@ export default function Home() {
                 className="inline-flex items-center justify-center w-full gap-2 bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2.5 rounded-lg font-medium transition-colors text-sm cursor-pointer"
               />
             </div>
-            <div className="rounded-xl border border-border bg-[#18181B] p-6 text-center">
+            <div className="rounded-xl border border-border bg-[#18181B] p-6 transition-all duration-300 hover:border-white/15 hover:shadow-lg hover:shadow-black/20 text-center">
               <h3 className="text-xl font-semibold mb-1">Enterprise</h3>
               <p className="text-gray-400 text-sm mb-4">$199/mo</p>
               <ul className="space-y-2 text-sm text-gray-400 mb-6 text-left">
@@ -618,7 +621,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 border-t border-border">
+      <section className="py-16 section-divider">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
             Your AI finally remembers.
@@ -628,7 +631,7 @@ export default function Home() {
           </p>
           <GetApiKeyModal
             label="Get Free API Key"
-            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-primary/25"
           />
           <p className="mt-3 text-sm text-gray-500">5,000 memories free. Forever.</p>
           <a

@@ -30,6 +30,13 @@ pre code {
 .code-comment { color: #546e7a; }
 .code-function { color: #82aaff; }
 
+/* Gradient section divider */
+.section-divider {
+  border-top: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--border)) 20%, hsl(var(--border)) 80%, transparent);
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
