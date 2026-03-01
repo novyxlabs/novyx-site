@@ -25,19 +25,19 @@ export default function Features() {
             </p>
             <ul className="space-y-2 text-sm text-gray-400 mb-6 max-w-md">
               <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">&#10003;</span>
+                <span className="text-primary mt-0.5">✓</span>
                 <span>Subject–predicate–object triples</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">&#10003;</span>
+                <span className="text-primary mt-0.5">✓</span>
                 <span>Auto-created &amp; deduplicated entities</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">&#10003;</span>
+                <span className="text-primary mt-0.5">✓</span>
                 <span>Entity traversal &amp; filtering</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-primary mt-0.5">&#10003;</span>
+                <span className="text-primary mt-0.5">✓</span>
                 <span>Cascade deletes <span className="text-xs text-primary">(Pro+)</span></span>
               </li>
             </ul>

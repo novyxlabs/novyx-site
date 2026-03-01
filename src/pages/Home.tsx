@@ -57,8 +57,8 @@ export default function Home() {
         </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center relative">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary mb-5 animate-pulse-subtle">
-              Now Live
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary mb-5">
+              Free tier — no credit card required
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-transparent">
               Memory that belongs to you, not the model.
@@ -119,19 +119,19 @@ export default function Home() {
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Sub-100ms recall</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Semantic search across context</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Survives restarts &amp; crashes</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Share across agents with Spaces <span className="text-xs text-primary">(Pro+)</span></span>
                 </li>
               </ul>
@@ -145,19 +145,19 @@ export default function Home() {
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Restore to any point in time</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Preview before executing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Surgical precision</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>AI-suggested rollback points <span className="text-xs text-primary">(Starter+)</span></span>
                 </li>
               </ul>
@@ -171,19 +171,19 @@ export default function Home() {
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>SHA-256 cryptographic hashing</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Tamper-proof logs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>Export for compliance</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">&#10003;</span>
+                  <span className="text-primary mt-0.5">✓</span>
                   <span>RSA-signed execution traces <span className="text-xs text-primary">(Pro+)</span></span>
                 </li>
               </ul>
@@ -217,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* Comparison */}
-      <section className="py-16 border-t border-border">
+      <section className="py-20 border-t border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-semibold mb-8">
             Novyx vs. the alternatives
@@ -237,13 +237,13 @@ export default function Home() {
                   <tr key={row.feature} className="border-t border-border">
                     <td className="px-4 py-3 text-gray-300">{row.feature}</td>
                     <td className="px-4 py-3 text-primary font-medium">
-                      {row.novyx === true ? '&#10003;' : row.novyx === false ? '—' : row.novyx}
+                      {row.novyx === true ? '✓' : row.novyx === false ? '—' : row.novyx}
                     </td>
                     <td className="px-4 py-3 text-gray-400">
-                      {row.langchain === true ? '&#10003;' : row.langchain === false ? '—' : row.langchain}
+                      {row.langchain === true ? '✓' : row.langchain === false ? '—' : row.langchain}
                     </td>
                     <td className="px-4 py-3 text-gray-400">
-                      {row.vectordb === true ? '&#10003;' : row.vectordb === false ? '—' : row.vectordb}
+                      {row.vectordb === true ? '✓' : row.vectordb === false ? '—' : row.vectordb}
                     </td>
                   </tr>
                 ))}
