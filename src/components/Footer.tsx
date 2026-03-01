@@ -64,7 +64,7 @@ export default function Footer() {
                   Discord
                 </a>
               </li>
-              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link to="/story" className="hover:text-white transition-colors">Our Story</Link></li>
             </ul>
           </div>
 

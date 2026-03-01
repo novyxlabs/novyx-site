@@ -12,7 +12,7 @@ const pageTitles: Record<string, string> = {
   '/integrations': 'Integrations — Novyx',
   '/dashboard': 'Dashboard — Novyx',
   '/status': 'API Status — Novyx',
-  '/blog': 'Story — Novyx',
+  '/story': 'Our Story — Novyx',
   '/privacy': 'Privacy Policy — Novyx',
   '/terms': 'Terms of Service — Novyx',
   '/errors': 'Error Reference — Novyx',

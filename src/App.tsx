@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Pricing from './pages/Pricing'
 import Docs from './pages/Docs'
 import Status from './pages/Status'
-import Blog from './pages/Blog'
+import Story from './pages/Blog'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import Errors from './pages/Errors'
@@ -32,7 +32,8 @@ function App() {
         <Route path="/docs/cortex" element={<DocsCortex />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/status" element={<Status />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/story" element={<Story />} />
+        <Route path="/blog" element={<Navigate to="/story" replace />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/errors" element={<Errors />} />
