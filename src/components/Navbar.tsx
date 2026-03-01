@@ -3,6 +3,7 @@ import { useState } from 'react'
 import GetApiKeyModal from './GetApiKeyModal'
 
 const navLinks = [
+  { name: 'Features', path: '/features' },
   { name: 'Docs', path: '/docs' },
   { name: 'Integrations', path: '/integrations' },
   { name: 'Dashboard', path: '/dashboard' },

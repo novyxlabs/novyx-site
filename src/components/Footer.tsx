@@ -24,6 +24,7 @@ export default function Footer() {
             <h4 className="font-medium mb-4">Products</h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li><Link to="/" className="hover:text-white transition-colors">Novyx Core</Link></li>
+              <li><Link to="/features" className="hover:text-white transition-colors">Features</Link></li>
               <li><Link to="/docs" className="hover:text-white transition-colors">Python SDK</Link></li>
               <li><Link to="/docs/js" className="hover:text-white transition-colors">JS / TS SDK</Link></li>
               <li><Link to="/docs/replay" className="hover:text-white transition-colors">Replay Docs</Link></li>
