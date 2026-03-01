@@ -7,6 +7,7 @@ const navLinks = [
   { name: 'Docs', path: '/docs' },
   { name: 'Integrations', path: '/integrations' },
   { name: 'Dashboard', path: '/dashboard' },
+  { name: 'Changelog', path: '/changelog' },
   { name: 'Pricing', path: '/pricing' },
 ]
 

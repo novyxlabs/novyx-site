@@ -191,7 +191,8 @@ crew = Crew(agents=[...], tasks=[...], memory=True, storage=storage)`}
 
         {/* OpenClaw */}
         <section id="openclaw" className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">OpenClaw</h2>
+          <h2 className="text-2xl font-semibold mb-2">OpenClaw</h2>
+          <p className="text-sm text-gray-500 mb-4">OpenClaw — open-source AI agent framework</p>
           <p className="text-gray-400 mb-4">
             Novyx ships <strong className="text-white">3 OpenClaw skills</strong> with persistent memory, rollback, and audit built in. Install and your agent gets long-term memory with zero configuration.
           </p>

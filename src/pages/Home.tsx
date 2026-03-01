@@ -57,9 +57,9 @@ export default function Home() {
         </div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-center relative">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary mb-5">
-              Free tier — no credit card required
-            </div>
+            <Link to="/changelog" className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary mb-5 hover:bg-primary/20 transition-colors">
+              v2.9.2 — Feb 27 →
+            </Link>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-b from-white via-white to-gray-400 bg-clip-text text-transparent">
               Memory that belongs to you, not the model.
             </h1>

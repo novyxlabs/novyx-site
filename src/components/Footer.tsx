@@ -53,16 +53,6 @@ export default function Footer() {
               <li><Link to="/changelog" className="hover:text-white transition-colors">Changelog</Link></li>
               <li>
                 <a
-                  href="https://github.com/novyxlabs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  GitHub
-                </a>
-              </li>
-              <li>
-                <a
                   href="https://discord.gg/PCxZ3tMj"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -126,17 +116,6 @@ export default function Footer() {
               >
                 <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
                   <path d="M13.7 10.6L20 3h-1.5l-5.5 6.7L8.4 3H3l6.7 9.9L3 21h1.5l5.9-7.1L15.6 21H21l-7.3-10.4zm-2.3 2.8l-.7-1L5 4.5h2.4l4.3 6.1.7 1L18.9 19h-2.4l-5.4-7.6z" />
-                </svg>
-              </a>
-              <a
-                href="https://github.com/novyxlabs"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-                aria-label="Novyx Labs on GitHub"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.5 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.15-4.56-5.12 0-1.13.39-2.05 1.02-2.77-.1-.26-.44-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.2 9.2 0 0 1 2.5-.35c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.54 1.4.2 2.44.1 2.7.64.72 1.02 1.64 1.02 2.77 0 3.98-2.35 4.86-4.58 5.11.36.32.68.94.68 1.9 0 1.38-.01 2.5-.01 2.84 0 .28.18.6.69.5A10.02 10.02 0 0 0 22 12.26C22 6.58 17.52 2 12 2z" />
                 </svg>
               </a>
             </div>
